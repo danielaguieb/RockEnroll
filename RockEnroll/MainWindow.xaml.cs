@@ -22,7 +22,6 @@ namespace RockEnroll
     {
         public MainWindow()
         {
-            InitializeComponent();
         }
     }
 }

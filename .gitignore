@@ -1,0 +1,5 @@
+#ignore the vs folder
+.vs/
+/RockEnroll/.vs
+/RockEnroll/bin/
+/RockEnroll/obj/
