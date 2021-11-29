@@ -15,18 +15,28 @@ using System.Windows.Shapes;
 
 namespace RockEnroll
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public class PlaceholderTextBox : TextBox
     {
-        public MainWindow()
+
+        private bool isTyping, textEmpty;
+        public string placeholderText { get; set; }
+
+        public PlaceholderTextBox()
         {
+            PreviewMouseLeftButtonDown += _OnMouseDown;
+            this.TextChanged += _TextChanged;
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        public void _OnMouseDown(object sender, MouseEventArgs e)
+        {
+            isTyping = true;
+        }
+
+        public void _TextChanged(object sender, RoutedEventArgs e)
         {
             
+
         }
+
     }
 }

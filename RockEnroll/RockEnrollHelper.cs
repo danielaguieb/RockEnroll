@@ -27,10 +27,10 @@ namespace RockEnroll
         public static void InitializeCourses()
         {
             // add courses here
-            Course soci201 = new Course("SOCI 321", "Introduction to Sociology", Course.departmentConsent.NONE);
+            Course soci201 = new Course("SOCI 321", "Introduction to Sociology", Course.departmentConsent.NONE, "Sociology as a discipline examines how the society in which we live influences our thinking and behaviour. An introduction to sociology through the study of society, social institutions, group behaviour and social change.");
             allCourses.Add(soci201);
 
-            Course soci321 = new Course("SOCI 321", "Sociology of Health and Illness", Course.departmentConsent.OR);
+            Course soci321 = new Course("SOCI 321", "Sociology of Health and Illness", Course.departmentConsent.OR, null);
             soci321.prerequisites.Add(new List<Course> { soci201 });
             allCourses.Add(soci321);
         }
@@ -75,6 +75,7 @@ namespace RockEnroll
 
         public string courseID { get; set; }
         public string courseTitle { get; set; }
+        public string courseDescription { get; set; }
         /// <summary>
         /// Course prerequisites. Use different lists for alternative requirements.
         /// </summary>
@@ -82,6 +83,8 @@ namespace RockEnroll
         public List<Course> antirequisites { get; }
         public departmentConsent departmentConsentRequirement { get; }
         public List<Lecture> lecturesList { get; }
+        public List<Tutorial> tutorialsList { get; }
+        public List<Lab> labsList { get; }
 
         /// <summary>
         /// Create an instance of a Course.
@@ -89,7 +92,7 @@ namespace RockEnroll
         /// <param name="courseID">ID of course. e.g. "CPSC 481"</param>
         /// <param name="courseTitle">Title of course. e.g. "Human-Computer Interaction I"</param>
         /// <param name="departmentConsentRequirement">NONE for no requirements, OR and AND otherwise.</param>
-        public Course(string courseID, string courseTitle, departmentConsent departmentConsentRequirement)
+        public Course(string courseID, string courseTitle, departmentConsent departmentConsentRequirement, string courseDescription)
         {
 
             this.courseID = courseID;
@@ -98,17 +101,34 @@ namespace RockEnroll
             this.prerequisites = new List<List<Course>>();
             this.antirequisites = new List<Course>();
             this.lecturesList = new List<Lecture>();
+            this.tutorialsList = new List<Tutorial>();
+            this.labsList = new List<Lab>();
+            this.courseDescription = courseDescription;
 
         }
 
     }
 
-    public enum Weekdays { M, T, W, R, F };
+    public enum Campus
+    {
+        UniversityOfCalgary, WebBased, RedDeer
+    }
+
+    public enum Faculty
+    {
+        Arts, Medicine, Architecture, GraduateStudies, Business, Kinesiology, Law, Nursing, Engineering, Science, SocialWork, Veterinary, Education
+    }
 
     public abstract class Assignable
     {
         public TimeSpan time { get; set; }
         public string instructor { get; set; }
+        public Campus campus { get; set; }
+        public Faculty faculty { get; set; }
+        public int currentWaitlist { get; set; }
+        public int maxWaitlist { get; set; }
+        public int maxStudents { get; set; }
+        public int currentStudents { get; set; }
         public int days
         {
             set
@@ -155,24 +175,51 @@ namespace RockEnroll
     {
         public Tutorial tutorial { get; set; }
 
-        public Lecture(int days, TimeSpan time, string instructor)
+        public Lecture(int days, TimeSpan time, string instructor, Campus campus, Faculty faculty, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist)
         {
             this.time = time;
             this.instructor = instructor;
             this.days = days;
+            this.campus = campus;
+            this.faculty = faculty;
+            this.currentStudents = currentStudents;
+            this.maxStudents = maxStudents;
+            this.currentWaitlist = currentWaitlist;
+            this.maxWaitlist = maxWaitlist;
         }
 
     }
 
     public class Tutorial : Assignable
     {
-        public bool isLab { get; }
 
-        public Tutorial(bool isLab, TimeSpan time, string instructor)
+        public Tutorial(TimeSpan time, string instructor, Campus campus, Faculty faculty, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist)
         {
-            this.isLab = isLab;
             this.time = time;
             this.instructor = instructor;
+            this.campus = campus;
+            this.faculty = faculty;
+            this.currentStudents = currentStudents;
+            this.maxStudents = maxStudents;
+            this.currentWaitlist = currentWaitlist;
+            this.maxWaitlist = maxWaitlist;
+        }
+
+    }
+
+    public class Lab : Assignable
+    {
+
+        public Lab(TimeSpan time, string instructor, Campus campus, Faculty faculty, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist)
+        {
+            this.time = time;
+            this.instructor = instructor;
+            this.campus = campus;
+            this.faculty = faculty;
+            this.currentStudents = currentStudents;
+            this.maxStudents = maxStudents;
+            this.currentWaitlist = currentWaitlist;
+            this.maxWaitlist = maxWaitlist;
         }
 
     }

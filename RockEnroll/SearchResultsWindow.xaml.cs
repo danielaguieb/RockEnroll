@@ -10,23 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace RockEnroll
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SearchResultsWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SearchResultsWindow : Window
     {
-        public MainWindow()
+        public SearchResultsWindow()
         {
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            
+            InitializeComponent();
         }
     }
 }
