@@ -57,6 +57,8 @@ namespace RockEnroll
             this.firstName = firstName;
             this.lastName = lastName;
             this.studentID = studentID;
+            this.coursesTaken = new List<Course>();
+            this.currentSchedule = new List<Course>();
 
         }
 
@@ -79,6 +81,7 @@ namespace RockEnroll
         public List<List<Course>> prerequisites { get; }
         public List<Course> antirequisites { get; }
         public departmentConsent departmentConsentRequirement { get; }
+        public List<Lecture> lecturesList { get; }
 
         /// <summary>
         /// Create an instance of a Course.
@@ -92,8 +95,90 @@ namespace RockEnroll
             this.courseID = courseID;
             this.courseTitle = courseTitle;
             this.departmentConsentRequirement = departmentConsentRequirement;
+            this.prerequisites = new List<List<Course>>();
+            this.antirequisites = new List<Course>();
+            this.lecturesList = new List<Lecture>();
 
         }
 
+    }
+
+    public enum Weekdays { M, T, W, R, F };
+
+    public abstract class Assignable
+    {
+        public TimeSpan time { get; set; }
+        public string instructor { get; set; }
+        public int days
+        {
+            set
+            {
+                if (value > 31)
+                {
+                    Console.WriteLine("WARNING: days value invalid");
+                }
+
+                if ((value ^ 0b1) == 1)
+                {
+                    friday = true;
+                }
+
+                if ((value ^ 0b10) == 1)
+                {
+                    thursday = true;
+                }
+
+                if ((value ^ 0b100) == 1)
+                {
+                    wednesday = true;
+                }
+
+                if ((value ^ 0b1000) == 1)
+                {
+                    tuesday = true;
+                }
+
+                if ((value ^ 0b10000) == 1)
+                {
+                    monday = true;
+                }
+            }
+        }
+        public bool monday { get; set; }
+        public bool tuesday { get; set; }
+        public bool wednesday { get; set; }
+        public bool thursday { get; set; }
+        public bool friday { get; set; }
+    }
+
+    public class Lecture : Assignable
+    {
+        public Tutorial tutorial { get; set; }
+
+        public Lecture(int days, TimeSpan time, string instructor)
+        {
+            this.time = time;
+            this.instructor = instructor;
+            this.days = days;
+        }
+
+    }
+
+    public class Tutorial : Assignable
+    {
+        public bool isLab { get; }
+
+        public Tutorial(bool isLab, TimeSpan time, string instructor)
+        {
+            this.isLab = isLab;
+            this.time = time;
+            this.instructor = instructor;
+        }
+
+    }
+
+    public class BlockWeekClass
+    {
+        // needed?
     }
 }
