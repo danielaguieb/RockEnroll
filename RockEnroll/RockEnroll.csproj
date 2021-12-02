@@ -6,16 +6,4 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="icons8-bell-96.png" />
-    <None Remove="icons8-pin-24.png" />
-    <None Remove="icons8-trash-can-120.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="icons8-bell-96.png" />
-    <Resource Include="icons8-pin-24.png" />
-    <Resource Include="icons8-trash-can-120.png" />
-  </ItemGroup>
-
 </Project>

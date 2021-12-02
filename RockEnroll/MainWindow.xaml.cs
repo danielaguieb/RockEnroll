@@ -23,7 +23,7 @@ namespace RockEnroll
         CourseList _coursePage = new CourseList();
         AcademicRequirements _reqPage = new AcademicRequirements();
         Schedules _schedulePage = new Schedules();
-        
+
         public MainWindow()
         {
             InitializeComponent();
