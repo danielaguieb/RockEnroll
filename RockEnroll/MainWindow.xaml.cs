@@ -20,9 +20,42 @@ namespace RockEnroll
     /// </summary>
     public partial class MainWindow : Window
     {
+        CourseList _coursePage = new CourseList();
+        AcademicRequirements _reqPage = new AcademicRequirements();
+        Schedules _schedulePage = new Schedules();
+        
         public MainWindow()
         {
+            InitializeComponent();
+            Switcher.pageSwitcher = this;
         }
 
+        public void Navigate(UserControl nextPage)
+        {
+            this.Content = nextPage;
+        }
+
+        private void CourseTabClick(object sender, RoutedEventArgs e)
+        {
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(_coursePage);
+        }
+
+        private void RequirementsTabClick(object sender, RoutedEventArgs e)
+        {
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(_reqPage);
+        }
+
+        private void ScheduleTabClick(object sender, RoutedEventArgs e)
+        {
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(_schedulePage);
+        }
+
+        private void AdvancedSearchClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

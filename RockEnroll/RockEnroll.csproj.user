@@ -7,7 +7,33 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="AcademicRequirements.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Course.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CourseList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Schedules.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="AcademicRequirements.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Course.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CourseList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Schedules.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
