@@ -56,6 +56,8 @@ namespace RockEnroll
         {
             ClassInstance classInstance = new ClassInstance(course, 1,1, 0);
             CourseView view = new CourseView(classInstance);
+            view.HorizontalAlignment = HorizontalAlignment.Stretch;
+
             this.courseListViewer.Children.Add(view);
         }
     }

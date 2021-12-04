@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,11 +63,11 @@ namespace RockEnroll
             allCourses.Add(soci201);
 
             Course soci321 = new Course(321, "Sociology of Health and Illness", Faculty.Arts, Department.SOCI,  Course.departmentConsent.OR, null);
-            soci201.lecturesList.Add(new Lecture(tbLec1_1, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 50, 200, 0, 30, ""));
-            soci201.lecturesList.Add(new Lecture(tbLec1_2, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 120, 200, 0, 30, ""));
-            soci201.tutorialsList.Add(new Tutorial(tbTut2_1, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
-            soci201.tutorialsList.Add(new Tutorial(tbTut2_2, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
-            soci201.tutorialsList.Add(new Tutorial(tbTut2_3, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
+            soci321.lecturesList.Add(new Lecture(tbLec1_1, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 50, 200, 0, 30, ""));
+            soci321.lecturesList.Add(new Lecture(tbLec1_2, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 120, 200, 0, 30, ""));
+            soci321.tutorialsList.Add(new Tutorial(tbTut2_1, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
+            soci321.tutorialsList.Add(new Tutorial(tbTut2_2, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
+            soci321.tutorialsList.Add(new Tutorial(tbTut2_3, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
             soci321.prerequisites.Add(soci201);
             soci201.successors.Add(soci321);
             allCourses.Add(soci321);
@@ -145,6 +146,8 @@ namespace RockEnroll
 
         public Department department { get; set; }
 
+        //add units
+
         /// <summary>
         /// Course prerequisites. Use different lists for alternative requirements.
         /// </summary>
@@ -204,6 +207,9 @@ namespace RockEnroll
     {
         public int lectureNum { get; set; }
         public int tutorialNum { get; set; }
+        
+        //add semester 
+
         public int labNum { get; set; }
         public ClassInstance(int courseID, string courseTitle, Faculty faculty, Department department, departmentConsent departmentConsentRequirement, string courseDescription, int lecture, int tutorial = 0, int lab = 0) :
             base(courseID, courseTitle, faculty, department, departmentConsentRequirement, courseDescription)
@@ -229,8 +235,10 @@ namespace RockEnroll
 
     public class TimeBlock
     {
-        public string startTime
+        private string startTime;
+        public string StartTime
         {
+            get { return startTime; }
             set
             {
                 TimeSpan dummyOutput;
@@ -241,11 +249,12 @@ namespace RockEnroll
                 };
             }
         }
-        public string endTime { get; set; }
+        private string endTime;
+        public string EndTime{ get { return endTime; } set { endTime = value; } }
 
-        //Monday = 1, Tuesday = 2, Wednesday = 4, Thursday = 8, Friday = 16
-        //example: Monday, Wednesday, Friday class, days = 1 + 4 + 16 = 21
-        //example: Tuesday, Thursday class, days = 2 + 8 = 10
+        //Monday = 16, Tuesday = 8, Wednesday = 4, Thursday = 2, Friday = 1
+        //example: Monday, Wednesday, Friday class, days = 17 + 5 + 0= 22
+        //example: Tuesday, Thursday class, days = 8 + 2 = 10
         public int days
         {
             set
@@ -255,27 +264,27 @@ namespace RockEnroll
                     Console.WriteLine("WARNING: days value invalid");
                 }
 
-                if ((value ^ 0b1) == 1)
+                if ((value & 0b1) == 1)
                 {
                     friday = true;
                 }
 
-                if ((value ^ 0b10) == 1)
+                if ((value & 0b10) == 1)
                 {
                     thursday = true;
                 }
 
-                if ((value ^ 0b100) == 1)
+                if ((value & 0b100) == 1)
                 {
                     wednesday = true;
                 }
 
-                if ((value ^ 0b1000) == 1)
+                if ((value & 0b1000) == 1)
                 {
                     tuesday = true;
                 }
 
-                if ((value ^ 0b10000) == 1)
+                if ((value & 0b10000) == 1)
                 {
                     monday = true;
                 }

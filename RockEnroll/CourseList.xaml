@@ -11,8 +11,9 @@
             <ColumnDefinition Width ="4*"/>
             <ColumnDefinition Width ="3*"/>
         </Grid.ColumnDefinitions>
-        <ScrollViewer>
-            <StackPanel x:Name="courseListViewer" Height="auto" Width="auto"/>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+            <DockPanel Name ="courseListViewer"/>
+
         </ScrollViewer>
     </Grid>
 </UserControl>
