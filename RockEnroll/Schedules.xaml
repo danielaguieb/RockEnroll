@@ -6,9 +6,19 @@
              xmlns:local="clr-namespace:RockEnroll"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="104,49,0,0" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="224,205,0,0" VerticalAlignment="Top"/>
+    <Grid RenderTransformOrigin="0.322,0.277">
+        <Button Content="Set Enrollment Cart" HorizontalAlignment="Left" Margin="339,415,0,0" VerticalAlignment="Top" Width="175" Height="25" Click="Button_Click_1"/>
+        <Button Content="Enrollment Checkout" HorizontalAlignment="Left" Margin="570,415,0,0" VerticalAlignment="Top" Click="Button_Click" Background="#FFD31B1B" Foreground="#FFF7F7F7" Width="210" Height="25"/>
+        <Slider HorizontalAlignment="Left" Margin="31,37,0,0" VerticalAlignment="Top" Width="483" Background="#FFE9EDEE" BorderBrush="#FF464748" Foreground="#FF1F0000" Value="100" TickPlacement="TopLeft" Height="162" Maximum="14" IsSnapToTickEnabled="True"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="290,415,0,0" VerticalAlignment="Top" Width="29" Height="25">
+            <Button.BorderBrush>
+                <ImageBrush/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources\trash-can.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Button Content="" HorizontalAlignment="Left" Height="25" Margin="190,415,0,0" VerticalAlignment="Top" Width="82"/>
     </Grid>
 
 </UserControl>
