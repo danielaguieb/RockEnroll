@@ -19,9 +19,12 @@ namespace RockEnroll
     /// </summary>
     public partial class AdvSearchWindow : Window
     {
+        SearchResultPanel searchresultpanel = new();
+        Search searchInstance = new("");
         public AdvSearchWindow()
         {
             InitializeComponent();
+            
             //Load out filter form
             foreach (string name in Enum.GetNames(typeof(Campus)))
             {
@@ -39,42 +42,33 @@ namespace RockEnroll
                 session.Items.Add(name);
             }
 
-            //get subject list
-            List<string> subjectlist = new();
-            bool isnotunique = false;
-            RockEnrollHelper.InitializeCourses();
-            foreach (Course acourse in RockEnrollHelper.allCourses)
+            foreach (int subjectint in Enum.GetValues(typeof(Department)))
             {
-                isnotunique = false;
-                foreach (string subjectname in subjectlist)
-                {
-                    for (int i = 0; i < 4; i++)
-                    {
-                        if (subjectname[i] != acourse.courseID[i])
-                        {
-                            break;
-                        }
-                        if (i == 3) isnotunique = true;
-                    }
-
-                    if (isnotunique) break;
-                }
-
-                if (isnotunique) break;
-                string newsubject = acourse.courseID.Substring(0, 4);
-                subjectlist.Add(newsubject);
+                if (subjectint == 0) continue;
+                subjectbox.Items.Add(Enum.GetName((Department)subjectint));
             }
 
-            foreach (string subjectname in subjectlist)
-            {
-                subjectbox.Items.Add(subjectname);
-            }
-
+            //Prepare search panel;
+            putSearchHere.Children.Add(searchresultpanel);
+            searchInstance.Proccess();
+            searchresultpanel.updateResults(searchInstance);
         }
+            
 
         private void Back_Button_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
+        }
+
+        private void Searchbar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            searchInstance.searchstring = searchbar.Text;
+        }
+
+        private void Apply_Button_Click(object sender, RoutedEventArgs e)
+        {
+            searchInstance.Proccess();
+            searchresultpanel.updateResults(searchInstance);
         }
     }
 

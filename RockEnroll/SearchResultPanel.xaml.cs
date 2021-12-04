@@ -24,5 +24,14 @@ namespace RockEnroll
         {
             InitializeComponent();
         }
+
+        public void updateResults(Search search)
+        {
+            resultList.Items.Clear();
+            foreach (Course i in search.results)
+            {
+                resultList.Items.Add(i.courseTitle);
+            }
+        }
     }
 }

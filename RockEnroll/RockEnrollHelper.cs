@@ -103,12 +103,13 @@ namespace RockEnroll
 
     public enum Faculty
     {
-        Arts, Medicine, Architecture, GraduateStudies, Business, Kinesiology, Law, Nursing, Engineering, Science, SocialWork, Veterinary, Education
+        NONE, Arts, Medicine, Architecture, GraduateStudies, Business, Kinesiology, Law, Nursing, Engineering, Science, SocialWork, Veterinary, Education
     }
 
 
     public enum Department
     {
+        NONE,
         [Description("Art")] ART,
         [Description("Biology")] BIOL,
         [Description("Chemistry")] CHEM,
@@ -157,7 +158,7 @@ namespace RockEnroll
         public List<Lecture> lecturesList { get; }
         public List<Tutorial> tutorialsList { get; }
         public List<Lab> labsList { get; }
-
+        public int courseUnits { get; set; }
         /// <summary>
         /// Create an instance of a Course.
         /// </summary>
@@ -179,6 +180,7 @@ namespace RockEnroll
             this.tutorialsList = new List<Tutorial>();
             this.labsList = new List<Lab>();
             this.courseDescription = courseDescription;
+            this.courseUnits = 6;
 
         }
 
@@ -196,6 +198,7 @@ namespace RockEnroll
             this.tutorialsList = course.tutorialsList;
             this.labsList =course.labsList;
             this.courseDescription = course.courseDescription;
+            this.courseUnits = 6;
         }
 
     }

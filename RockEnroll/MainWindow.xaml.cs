@@ -34,7 +34,7 @@ namespace RockEnroll
         {
             InitializeComponent();
             Switcher.pageSwitcher = this;
-            RockEnrollHelper.InitializeCourses();
+            //RockEnrollHelper.InitializeCourses();
         }
 
         public void Navigate(UserControl nextPage)

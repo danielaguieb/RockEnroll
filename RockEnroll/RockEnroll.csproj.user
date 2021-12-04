@@ -8,9 +8,6 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="CourseResultItem.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="SearchResultPanel.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -32,9 +29,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="CourseList.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="CourseResultItem.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="CourseView.xaml">

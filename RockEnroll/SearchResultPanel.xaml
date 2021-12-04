@@ -6,10 +6,7 @@
              xmlns:local="clr-namespace:RockEnroll"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <ListView>
-        <ListViewItem>
-            <Button>asdasdasdas</Button>
-        </ListViewItem>
-        
+    <ListView Name="resultList">
+
     </ListView>
 </UserControl>
