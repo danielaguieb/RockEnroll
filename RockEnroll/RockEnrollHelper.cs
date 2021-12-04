@@ -54,19 +54,19 @@ namespace RockEnroll
 
             // add courses here
             Course soci201 = new Course(201, "Introductory Sociology", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, "Sociology as a discipline examines how the society in which we live influences our thinking and behaviour. An introduction to sociology through the study of society, social institutions, group behaviour and social change.");
-            soci201.lecturesList.Add(new Lecture(tbLec1_1, "John Smith", Campus.UniversityOfCalgary,"Social Science Rm 109", 50, 200, 0, 30, ""));
-            soci201.lecturesList.Add(new Lecture(tbLec1_2, "John Smith", Campus.UniversityOfCalgary, "Social Science Rm 109", 120, 200, 0, 30, ""));
-            soci201.tutorialsList.Add(new Tutorial(tbTut1_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0,0,""));
-            soci201.tutorialsList.Add(new Tutorial(tbTut1_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
-            soci201.tutorialsList.Add(new Tutorial(tbTut1_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci201.lecturesList.Add(new Lecture(soci201, tbLec1_1, "John Smith", Campus.UniversityOfCalgary,"Social Science Rm 109", 50, 200, 0, 30, ""));
+            soci201.lecturesList.Add(new Lecture(soci201, tbLec1_2, "John Smith", Campus.UniversityOfCalgary, "Social Science Rm 109", 120, 200, 0, 30, ""));
+            soci201.tutorialsList.Add(new Tutorial(soci201, tbTut1_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0,0,""));
+            soci201.tutorialsList.Add(new Tutorial(soci201, tbTut1_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci201.tutorialsList.Add(new Tutorial(soci201, tbTut1_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
             allCourses.Add(soci201);
 
             Course soci321 = new Course(321, "Sociology of Health and Illness", Faculty.Arts, Department.SOCI,  Course.departmentConsent.OR, null);
-            soci201.lecturesList.Add(new Lecture(tbLec1_1, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 50, 200, 0, 30, ""));
-            soci201.lecturesList.Add(new Lecture(tbLec1_2, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 120, 200, 0, 30, ""));
-            soci201.tutorialsList.Add(new Tutorial(tbTut2_1, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
-            soci201.tutorialsList.Add(new Tutorial(tbTut2_2, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
-            soci201.tutorialsList.Add(new Tutorial(tbTut2_3, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
+            soci201.lecturesList.Add(new Lecture(soci201, tbLec1_1, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 50, 200, 0, 30, ""));
+            soci201.lecturesList.Add(new Lecture(soci201, tbLec1_2, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 120, 200, 0, 30, ""));
+            soci201.tutorialsList.Add(new Tutorial(soci201, tbTut2_1, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
+            soci201.tutorialsList.Add(new Tutorial(soci201, tbTut2_2, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
+            soci201.tutorialsList.Add(new Tutorial(soci201, tbTut2_3, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
             soci321.prerequisites.Add(soci201);
             soci201.successors.Add(soci321);
             allCourses.Add(soci321);
@@ -303,7 +303,7 @@ namespace RockEnroll
 
     public abstract class Assignable
     {
-        
+        public Course course { get; set; }
         public TimeBlock time { get; set; }
         public string instructor { get; set; }
         public Campus campus { get; set; }
@@ -322,7 +322,7 @@ namespace RockEnroll
     {
         public Tutorial tutorial { get; set; }
 
-        public Lecture(TimeBlock time, string instructor, Campus campus, string room, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist, string note)
+        public Lecture(Course course, TimeBlock time, string instructor, Campus campus, string room, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist, string note)
         {
             this.time = time;
             this.instructor = instructor;
@@ -340,7 +340,7 @@ namespace RockEnroll
     public class Tutorial : Assignable
     {
 
-        public Tutorial(TimeBlock time, string instructor, Campus campus, string room, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist, string note)
+        public Tutorial(Course course, TimeBlock time, string instructor, Campus campus, string room, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist, string note)
         {
             this.time = time;
             this.instructor = instructor;
@@ -358,7 +358,7 @@ namespace RockEnroll
     public class Lab : Assignable
     {
 
-        public Lab(TimeBlock time, string instructor, Campus campus,  string room, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist, string note)
+        public Lab(Course course, TimeBlock time, string instructor, Campus campus,  string room, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist, string note)
         {
             this.time = time;
             this.instructor = instructor;
