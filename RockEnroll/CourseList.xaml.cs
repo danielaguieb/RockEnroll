@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,39 @@ namespace RockEnroll
         public CourseList()
         {
             InitializeComponent();
+            RockEnrollHelper.InitializeCourses();
+            AddCourse(RockEnrollHelper.allCourses[0]);
+            
+            
+        }
+
+        /*
+        public int findAvailableTime(Course course)
+        {
+            for (int i = 0; i < course.lecturesList.Count(); i++) {
+                bool conflict = false;
+                for(int j = 0; j < student.currentSchedule.Count(); i++)
+                {
+                    int z = student.currentSchedule[j].lectureNum;
+                    if (course.lecturesList[i].time.Equals(student.currentSchedule[j].lecturesList[z].time))
+                    {
+                        conflict = true;
+                        break;
+                    }
+                }
+                if (!conflict)
+                {
+                    return i;
+                }
+            }
+            return 1;
+        }
+        */
+        public void AddCourse(Course course)
+        {
+            ClassInstance classInstance = new ClassInstance(course, 1,1, 0);
+            CourseView view = new CourseView(classInstance);
+            this.courseListViewer.Children.Add(view);
         }
     }
 }

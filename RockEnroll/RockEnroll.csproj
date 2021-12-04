@@ -6,4 +6,26 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Resources\bell.png" />
+    <None Remove="Resources\bell2.png" />
+    <None Remove="Resources\checkmark.png" />
+    <None Remove="Resources\error.png" />
+    <None Remove="Resources\pin.png" />
+    <None Remove="Resources\pin2.png" />
+    <None Remove="Resources\search.png" />
+    <None Remove="Resources\trash-can.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\bell.png" />
+    <Resource Include="Resources\bell2.png" />
+    <Resource Include="Resources\checkmark.png" />
+    <Resource Include="Resources\error.png" />
+    <Resource Include="Resources\pin.png" />
+    <Resource Include="Resources\pin2.png" />
+    <Resource Include="Resources\search.png" />
+    <Resource Include="Resources\trash-can.png" />
+  </ItemGroup>
+
 </Project>

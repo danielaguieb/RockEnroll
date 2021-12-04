@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,41 +21,23 @@ namespace RockEnroll
     /// </summary>
     public partial class CourseView : UserControl
     {
-        public CourseView(Course course)
+        public CourseView(ClassInstance classInstance)
         {
             InitializeComponent();
+            this.classInstance = classInstance;
+            this.courseNameText.Content = classInstance.department.ToString() + classInstance.courseID.ToString();
+            this.courseTitleText.Content = classInstance.courseTitle;
         }
 
-        private string courseName;
-        public string CourseName
+        private ClassInstance classInstance;
+        public ClassInstance ClassInstance
         {
-            get { return courseName; }
-            set { 
-                courseName = value;
-                this.courseNameText.Content = this.courseName;
+            get { return classInstance; }
+            set {
+                classInstance = value;
             }
         }
 
-
-        private string courseTitle;
-        public string CourseTitle { 
-            get { return courseTitle; }
-            set
-            {
-                courseTitle = value;
-                this.courseTitleText.Content = this.courseTitle;
-            }
-        }
-
-        private string campus;
-        public string Campus{
-            get { return campus; }
-            set
-            {
-                campus = value;
-                this.campusText.Content = this.campus;
-            }
-        }
 
         private void deleteCourse(object sender, RoutedEventArgs e)
         {
