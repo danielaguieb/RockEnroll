@@ -6,31 +6,133 @@
              xmlns:local="clr-namespace:RockEnroll"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+
     <Grid RenderTransformOrigin="0.322,0.277">
-        <Button Content="Set Enrollment Cart" HorizontalAlignment="Left" Margin="272,415,0,0" VerticalAlignment="Top" Width="254" Height="25" Click="Button_Click_1"/>
-        <Button Content="Enrollment Checkout" HorizontalAlignment="Left" Margin="570,415,0,0" VerticalAlignment="Top" Click="Button_Click" Background="#FFD31B1B" Foreground="#FFF7F7F7" Width="210" Height="25"/>
-        <Slider HorizontalAlignment="Left" Margin="31,37,0,0" VerticalAlignment="Top" Width="495" Background="#FFE9EDEE" BorderBrush="#FF464748" Foreground="#FF1F0000" Value="100" TickPlacement="TopLeft" Height="162" Maximum="14" IsSnapToTickEnabled="True"/>
-        <Button Content="" HorizontalAlignment="Left" Margin="231,334,0,0" VerticalAlignment="Top" Width="29" Height="25">
-            <Button.BorderBrush>
-                <ImageBrush/>
-            </Button.BorderBrush>
-            <Button.Background>
-                <ImageBrush ImageSource="Resources\trash-can.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="14*"/>
+            <RowDefinition Height="31*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
 
-        <TextBox Text="1" TextWrapping="Wrap" Margin="152,337,626,93"/>
-        <TextBlock Text="of 3" TextWrapping="Wrap" Margin="177,339,596,89"/>
-        <TextBlock Text="Saved Schedules" TextWrapping="Wrap" Margin="31,339,675,89"/>
-        <Button Content="" HorizontalAlignment="Left" Margin="400,322,0,0" VerticalAlignment="Top" Width="176">
-            <Button.BorderBrush>
-                <ImageBrush/>
-            </Button.BorderBrush>
-            <Button.Background>
-                <ImageBrush ImageSource="Resources\arrow.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
 
+
+        <Grid Grid.Row="0">
+            <Grid Height="126" VerticalAlignment="Center" HorizontalAlignment="Center" Width="800">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="7*"/>
+                </Grid.RowDefinitions>
+                <Slider Background="#FFE9EDEE" BorderBrush="#FF464748" Foreground="#FF1F0000" TickPlacement="TopLeft" Maximum="14" IsSnapToTickEnabled="True" Height="53" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="800" RenderTransformOrigin="0.5,0.5">
+                    <Slider.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Slider.RenderTransform>
+                </Slider>
+                <Grid Grid.Row="01">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="53*"/>
+                        <ColumnDefinition Width="213*"/>
+                        <ColumnDefinition Width="213*"/>
+                        <ColumnDefinition Width="213*"/>
+                        <ColumnDefinition Width="106*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="August" TextWrapping="Wrap" HorizontalAlignment="Center" Grid.Column="0"/>
+                    <TextBlock Text="September" TextWrapping="Wrap" HorizontalAlignment="Center" Grid.Column="1"/>
+                    <TextBlock Text="October" TextWrapping="Wrap" HorizontalAlignment="Center" Grid.Column="2"/>
+                    <TextBlock Text="November" TextWrapping="Wrap" HorizontalAlignment="Center" Grid.Column="3"/>
+                    <TextBlock Text="December" TextWrapping="Wrap" HorizontalAlignment="Center" Grid.Column="4"/>
+                </Grid>
+
+            </Grid>
+        </Grid>
+
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="7*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Border BorderThickness="1" BorderBrush="Black">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="52*"/>
+                        <RowDefinition Height="225*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="95*"/>
+                        <ColumnDefinition Width="93*"/>
+                        <ColumnDefinition Width="93*"/>
+                        <ColumnDefinition Width="93*"/>
+                        <ColumnDefinition Width="93*"/>
+                        <ColumnDefinition Width="93*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Monday" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"/>
+                    <TextBlock Text="Tuesday" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2"/>
+                    <TextBlock Text="Wednesday" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3"/>
+                    <TextBlock Text="Thursday" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4"/>
+                    <TextBlock Text="Friday" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="5"/>
+                    <TextBlock HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="9AM"/><LineBreak/><Run/></TextBlock>
+                    <TextBlock HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,199,0,0"><Run Text="6PM"/><LineBreak/><Run/></TextBlock>
+                </Grid>
+            </Border>
+        </Grid>
+
+
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="107*"/>
+                <ColumnDefinition Width="48*"/>
+                <ColumnDefinition Width="24*"/>
+                <ColumnDefinition Width="31*"/>
+                <ColumnDefinition Width="48*"/>
+                <ColumnDefinition Width="38*"/>
+                <ColumnDefinition Width="333*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Center" Text="Saved Schedules" TextWrapping="Wrap" VerticalAlignment="Center" Height="15" Width="88"/>
+            <Button Content="" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="41" Width="41" Click="Button_Click_2" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Button.BorderBrush>
+                    <ImageBrush/>
+                </Button.BorderBrush>
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources\arrow.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <TextBox Text="1" TextWrapping="Wrap" Grid.Column="2" Margin="0,12,1,11"/>
+            <TextBlock Text="of 3" TextWrapping="Wrap" Grid.Column="3" Margin="4,12,5,12"/>
+            <Button Content="" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Width="48" Height="46">
+                <Button.BorderBrush>
+                    <ImageBrush/>
+                </Button.BorderBrush>
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources\arrow.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button Content="" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="44" Width="38">
+                <Button.BorderBrush>
+                    <ImageBrush/>
+                </Button.BorderBrush>
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources\trash-can.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button Content="Set Enrollment Cart" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Center" Width="386"/>
+
+        </Grid>
     </Grid>
 
 </UserControl>
