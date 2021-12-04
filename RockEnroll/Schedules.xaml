@@ -7,10 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid RenderTransformOrigin="0.322,0.277">
-        <Button Content="Set Enrollment Cart" HorizontalAlignment="Left" Margin="339,415,0,0" VerticalAlignment="Top" Width="175" Height="25" Click="Button_Click_1"/>
+        <Button Content="Set Enrollment Cart" HorizontalAlignment="Left" Margin="272,415,0,0" VerticalAlignment="Top" Width="254" Height="25" Click="Button_Click_1"/>
         <Button Content="Enrollment Checkout" HorizontalAlignment="Left" Margin="570,415,0,0" VerticalAlignment="Top" Click="Button_Click" Background="#FFD31B1B" Foreground="#FFF7F7F7" Width="210" Height="25"/>
-        <Slider HorizontalAlignment="Left" Margin="31,37,0,0" VerticalAlignment="Top" Width="483" Background="#FFE9EDEE" BorderBrush="#FF464748" Foreground="#FF1F0000" Value="100" TickPlacement="TopLeft" Height="162" Maximum="14" IsSnapToTickEnabled="True"/>
-        <Button Content="" HorizontalAlignment="Left" Margin="290,415,0,0" VerticalAlignment="Top" Width="29" Height="25">
+        <Slider HorizontalAlignment="Left" Margin="31,37,0,0" VerticalAlignment="Top" Width="495" Background="#FFE9EDEE" BorderBrush="#FF464748" Foreground="#FF1F0000" Value="100" TickPlacement="TopLeft" Height="162" Maximum="14" IsSnapToTickEnabled="True"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="231,334,0,0" VerticalAlignment="Top" Width="29" Height="25">
             <Button.BorderBrush>
                 <ImageBrush/>
             </Button.BorderBrush>
@@ -18,7 +18,19 @@
                 <ImageBrush ImageSource="Resources\trash-can.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button Content="" HorizontalAlignment="Left" Height="25" Margin="190,415,0,0" VerticalAlignment="Top" Width="82"/>
+
+        <TextBox Text="1" TextWrapping="Wrap" Margin="152,337,626,93"/>
+        <TextBlock Text="of 3" TextWrapping="Wrap" Margin="177,339,596,89"/>
+        <TextBlock Text="Saved Schedules" TextWrapping="Wrap" Margin="31,339,675,89"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="400,322,0,0" VerticalAlignment="Top" Width="176">
+            <Button.BorderBrush>
+                <ImageBrush/>
+            </Button.BorderBrush>
+            <Button.Background>
+                <ImageBrush ImageSource="Resources\arrow.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+
     </Grid>
 
 </UserControl>
