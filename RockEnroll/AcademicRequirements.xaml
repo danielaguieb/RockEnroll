@@ -35,4 +35,8 @@
         </Style>
 
     </UserControl.Resources>
+    <Grid>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="216,128,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
 </UserControl>

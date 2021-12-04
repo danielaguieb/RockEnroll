@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,12 +27,48 @@ namespace RockEnroll
 
         public static void InitializeCourses()
         {
+            //Lecture Timeblocks 
+            TimeBlock tbLec1_1 = new TimeBlock(21, "09:00", new TimeSpan(0, 0, 50, 0, 0));
+            TimeBlock tbLec1_2 = new TimeBlock(21, "13:00", new TimeSpan(0, 0, 50, 0, 0));
+
+            TimeBlock tbLec2_1 = new TimeBlock(21, "11:00", new TimeSpan(0, 0, 50, 0, 0));
+            TimeBlock tbLec2_2 = new TimeBlock(10, "13:00", new TimeSpan(0, 1, 15, 0, 0));
+
+            TimeBlock tbLec3_1 = new TimeBlock(21, "15:00", new TimeSpan(0, 0, 50, 0, 0));
+            TimeBlock tbLec3_2 = new TimeBlock(10, "9:00", new TimeSpan(0, 1, 15, 0, 0));
+
+            //Tutorial Timeblocks
+            TimeBlock tbTut1_1 = new TimeBlock(5, "10:00", new TimeSpan(0, 0, 50, 0, 0));
+            TimeBlock tbTut1_2 = new TimeBlock(10, "11:00", new TimeSpan(0, 0, 50, 0, 0));
+            TimeBlock tbTut1_3 = new TimeBlock(5, "12:00", new TimeSpan(0, 0, 50, 0, 0));
+
+            TimeBlock tbTut2_1 = new TimeBlock(5, "14:00", new TimeSpan(0, 0, 50, 0, 0));
+            TimeBlock tbTut2_2 = new TimeBlock(10, "12:00", new TimeSpan(0, 0, 50, 0, 0));
+            TimeBlock tbTut2_3 = new TimeBlock(10, "15:00", new TimeSpan(0, 0, 50, 0, 0));
+
+            //Lab Timeblocks
+            TimeBlock tbLab1 = new TimeBlock(1, "16:00", new TimeSpan(0, 3, 0, 0, 0));
+            TimeBlock tbLab2 = new TimeBlock(2, "16:00", new TimeSpan(0, 3, 0, 0, 0));
+            TimeBlock tbLab3 = new TimeBlock(4, "16:00", new TimeSpan(0, 3, 0, 0, 0));
+            TimeBlock tbLab4 = new TimeBlock(8, "16:00", new TimeSpan(0, 3, 0, 0, 0));
+
             // add courses here
-            Course soci201 = new Course("SOCI 321", "Introduction to Sociology", Course.departmentConsent.NONE, "Sociology as a discipline examines how the society in which we live influences our thinking and behaviour. An introduction to sociology through the study of society, social institutions, group behaviour and social change.");
+            Course soci201 = new Course(201, "Introductory Sociology", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, "Sociology as a discipline examines how the society in which we live influences our thinking and behaviour. An introduction to sociology through the study of society, social institutions, group behaviour and social change.");
+            soci201.lecturesList.Add(new Lecture(tbLec1_1, "John Smith", Campus.UniversityOfCalgary,"Social Science Rm 109", 50, 200, 0, 30, ""));
+            soci201.lecturesList.Add(new Lecture(tbLec1_2, "John Smith", Campus.UniversityOfCalgary, "Social Science Rm 109", 120, 200, 0, 30, ""));
+            soci201.tutorialsList.Add(new Tutorial(tbTut1_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0,0,""));
+            soci201.tutorialsList.Add(new Tutorial(tbTut1_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci201.tutorialsList.Add(new Tutorial(tbTut1_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
             allCourses.Add(soci201);
 
-            Course soci321 = new Course("SOCI 321", "Sociology of Health and Illness", Course.departmentConsent.OR, null);
-            soci321.prerequisites.Add(new List<Course> { soci201 });
+            Course soci321 = new Course(321, "Sociology of Health and Illness", Faculty.Arts, Department.SOCI,  Course.departmentConsent.OR, null);
+            soci201.lecturesList.Add(new Lecture(tbLec1_1, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 50, 200, 0, 30, ""));
+            soci201.lecturesList.Add(new Lecture(tbLec1_2, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 120, 200, 0, 30, ""));
+            soci201.tutorialsList.Add(new Tutorial(tbTut2_1, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
+            soci201.tutorialsList.Add(new Tutorial(tbTut2_2, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
+            soci201.tutorialsList.Add(new Tutorial(tbTut2_3, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
+            soci321.prerequisites.Add(soci201);
+            soci201.successors.Add(soci321);
             allCourses.Add(soci321);
         }
 
@@ -49,7 +86,7 @@ namespace RockEnroll
         /// <summary>
         /// Courses the student is currently taking.
         /// </summary>
-        public List<Course> currentSchedule { get; }
+        public List<ClassInstance> currentSchedule { get; }
 
         public Student(string firstName, string lastName, int studentID)
         {
@@ -58,12 +95,39 @@ namespace RockEnroll
             this.lastName = lastName;
             this.studentID = studentID;
             this.coursesTaken = new List<Course>();
-            this.currentSchedule = new List<Course>();
+            this.currentSchedule = new List<ClassInstance>();
 
         }
 
     }
 
+    public enum Faculty
+    {
+        Arts, Medicine, Architecture, GraduateStudies, Business, Kinesiology, Law, Nursing, Engineering, Science, SocialWork, Veterinary, Education
+    }
+
+
+    public enum Department
+    {
+        [Description("Art")] ART,
+        [Description("Biology")] BIOL,
+        [Description("Chemistry")] CHEM,
+        [Description("Computer Science")] CPSC,
+        [Description("Economics")] ECON,
+        [Description("Engineering")] ENGG,
+        [Description("English")] ENGL,
+        [Description("Linguistics")] LING,
+        [Description("Mathematics")] MATH,
+        [Description("Music")] MUSI,
+        [Description("Philosophy")] PHIL,
+        [Description("Physics")] PHYS,
+        [Description("Psychology")] PSYC,
+        [Description("Sociology")] SOCI,
+        [Description("Software Engineering")] SENG,
+        [Description("Statistics")] STAT
+    }
+
+    
     public class Course
     {
 
@@ -73,14 +137,22 @@ namespace RockEnroll
             NONE, OR, AND
         }
 
-        public string courseID { get; set; }
+        public int courseID { get; set; }
         public string courseTitle { get; set; }
         public string courseDescription { get; set; }
+
+        public Faculty faculty { get; set; }
+
+        public Department department { get; set; }
+
         /// <summary>
         /// Course prerequisites. Use different lists for alternative requirements.
         /// </summary>
-        public List<List<Course>> prerequisites { get; }
+        public List<Course> prerequisites { get; }
         public List<Course> antirequisites { get; }
+
+        //Courses that require the current one as a prerequisite
+        public List<Course> successors { get; }
         public departmentConsent departmentConsentRequirement { get; }
         public List<Lecture> lecturesList { get; }
         public List<Tutorial> tutorialsList { get; }
@@ -92,14 +164,17 @@ namespace RockEnroll
         /// <param name="courseID">ID of course. e.g. "CPSC 481"</param>
         /// <param name="courseTitle">Title of course. e.g. "Human-Computer Interaction I"</param>
         /// <param name="departmentConsentRequirement">NONE for no requirements, OR and AND otherwise.</param>
-        public Course(string courseID, string courseTitle, departmentConsent departmentConsentRequirement, string courseDescription)
+        public Course(int courseID, string courseTitle, Faculty faculty, Department department, departmentConsent departmentConsentRequirement, string courseDescription)
         {
 
             this.courseID = courseID;
             this.courseTitle = courseTitle;
+            this.faculty = faculty;
+            this.department = department;
             this.departmentConsentRequirement = departmentConsentRequirement;
-            this.prerequisites = new List<List<Course>>();
+            this.prerequisites = new List<Course>();
             this.antirequisites = new List<Course>();
+            this.successors = new List<Course>();
             this.lecturesList = new List<Lecture>();
             this.tutorialsList = new List<Tutorial>();
             this.labsList = new List<Lab>();
@@ -107,28 +182,70 @@ namespace RockEnroll
 
         }
 
+        public Course(Course course)
+        {
+            this.courseID = course.courseID;
+            this.courseTitle = course.courseTitle;
+            this.faculty = course.faculty;
+            this.department = course.department;
+            this.departmentConsentRequirement = course.departmentConsentRequirement;
+            this.prerequisites = course.prerequisites;
+            this.antirequisites = course.antirequisites;
+            this.successors = course.successors;
+            this.lecturesList = course.lecturesList;
+            this.tutorialsList = course.tutorialsList;
+            this.labsList =course.labsList;
+            this.courseDescription = course.courseDescription;
+        }
+
     }
+
+    public class ClassInstance : Course
+    {
+        public int lectureNum { get; set; }
+        public int tutorialNum { get; set; }
+        public int labNum { get; set; }
+        public ClassInstance(int courseID, string courseTitle, Faculty faculty, Department department, departmentConsent departmentConsentRequirement, string courseDescription, int lecture, int tutorial = 0, int lab = 0) :
+            base(courseID, courseTitle, faculty, department, departmentConsentRequirement, courseDescription)
+        {
+            this.lectureNum = lecture;
+            this.tutorialNum = tutorial;
+            this.labNum = lab;
+        }
+
+        public ClassInstance(Course course, int lecture, int tutorial = 0, int lab = 0) : base(course)
+        {
+            this.lectureNum = lecture;
+            this.tutorialNum = tutorial;
+            this.labNum = lab;
+        }
+    }
+
 
     public enum Campus
     {
         UniversityOfCalgary, WebBased, RedDeer
     }
 
-    public enum Faculty
+    public class TimeBlock
     {
-        Arts, Medicine, Architecture, GraduateStudies, Business, Kinesiology, Law, Nursing, Engineering, Science, SocialWork, Veterinary, Education
-    }
+        public string startTime
+        {
+            set
+            {
+                TimeSpan dummyOutput;
+                if (!TimeSpan.TryParse(value, out dummyOutput))
+                {
+                    Console.WriteLine("WARNING: start time value invalid");
+                    startTime = "00:00:00";
+                };
+            }
+        }
+        public string endTime { get; set; }
 
-    public abstract class Assignable
-    {
-        public TimeSpan time { get; set; }
-        public string instructor { get; set; }
-        public Campus campus { get; set; }
-        public Faculty faculty { get; set; }
-        public int currentWaitlist { get; set; }
-        public int maxWaitlist { get; set; }
-        public int maxStudents { get; set; }
-        public int currentStudents { get; set; }
+        //Monday = 1, Tuesday = 2, Wednesday = 4, Thursday = 8, Friday = 16
+        //example: Monday, Wednesday, Friday class, days = 1 + 4 + 16 = 21
+        //example: Tuesday, Thursday class, days = 2 + 8 = 10
         public int days
         {
             set
@@ -164,6 +281,16 @@ namespace RockEnroll
                 }
             }
         }
+
+            public TimeBlock(int days, string startTime, TimeSpan time)
+            {
+            this.days = days;
+            this.startTime = startTime;
+            this.endTime = TimeSpan.Parse(startTime).Add(time).ToString();
+            }
+
+        
+
         public bool monday { get; set; }
         public bool tuesday { get; set; }
         public bool wednesday { get; set; }
@@ -171,21 +298,38 @@ namespace RockEnroll
         public bool friday { get; set; }
     }
 
+    public abstract class Assignable
+    {
+        
+        public TimeBlock time { get; set; }
+        public string instructor { get; set; }
+        public Campus campus { get; set; }
+
+        public string room { get; set; }
+        public int currentWaitlist { get; set; }
+        public int maxWaitlist { get; set; }
+        public int maxStudents { get; set; }
+        public int currentStudents { get; set; }
+
+        public string notes { get; set; }
+      
+    }
+
     public class Lecture : Assignable
     {
         public Tutorial tutorial { get; set; }
 
-        public Lecture(int days, TimeSpan time, string instructor, Campus campus, Faculty faculty, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist)
+        public Lecture(TimeBlock time, string instructor, Campus campus, string room, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist, string note)
         {
             this.time = time;
             this.instructor = instructor;
-            this.days = days;
             this.campus = campus;
-            this.faculty = faculty;
+            this.room = room;
             this.currentStudents = currentStudents;
             this.maxStudents = maxStudents;
             this.currentWaitlist = currentWaitlist;
             this.maxWaitlist = maxWaitlist;
+            this.notes = notes;
         }
 
     }
@@ -193,16 +337,17 @@ namespace RockEnroll
     public class Tutorial : Assignable
     {
 
-        public Tutorial(TimeSpan time, string instructor, Campus campus, Faculty faculty, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist)
+        public Tutorial(TimeBlock time, string instructor, Campus campus, string room, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist, string note)
         {
             this.time = time;
             this.instructor = instructor;
             this.campus = campus;
-            this.faculty = faculty;
+            this.room = room;
             this.currentStudents = currentStudents;
             this.maxStudents = maxStudents;
             this.currentWaitlist = currentWaitlist;
             this.maxWaitlist = maxWaitlist;
+            this.notes = note;
         }
 
     }
@@ -210,16 +355,17 @@ namespace RockEnroll
     public class Lab : Assignable
     {
 
-        public Lab(TimeSpan time, string instructor, Campus campus, Faculty faculty, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist)
+        public Lab(TimeBlock time, string instructor, Campus campus,  string room, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist, string note)
         {
             this.time = time;
             this.instructor = instructor;
             this.campus = campus;
-            this.faculty = faculty;
+            this.room = room;
             this.currentStudents = currentStudents;
             this.maxStudents = maxStudents;
             this.currentWaitlist = currentWaitlist;
             this.maxWaitlist = maxWaitlist;
+            this.notes = note;
         }
 
     }
