@@ -8,6 +8,12 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="CourseResultItem.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SearchResultPanel.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="SearchResultsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -28,6 +34,9 @@
     <Page Update="CourseList.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="CourseResultItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="CourseView.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -35,6 +44,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SearchResultPanel.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SearchResultsWindow.xaml">

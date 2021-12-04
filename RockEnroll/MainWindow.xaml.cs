@@ -23,11 +23,18 @@ namespace RockEnroll
         CourseList _coursePage = new CourseList();
         AcademicRequirements _reqPage = new AcademicRequirements();
         Schedules _schedulePage = new Schedules();
+        AdvSearchWindow _advsearch = new();
+
+        //public RockEnrollHelper Helper { get; set; } = new();
+
+
+
 
         public MainWindow()
         {
             InitializeComponent();
             Switcher.pageSwitcher = this;
+            RockEnrollHelper.InitializeCourses();
         }
 
         public void Navigate(UserControl nextPage)
@@ -55,14 +62,10 @@ namespace RockEnroll
 
         private void AdvancedSearchClick(object sender, RoutedEventArgs e)
         {
-
+            _advsearch.Owner = this;
+            _advsearch.Show();
         }
 
-        private void AdvSearchBtnClick(object sender, RoutedEventArgs e)
-        {
-            AdvSearchWindow advsearch = new AdvSearchWindow();
-            advsearch.Owner = this;
-            advsearch.ShowDialog();
-        }
+
     }
 }

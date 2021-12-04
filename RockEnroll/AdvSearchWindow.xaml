@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RockEnroll"
         mc:Ignorable="d"
-        Title="AdvSearchWindow" Height="450" Width="644"
-        WindowStartupLocation="CenterOwner">
+        Height="450" Width="800" WindowStyle="None">
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="3"/>
         </Style>
         <Style TargetType="TextBlock">
             <Setter Property="Margin" Value="3"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
         <Style TargetType="CheckBox">
             <Setter Property="Margin" Value="3"/>
@@ -22,7 +22,7 @@
         </Style>
         <Style TargetType="ComboBox">
             <Setter Property="Margin" Value="5"/>
-            <Setter Property="Height" Value="18"/>
+            <Setter Property="Height" Value="22"/>
         </Style>
     </Window.Resources>
 
@@ -34,41 +34,41 @@
             <CheckBox>
                 Match Whole Word
             </CheckBox>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                 <TextBlock Text="Campus:" />
-                <ComboBox Width="247"/>
+                <ComboBox x:Name="campus" Width="247" Height="23"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Session:" />
-                <ComboBox Width="249"/>
+                <ComboBox Name="session" Width="249"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Faculty:" />
-                <ComboBox Width="254"/>
+                <ComboBox Name="faculty" Width="254"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Subject:" />
-                <ComboBox Width="251"/>
+                <ComboBox Name="subjectbox" Width="251"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Course Number:" />
-                <TextBox Width="208"/>
+                <TextBox Name="coursenum" Width="208"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <CheckBox>Equal to</CheckBox>
-                <CheckBox>Greater than</CheckBox>
-                <CheckBox>Less than</CheckBox>
-                <CheckBox>Contains</CheckBox>
+                <CheckBox Name="cneq">Equal to</CheckBox>
+                <CheckBox Name="cngt">Greater than</CheckBox>
+                <CheckBox Name="cnlt">Less than</CheckBox>
+                <CheckBox Name="cnct">Contains</CheckBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Course Units:" />
-                <TextBox Width="226"/>
+                <TextBox Name="courseunits" Width="226"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <CheckBox>Equal to</CheckBox>
-                <CheckBox>Greater than</CheckBox>
-                <CheckBox>Less than</CheckBox>
-                <CheckBox>Contains</CheckBox>
+                <CheckBox Name="cueq">Equal to</CheckBox>
+                <CheckBox Name="cugt">Greater than</CheckBox>
+                <CheckBox Name="cuelt">Less than</CheckBox>
+                <CheckBox Name="cct">Contains</CheckBox>
             </StackPanel>
             <TextBlock FontWeight="Bold">
                 Additional Requirements:
@@ -88,7 +88,14 @@
         </StackPanel>
         <GridSplitter Width="2" Background="#FF2B2B2B"/>
 
-
+        <StackPanel Width="488">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Reults" VerticalAlignment="Center"/>
+                <Button Width="90" HorizontalAlignment="Right" Margin="10" Click="Back_Button_Click">Back</Button>
+            </StackPanel>
+            
+            <local:SearchResultPanel></local:SearchResultPanel>
+        </StackPanel>
 
     </StackPanel>
 </Window>

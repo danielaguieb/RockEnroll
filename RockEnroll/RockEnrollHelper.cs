@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace RockEnroll
 {
-    class RockEnrollHelper
+    public class RockEnrollHelper
     {
 
         public Student student = new Student("John", "Doe", 30045232);
 
-        public enum terms
+        public enum Terms
         {
-            FALL2021, WINTER2022, SPRING2022, SUMMER2022
+           NONE, FALL2021, WINTER2022, SPRING2022, SUMMER2022
         }
 
         public static List<Course> fall21Courses = new List<Course>();
@@ -111,12 +111,12 @@ namespace RockEnroll
 
     public enum Campus
     {
-        UniversityOfCalgary, WebBased, RedDeer
+        NONE, UniversityOfCalgary, WebBased, RedDeer
     }
 
     public enum Faculty
     {
-        Arts, Medicine, Architecture, GraduateStudies, Business, Kinesiology, Law, Nursing, Engineering, Science, SocialWork, Veterinary, Education
+        NONE, Arts, Medicine, Architecture, GraduateStudies, Business, Kinesiology, Law, Nursing, Engineering, Science, SocialWork, Veterinary, Education
     }
 
     public abstract class Assignable

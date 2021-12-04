@@ -5,12 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RockEnroll"
         mc:Ignorable="d"
-        Title="SearchResultsWindow" Height="450" Width="800" WindowStyle="None">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="7*"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+        Title="SearchResultsWindow" Height="450" Width="631" WindowStyle="None">
+    <StackPanel>
+        <local:SearchResultPanel>
 
-    </Grid>
+        </local:SearchResultPanel>
+    </StackPanel>
+    
 </Window>
