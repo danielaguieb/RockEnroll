@@ -28,5 +28,12 @@ namespace RockEnroll
         {
             
         }
+
+        private void AdvSearchBtnClick(object sender, RoutedEventArgs e)
+        {
+            AdvSearchWindow advsearch = new AdvSearchWindow();
+            advsearch.Owner = this;
+            advsearch.ShowDialog();
+        }
     }
 }
