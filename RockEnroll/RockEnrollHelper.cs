@@ -63,11 +63,11 @@ namespace RockEnroll
             allCourses.Add(soci201);
 
             Course soci321 = new Course(321, "Sociology of Health and Illness", Faculty.Arts, Department.SOCI,  Course.departmentConsent.OR, null);
-            soci321.lecturesList.Add(new Lecture(tbLec1_1, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 50, 200, 0, 30, ""));
-            soci321.lecturesList.Add(new Lecture(tbLec1_2, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 120, 200, 0, 30, ""));
-            soci321.tutorialsList.Add(new Tutorial(tbTut2_1, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
-            soci321.tutorialsList.Add(new Tutorial(tbTut2_2, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
-            soci321.tutorialsList.Add(new Tutorial(tbTut2_3, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
+            soci321.lecturesList.Add(new Lecture(soci321,tbLec1_1, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 50, 200, 0, 30, ""));
+            soci321.lecturesList.Add(new Lecture(soci321,tbLec1_2, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 120, 200, 0, 30, ""));
+            soci321.tutorialsList.Add(new Tutorial(soci321,tbTut2_1, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
+            soci321.tutorialsList.Add(new Tutorial(soci321,tbTut2_2, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
+            soci321.tutorialsList.Add(new Tutorial(soci321,tbTut2_3, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
             soci321.prerequisites.Add(soci201);
             soci201.successors.Add(soci321);
             allCourses.Add(soci321);
