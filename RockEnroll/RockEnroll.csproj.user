@@ -3,10 +3,12 @@
   <PropertyGroup />
   <ItemGroup />
   <ItemGroup>
-    <Compile Update="CourseView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="EnrollmentPage.xaml.cs">
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="SearchResultPanel.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="SearchResultsWindow.xaml.cs">
@@ -39,6 +41,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SearchResultPanel.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SearchResultsWindow.xaml">

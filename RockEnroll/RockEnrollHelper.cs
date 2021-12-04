@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace RockEnroll
 {
-    class RockEnrollHelper
+    public class RockEnrollHelper
     {
 
         public Student student = new Student("John", "Doe", 30045232);
 
-        public enum terms
+        public enum Terms
         {
-            FALL2021, WINTER2022, SPRING2022, SUMMER2022
+           NONE, FALL2021, WINTER2022, SPRING2022, SUMMER2022
         }
 
         public static List<Course> fall21Courses = new List<Course>();
@@ -55,11 +55,11 @@ namespace RockEnroll
 
             // add courses here
             Course soci201 = new Course(201, "Introductory Sociology", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, "Sociology as a discipline examines how the society in which we live influences our thinking and behaviour. An introduction to sociology through the study of society, social institutions, group behaviour and social change.");
-            soci201.lecturesList.Add(new Lecture(tbLec1_1, "John Smith", Campus.UniversityOfCalgary,"Social Science Rm 109", 50, 200, 0, 30, ""));
-            soci201.lecturesList.Add(new Lecture(tbLec1_2, "John Smith", Campus.UniversityOfCalgary, "Social Science Rm 109", 120, 200, 0, 30, ""));
-            soci201.tutorialsList.Add(new Tutorial(tbTut1_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0,0,""));
-            soci201.tutorialsList.Add(new Tutorial(tbTut1_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
-            soci201.tutorialsList.Add(new Tutorial(tbTut1_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci201.lecturesList.Add(new Lecture(soci201, tbLec1_1, "John Smith", Campus.UniversityOfCalgary,"Social Science Rm 109", 50, 200, 0, 30, ""));
+            soci201.lecturesList.Add(new Lecture(soci201, tbLec1_2, "John Smith", Campus.UniversityOfCalgary, "Social Science Rm 109", 120, 200, 0, 30, ""));
+            soci201.tutorialsList.Add(new Tutorial(soci201, tbTut1_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0,0,""));
+            soci201.tutorialsList.Add(new Tutorial(soci201, tbTut1_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci201.tutorialsList.Add(new Tutorial(soci201, tbTut1_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
             allCourses.Add(soci201);
 
             Course soci321 = new Course(321, "Sociology of Health and Illness", Faculty.Arts, Department.SOCI,  Course.departmentConsent.OR, null);
@@ -104,12 +104,13 @@ namespace RockEnroll
 
     public enum Faculty
     {
-        Arts, Medicine, Architecture, GraduateStudies, Business, Kinesiology, Law, Nursing, Engineering, Science, SocialWork, Veterinary, Education
+        NONE, Arts, Medicine, Architecture, GraduateStudies, Business, Kinesiology, Law, Nursing, Engineering, Science, SocialWork, Veterinary, Education
     }
 
 
     public enum Department
     {
+        NONE,
         [Description("Art")] ART,
         [Description("Biology")] BIOL,
         [Description("Chemistry")] CHEM,
@@ -160,7 +161,7 @@ namespace RockEnroll
         public List<Lecture> lecturesList { get; }
         public List<Tutorial> tutorialsList { get; }
         public List<Lab> labsList { get; }
-
+        public int courseUnits { get; set; }
         /// <summary>
         /// Create an instance of a Course.
         /// </summary>
@@ -182,6 +183,7 @@ namespace RockEnroll
             this.tutorialsList = new List<Tutorial>();
             this.labsList = new List<Lab>();
             this.courseDescription = courseDescription;
+            this.courseUnits = 6;
 
         }
 
@@ -199,6 +201,7 @@ namespace RockEnroll
             this.tutorialsList = course.tutorialsList;
             this.labsList =course.labsList;
             this.courseDescription = course.courseDescription;
+            this.courseUnits = 6;
         }
 
     }
@@ -230,7 +233,7 @@ namespace RockEnroll
 
     public enum Campus
     {
-        UniversityOfCalgary, WebBased, RedDeer
+        NONE, UniversityOfCalgary, WebBased, RedDeer
     }
 
     public class TimeBlock
@@ -309,7 +312,7 @@ namespace RockEnroll
 
     public abstract class Assignable
     {
-        
+        public Course course { get; set; }
         public TimeBlock time { get; set; }
         public string instructor { get; set; }
         public Campus campus { get; set; }
@@ -328,7 +331,7 @@ namespace RockEnroll
     {
         public Tutorial tutorial { get; set; }
 
-        public Lecture(TimeBlock time, string instructor, Campus campus, string room, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist, string note)
+        public Lecture(Course course, TimeBlock time, string instructor, Campus campus, string room, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist, string note)
         {
             this.time = time;
             this.instructor = instructor;
@@ -346,7 +349,7 @@ namespace RockEnroll
     public class Tutorial : Assignable
     {
 
-        public Tutorial(TimeBlock time, string instructor, Campus campus, string room, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist, string note)
+        public Tutorial(Course course, TimeBlock time, string instructor, Campus campus, string room, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist, string note)
         {
             this.time = time;
             this.instructor = instructor;
@@ -364,7 +367,7 @@ namespace RockEnroll
     public class Lab : Assignable
     {
 
-        public Lab(TimeBlock time, string instructor, Campus campus,  string room, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist, string note)
+        public Lab(Course course, TimeBlock time, string instructor, Campus campus,  string room, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist, string note)
         {
             this.time = time;
             this.instructor = instructor;
