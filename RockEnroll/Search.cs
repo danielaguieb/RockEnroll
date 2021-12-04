@@ -13,19 +13,20 @@ namespace RockEnroll
             NONE, EQ, GT, LT, CONTAINS
         }
 
-        public string searchstring;
-        public Campus campus;
-        public RockEnrollHelper.Terms enrollmentterm;
-        public Department subjectname;
+        public string searchstring = "";
+        public Campus campus = Campus.NONE;
+        public RockEnrollHelper.Terms enrollmentterm = RockEnrollHelper.Terms.NONE;
+        public Department subjectname = Department.NONE;
+        public Faculty faculty = Faculty.NONE;
         public int courseNumber = -1;
         public Compares courseCompare = Compares.NONE;
         public int unitsNumber = -1;
         public Compares unitsCompare = Compares.NONE;
-        public bool prereq;
-        public bool nonConflict;
-        public bool open;
-        public bool waitListable;
-        public bool otherSemester;
+        public bool prereq = false;
+        public bool nonConflict = false;
+        public bool open = false;
+        public bool waitListable = false;
+        public bool otherSemester = false;
 
         public List<Course> results = new();
 
@@ -34,7 +35,7 @@ namespace RockEnroll
             this.searchstring = search;
         }
 
-        public Search(string search, Campus campus, RockEnrollHelper.Terms enrollmentterm, Department subjectname, int courseNumber,
+        public Search(string search, Campus campus, RockEnrollHelper.Terms enrollmentterm, Department subjectname, Faculty faculty, int courseNumber,
             Compares courseCompare, int unitsNumber, Compares unitsCompare, bool prereq, bool nonConflict, bool open, bool waitListable,
             bool otherSemester)
         {
@@ -42,6 +43,7 @@ namespace RockEnroll
             this.campus = campus;
             this.enrollmentterm = enrollmentterm;
             this.subjectname = subjectname;
+            this.faculty = faculty;
             this.courseNumber = courseNumber;
             this.courseCompare = courseCompare;
             this.unitsNumber = unitsNumber;
@@ -52,6 +54,24 @@ namespace RockEnroll
             this.waitListable = waitListable;
             this.otherSemester = otherSemester;
         }
+
+        public void Reset()
+        {
+        searchstring = "";
+        campus = Campus.NONE;
+        enrollmentterm = RockEnrollHelper.Terms.NONE;
+        subjectname = Department.NONE;
+        faculty = Faculty.NONE;
+        courseNumber = -1;
+        courseCompare = Compares.NONE;
+        unitsNumber = -1;
+        unitsCompare = Compares.NONE;
+        prereq = false;
+        nonConflict = false;
+        open = false;
+        waitListable = false;
+        otherSemester = false;
+    }
 
         public void Proccess()
         {
@@ -107,6 +127,11 @@ namespace RockEnroll
                 if (subjectname != Department.NONE)
                 {
                     if (i.department == this.subjectname) continue;
+                }
+
+                if (faculty != Faculty.NONE)
+                {
+                    if (i.faculty == this.faculty) continue;
                 }
 
                 if (courseCompare != Compares.NONE)

@@ -23,7 +23,7 @@ namespace RockEnroll
         CourseList _coursePage = new CourseList();
         AcademicRequirements _reqPage = new AcademicRequirements();
         Schedules _schedulePage = new Schedules();
-        AdvSearchWindow _advsearch = new();
+        AdvSearchWindow _advsearch;
 
         //public RockEnrollHelper Helper { get; set; } = new();
 
@@ -62,6 +62,7 @@ namespace RockEnroll
 
         private void AdvancedSearchClick(object sender, RoutedEventArgs e)
         {
+            if (_advsearch == null) _advsearch = new();
             _advsearch.Owner = this;
             _advsearch.Show();
         }

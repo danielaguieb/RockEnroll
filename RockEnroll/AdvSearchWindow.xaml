@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RockEnroll"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterOwner"
         Height="450" Width="800" WindowStyle="None">
     <Window.Resources>
         <Style TargetType="TextBox">
@@ -36,52 +37,52 @@
             </CheckBox>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                 <TextBlock Text="Campus:" />
-                <ComboBox x:Name="campus" Width="247" Height="23"/>
+                <ComboBox Name="campus" Width="247" Height="23" IsTextSearchEnabled="True" SelectionChanged="campus_SelectionChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Session:" />
-                <ComboBox Name="session" Width="249"/>
+                <ComboBox Name="session" Width="249" IsTextSearchEnabled="True" SelectionChanged="session_SelectionChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Faculty:" />
-                <ComboBox Name="faculty" Width="254"/>
+                <ComboBox Name="faculty" Width="254" IsTextSearchEnabled="True" SelectionChanged="faculty_SelectionChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Subject:" />
-                <ComboBox Name="subjectbox" Width="251"/>
+                <ComboBox Name="subjectbox" Width="251" IsTextSearchEnabled="True" SelectionChanged="subjectbox_SelectionChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Course Number:" />
-                <TextBox Name="coursenum" Width="208"/>
+                <TextBox Name="coursenum" TextChanged="coursenum_TextChanged" PreviewTextInput="coursenum_PreviewTextInput" Width="208"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <CheckBox Name="cneq">Equal to</CheckBox>
-                <CheckBox Name="cngt">Greater than</CheckBox>
-                <CheckBox Name="cnlt">Less than</CheckBox>
-                <CheckBox Name="cnct">Contains</CheckBox>
+                <CheckBox Name="cneq" Checked="Box_Checked" Unchecked="Box_Unchecked">Equal to</CheckBox>
+                <CheckBox Name="cngt" Checked="Box_Checked" Unchecked="Box_Unchecked">Greater than</CheckBox>
+                <CheckBox Name="cnlt" Checked="Box_Checked" Unchecked="Box_Unchecked">Less than</CheckBox>
+                <CheckBox Name="cnct" Checked="Box_Checked" Unchecked="Box_Unchecked">Contains</CheckBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Course Units:" />
-                <TextBox Name="courseunits" Width="226"/>
+                <TextBox Name="courseunits" TextChanged="courseunits_TextChanged" PreviewTextInput="courseunits_PreviewTextInput" Width="226"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <CheckBox Name="cueq">Equal to</CheckBox>
-                <CheckBox Name="cugt">Greater than</CheckBox>
-                <CheckBox Name="cuelt">Less than</CheckBox>
-                <CheckBox Name="cct">Contains</CheckBox>
+                <CheckBox Name="cueq" Checked="Box_Checked" Unchecked="Box_Unchecked">Equal to</CheckBox>
+                <CheckBox Name="cugt" Checked="Box_Checked" Unchecked="Box_Unchecked">Greater than</CheckBox>
+                <CheckBox Name="cult" Checked="Box_Checked" Unchecked="Box_Unchecked">Less than</CheckBox>
+                <CheckBox Name="cuct" Checked="Box_Checked" Unchecked="Box_Unchecked">Contains</CheckBox>
             </StackPanel>
             <TextBlock FontWeight="Bold">
                 Additional Requirements:
             </TextBlock>
-            <CheckBox>Prequisites fufilled</CheckBox>
-            <CheckBox>Non-conflicting</CheckBox>
-            <CheckBox>Open</CheckBox>
-            <CheckBox>Waitlistable</CheckBox>
-            <CheckBox>Include classes not offered this semester</CheckBox>
+            <CheckBox Name="prereq" Checked="Additional_Req_Checked" Unchecked="Additional_Req_Unchecked">Prequisites fufilled</CheckBox>
+            <CheckBox Name="nonconflict" Checked="Additional_Req_Checked" Unchecked="Additional_Req_Unchecked">Non-conflicting</CheckBox>
+            <CheckBox Name="open" Checked="Additional_Req_Checked" Unchecked="Additional_Req_Unchecked">Open</CheckBox>
+            <CheckBox Name="waitlist" Checked="Additional_Req_Checked" Unchecked="Additional_Req_Unchecked">Waitlistable</CheckBox>
+            <CheckBox Name="otherSemester" Checked="Additional_Req_Checked" Unchecked="Additional_Req_Unchecked">Include classes not offered this semester</CheckBox>
 
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button>Reset Filters</Button>
+                <Button Name="Reset_Filters_Button" Click="Reset_Filters_Button_Click">Reset Filters</Button>
                 <Button Name="Apply_Button" Background="Red" Click="Apply_Button_Click">Apply</Button>
             </StackPanel>
 
