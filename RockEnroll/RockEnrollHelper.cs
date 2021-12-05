@@ -286,6 +286,8 @@ namespace RockEnroll
         public int tutorialNum { get; set; }
         public int labNum { get; set; }
         public Terms term { get; set; }
+
+        public bool enrolled { get; set; }
         
         public ClassInstance(int courseID, string courseTitle, Faculty faculty, Department department, departmentConsent departmentConsentRequirement, int units, string courseDescription, Terms term, int lecture, int tutorial = 0, int lab = 0) :
             base(courseID, courseTitle, faculty, department, departmentConsentRequirement, units, courseDescription)
@@ -293,7 +295,8 @@ namespace RockEnroll
             this.lectureNum = lecture;
             this.tutorialNum = tutorial;
             this.labNum = lab;
-            this.term = term; 
+            this.term = term;
+            this.enrolled = false;
         }
 
         public ClassInstance(Course course, Terms term, int lecture,  int tutorial = 0, int lab = 0) : base(course)
@@ -301,7 +304,8 @@ namespace RockEnroll
             this.lectureNum = lecture;
             this.tutorialNum = tutorial;
             this.labNum = lab;
-            this.term = term; 
+            this.term = term;
+            this.enrolled = false;
         }
     }
 
