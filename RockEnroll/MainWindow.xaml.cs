@@ -23,6 +23,7 @@ namespace RockEnroll
         CourseList _coursePage = new CourseList();
         AcademicRequirements _reqPage = new AcademicRequirements();
         Schedules _schedulePage = new Schedules();
+        EnrollmentView _enrollmentPage = new EnrollmentView();
         AdvSearchWindow _advsearch;
 
         //public RockEnrollHelper Helper { get; set; } = new();
@@ -67,6 +68,32 @@ namespace RockEnroll
             _advsearch.Show();
         }
 
+        private void scheduleTabButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void enrollButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(_enrollmentPage);
+            if (enrollButton.Content.Equals("Enrollment Checkout"))
+            {
+                enrollButton.Content = "Enroll All";
+            } else if (enrollButton.Content.Equals("Enroll All"))
+            {
+                _enrollmentPage.checkAllCourses();
+                enrollButton.Content = "Confirm Actions";
+            } else if (enrollButton.Content.Equals("Confirm Actions"))
+            {
+                bool result = _enrollmentPage.confirmCourses();
+                if (result)
+                {
+                    enrollButton.Content = "Finish";
+                }
+            }
+            //TODO
+        } 
 
     }
 }

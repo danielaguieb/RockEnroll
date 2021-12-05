@@ -17,17 +17,19 @@ using System.Windows.Shapes;
 namespace RockEnroll
 {
     /// <summary>
-    /// Interaction logic for CourseList.xaml
+    /// Interaction logic for EnrollmentView.xaml
     /// </summary>
-    public partial class CourseList : UserControl
+    public partial class EnrollmentView : UserControl
     {
-        public CourseList()
+
+        public EnrollmentView()
         {
             InitializeComponent();
-            RockEnrollHelper.InitializeCourses();
-            AddCourse(RockEnrollHelper.allCourses[0]);
-            AddCourse(RockEnrollHelper.allCourses[1]);
-
+            //RockEnrollHelper.InitializeCourses();
+            for (int i = 0; i < RockEnrollHelper.pickedCourses.Count(); i++)
+            {
+                AddCourse(RockEnrollHelper.pickedCourses[i]);
+            }
 
         }
 
@@ -55,11 +57,31 @@ namespace RockEnroll
         */
         public void AddCourse(Course course)
         {
-            ClassInstance classInstance = new ClassInstance(course, 1,1, 0);
+            ClassInstance classInstance = new ClassInstance(course, 1, 1, 0);
             CourseView view = new CourseView(classInstance);
-            view.HorizontalAlignment = HorizontalAlignment.Stretch;
+            view.deleteButton.IsEnabled = false;
+            view.deleteButton.InvalidateVisual();
+            view.cartButton.IsEnabled = true;
+            view.cartButton.BringIntoView();
 
             this.courseListViewer.Children.Add(view);
+        }
+
+        public void checkAllCourses()
+        {
+            this.courseListViewer.ToolTip = "checkAllCourses";
+            for ( int i = 0; i<this.courseListViewer.Children.Count; i++)
+            {
+                CourseView view = (CourseView)this.courseListViewer.Children[i];
+                view.ToolTip = "Hello Kylie: " + i; //temp for now
+                //view.cartButton.SetResourceReference("Resources\\checkMark.png"); //TODO
+            }
+        }
+
+        public bool confirmCourses()
+        {
+            //TODO
+            return true; //TODO
         }
     }
 }

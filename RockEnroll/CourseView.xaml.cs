@@ -84,5 +84,9 @@ namespace RockEnroll
         {
             (this.Parent as Panel).Children.Remove(this);
         }
+        private void enrollCourse(object sender, RoutedEventArgs e)
+        {
+            //TODO(this.Parent as Panel).Children.Enroll(this);
+        }
     }
 }

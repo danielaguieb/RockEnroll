@@ -28,4 +28,11 @@
     <Resource Include="Resources\trash-can.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="CourseView - Copy.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>

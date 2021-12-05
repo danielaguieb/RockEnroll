@@ -78,7 +78,7 @@
             </Grid.ColumnDefinitions>
             <RadioButton x:Name="courseTabButton"  Style ="{StaticResource RoundToggleButtonStyle}" Content="CourseList" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"  Click="CourseTabClick" Margin="5,5,5,5" Height="30"/>
             <RadioButton x:Name="reqTabButton" Style ="{StaticResource RoundToggleButtonStyle}" Content="Academic Requirements" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"   Click="RequirementsTabClick" Grid.Column="1" Margin="5,5,5,5" Height="30"/>
-            <RadioButton x:Name="scheduleTabButton"  Style ="{StaticResource RoundToggleButtonStyle}" Content="Schedules" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"  Click="ScheduleTabClick" Grid.Column="2" Margin="5,5,5,5" Height="30"/>
+            <RadioButton x:Name="scheduleTabButton"  Style ="{StaticResource RoundToggleButtonStyle}" Content="Schedules" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"  Click="ScheduleTabClick" Grid.Column="2" Margin="5,5,5,5" Height="30" Checked="scheduleTabButton_Checked"/>
             <ComboBox x:Name="termSelector" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.Column="3" Margin="5,5,5,5" Height="30"/>
             <TextBox x:Name="searchBar" Style ="{StaticResource RoundTextBoxStyle}"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Text="Search" TextWrapping="Wrap" Foreground="#FF555252"  Grid.Column="4" Margin="25,5,5,5" Height="30"/>
             <Button x:Name="advancedSearchButton"  Style ="{StaticResource RoundButtonStyle}" Content="Advanced Search" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="AdvancedSearchClick" Grid.Column="5" Margin="5,5,5,5" Height="30"/>
@@ -92,7 +92,7 @@
 
             </Grid.ColumnDefinitions>
             <Button x:Name="saveButton" Content="Save Schedule" Margin="25,5,5,5" Foreground="Black" Height="25" Grid.Column="2" />
-            <Button x:Name="enrollButton" Content="Enrollment Checkout"  Margin="5,5,5,5" Background="#FFD31B1B" Foreground="#FFF7F7F7" Height="25" Grid.Column="3"/>
+            <Button x:Name="enrollButton" Content="Enrollment Checkout"  Margin="5,5,5,5" Background="#FFD31B1B" Foreground="#FFF7F7F7" Height="25" Grid.Column="3" Click="enrollButton_Click"/>
         </Grid>
 
 

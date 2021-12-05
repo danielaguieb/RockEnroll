@@ -25,6 +25,7 @@ namespace RockEnroll
 
         // all courses list here; create courses first before adding them, to modify prereqs
         public static List<Course> allCourses = new List<Course>();
+        public static List<Course> pickedCourses = new List<Course>();
 
         public static void InitializeCourses()
         {
@@ -71,6 +72,18 @@ namespace RockEnroll
             soci321.prerequisites.Add(soci201);
             soci201.successors.Add(soci321);
             allCourses.Add(soci321);
+
+            // mock up call -Kylie
+            AddToPickedCourses(soci201);
+            AddToPickedCourses(soci321);
+        }
+
+        public static void AddToPickedCourses(Course course)
+        {
+            // Expecting this will be called when a course is picked from the course list/adding - so when going to enrollment checkout we can get from the instance pickedCourses
+            // Code below is mock up like initCourses ^
+            
+            pickedCourses.Add(course);
         }
 
     }
