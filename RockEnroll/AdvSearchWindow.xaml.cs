@@ -37,7 +37,7 @@ namespace RockEnroll
                 if (name == "NONE") continue;
                 faculty.Items.Add(name);
             }
-            foreach (string name in Enum.GetNames(typeof(RockEnrollHelper.Terms)))
+            foreach (string name in Enum.GetNames(typeof(Terms)))
             {
                 if (name == "NONE") continue;
                 session.Items.Add(name);
@@ -90,8 +90,8 @@ namespace RockEnroll
 
         private void session_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (session.SelectedIndex == -1) searchInstance.enrollmentterm = RockEnrollHelper.Terms.NONE;
-            else searchInstance.enrollmentterm = (RockEnrollHelper.Terms)session.SelectedIndex;
+            if (session.SelectedIndex == -1) searchInstance.enrollmentterm = Terms.NONE;
+            else searchInstance.enrollmentterm = (Terms)session.SelectedIndex;
         }
 
         private void faculty_SelectionChanged(object sender, SelectionChangedEventArgs e)

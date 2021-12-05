@@ -15,7 +15,7 @@ namespace RockEnroll
 
         public string searchstring = "";
         public Campus campus = Campus.NONE;
-        public RockEnrollHelper.Terms enrollmentterm = RockEnrollHelper.Terms.NONE;
+        public Terms enrollmentterm = Terms.NONE;
         public Department subjectname = Department.NONE;
         public Faculty faculty = Faculty.NONE;
         public int courseNumber = -1;
@@ -35,7 +35,7 @@ namespace RockEnroll
             this.searchstring = search;
         }
 
-        public Search(string search, Campus campus, RockEnrollHelper.Terms enrollmentterm, Department subjectname, Faculty faculty, int courseNumber,
+        public Search(string search, Campus campus, Terms enrollmentterm, Department subjectname, Faculty faculty, int courseNumber,
             Compares courseCompare, int unitsNumber, Compares unitsCompare, bool prereq, bool nonConflict, bool open, bool waitListable,
             bool otherSemester)
         {
@@ -59,7 +59,7 @@ namespace RockEnroll
         {
         searchstring = "";
         campus = Campus.NONE;
-        enrollmentterm = RockEnrollHelper.Terms.NONE;
+        enrollmentterm = Terms.NONE;
         subjectname = Department.NONE;
         faculty = Faculty.NONE;
         courseNumber = -1;
@@ -80,19 +80,19 @@ namespace RockEnroll
             List<Course> complist;
             switch (enrollmentterm)
             {
-                case RockEnrollHelper.Terms.FALL2021:
+                case Terms.FALL2021:
                     complist = RockEnrollHelper.fall21Courses;
                     break;
 
-                case RockEnrollHelper.Terms.WINTER2022:
+                case Terms.WINTER2022:
                     complist = RockEnrollHelper.winter22Courses;
                     break;
 
-                case RockEnrollHelper.Terms.SPRING2022:
+                case Terms.SPRING2022:
                     complist = RockEnrollHelper.spring22Courses;
                     break;
 
-                case RockEnrollHelper.Terms.SUMMER2022:
+                case Terms.SUMMER2022:
                     complist = RockEnrollHelper.summer22Courses;
                     break;
                 default:

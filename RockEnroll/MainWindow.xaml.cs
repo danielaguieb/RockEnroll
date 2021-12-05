@@ -20,10 +20,6 @@ namespace RockEnroll
     /// </summary>
     public partial class MainWindow : Window
     {
-        CourseList _coursePage = new CourseList();
-        AcademicRequirements _reqPage = new AcademicRequirements();
-        Schedules _schedulePage = new Schedules();
-        AdvSearchWindow _advsearch;
 
         //public RockEnrollHelper Helper { get; set; } = new();
 
@@ -33,8 +29,9 @@ namespace RockEnroll
         public MainWindow()
         {
             InitializeComponent();
+            RockEnrollHelper.InitializeCourses();
+            RockEnrollHelper.AddCourse(RockEnrollHelper.allCourses[0]);
             Switcher.pageSwitcher = this;
-            //RockEnrollHelper.InitializeCourses();
         }
 
         public void Navigate(UserControl nextPage)
@@ -45,26 +42,26 @@ namespace RockEnroll
         private void CourseTabClick(object sender, RoutedEventArgs e)
         {
             mainPanel.Children.Clear();
-            mainPanel.Children.Add(_coursePage);
+            mainPanel.Children.Add(RockEnrollHelper._coursePage);
         }
 
         private void RequirementsTabClick(object sender, RoutedEventArgs e)
         {
             mainPanel.Children.Clear();
-            mainPanel.Children.Add(_reqPage);
+            mainPanel.Children.Add(RockEnrollHelper._reqPage);
         }
 
         private void ScheduleTabClick(object sender, RoutedEventArgs e)
         {
             mainPanel.Children.Clear();
-            mainPanel.Children.Add(_schedulePage);
+            mainPanel.Children.Add(RockEnrollHelper._schedulePage);
         }
 
         private void AdvancedSearchClick(object sender, RoutedEventArgs e)
         {
-            if (_advsearch == null) _advsearch = new();
-            _advsearch.Owner = this;
-            _advsearch.Show();
+            if (RockEnrollHelper._advsearch == null) RockEnrollHelper._advsearch = new();
+            RockEnrollHelper._advsearch.Owner = this;
+            RockEnrollHelper._advsearch.Show();
         }
 
 

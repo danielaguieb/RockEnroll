@@ -21,15 +21,15 @@ namespace RockEnroll
     /// </summary>
     public partial class CourseView : UserControl
     {
-        public CourseView(ClassInstance classInstance)
+        public CourseView(ref ClassInstance classInstance)
         {
             InitializeComponent();
             this.classInstance = classInstance;
             this.courseNameText.Content = classInstance.department.ToString() + "\n" + classInstance.courseID.ToString();
             this.courseTitleText.Content = classInstance.courseTitle;
-            AddSectionComboBox(classInstance.lecturesList);
-            AddSectionComboBox(classInstance.tutorialsList);
-            AddSectionComboBox(classInstance.labsList);
+            AddLectureSections(classInstance.lecturesList);
+            AddTutorialSections(classInstance.tutorialsList);
+            AddLabSections(classInstance.labsList);
 
         }
 
@@ -42,47 +42,46 @@ namespace RockEnroll
             }
         }
 
-        private void AddSectionComboBox<T>(List<T> list) where T: Assignable
+        private void AddLectureSections(List<Lecture> list)
         {
             if(list.Count() == 0)
             {
                 return;
             }
+            SectionComboBox s = new SectionComboBox(list, ref this.classInstance);
+            this.sectionsGrid.Children.Add(s);
+            Grid.SetRow(s, 0);
 
-            List<string> items = new List<string>(); 
-            for (int i = 0; i < list.Count(); i++)
+        }
+
+        private void AddTutorialSections(List<Tutorial> list)
+        {
+            if (list.Count() == 0)
             {
-                string days = "";
-                if (list[i].time.monday)
-                {
-                    days += "M";
-                }
-                if (list[i].time.tuesday)
-                {
-                    days += "T";
-                }
-                if (list[i].time.wednesday)
-                {
-                    days += "W";
-                }
-                if (list[i].time.thursday)
-                {
-                    days += "R";
-                }
-                if (list[i].time.friday)
-                {
-                    days += "F";
-                }
-
-                string item = "0" + (i+1).ToString() + " " + days + list[i].time.StartTime + "-" + list[i].time.EndTime;
-                items.Add(item);
+                return;
             }
-            //this.sectionsGrid.Children.Add(new SectionComboBox(items));
+            SectionComboBox s = new SectionComboBox(list, ref this.classInstance);
+            this.sectionsGrid.Children.Add(s);
+            Grid.SetRow(s, 1);
+
+        }
+
+        private void AddLabSections(List<Lab> list)
+        {
+            if (list.Count() == 0)
+            {
+                return;
+            }
+            SectionComboBox s = new SectionComboBox(list, ref this.classInstance);
+            this.sectionsGrid.Children.Add(s);
+            Grid.SetRow(s, 2);
+
         }
 
         private void deleteCourse(object sender, RoutedEventArgs e)
         {
             (this.Parent as Panel).Children.Remove(this);
+            RockEnrollHelper.RemoveCourse(classInstance);
         }
     }
 }

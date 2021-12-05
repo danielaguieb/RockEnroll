@@ -11,7 +11,14 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label Name ="section"  Content="SEC:" FontSize="9" HorizontalAlignment="Left" MinWidth="20" Grid.Column="0"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="56" MinHeight="16" Grid.Column="1" Margin="0,2,0,2"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="56" MinHeight="16" Grid.Column="1" Margin="0,2,0,2" SelectedValuePath="index" SelectionChanged="SectionChanged">
+        <ComboBox.ItemTemplate>
+            <DataTemplate>
+                    <TextBlock Text="{Binding displayText }" />
+            </DataTemplate>
+        </ComboBox.ItemTemplate>
+        </ComboBox>
+
         <Button  VerticalAlignment="Center" MinHeight="16" MinWidth="18" Grid.Column="2">
             <Button.BorderBrush>
                 <ImageBrush/>

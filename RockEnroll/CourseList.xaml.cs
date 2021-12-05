@@ -24,8 +24,6 @@ namespace RockEnroll
         public CourseList()
         {
             InitializeComponent();
-            RockEnrollHelper.InitializeCourses();
-            AddCourse(RockEnrollHelper.allCourses[0]);
             
             
         }
@@ -52,13 +50,11 @@ namespace RockEnroll
             return 1;
         }
         */
-        public void AddCourse(Course course)
+        public void AddClass(ClassInstance c)
         {
-            ClassInstance classInstance = new ClassInstance(course, 1,1, 0);
-            CourseView view = new CourseView(classInstance);
-            view.HorizontalAlignment = HorizontalAlignment.Stretch;
-
+            CourseView view = new CourseView(ref c);
             this.courseListViewer.Children.Add(view);
+            
         }
     }
 }
