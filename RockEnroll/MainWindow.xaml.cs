@@ -44,18 +44,21 @@ namespace RockEnroll
         {
             mainPanel.Children.Clear();
             mainPanel.Children.Add(RockEnrollHelper._coursePage);
+            enrollButton.Content = "Enrollment Checkout";
         }
 
         private void RequirementsTabClick(object sender, RoutedEventArgs e)
         {
             mainPanel.Children.Clear();
             mainPanel.Children.Add(RockEnrollHelper._reqPage);
+            enrollButton.Content = "Enrollment Checkout";
         }
 
         private void ScheduleTabClick(object sender, RoutedEventArgs e)
         {
             mainPanel.Children.Clear();
             mainPanel.Children.Add(RockEnrollHelper._schedulePage);
+            enrollButton.Content = "Enrollment Checkout";
         }
 
         private void AdvancedSearchClick(object sender, RoutedEventArgs e)
@@ -73,22 +76,24 @@ namespace RockEnroll
         private void enrollButton_Click(object sender, RoutedEventArgs e)
         {
             mainPanel.Children.Clear();
-            mainPanel.Children.Add(RockEnrollHelper._enrollmentPage);
+            EnrollmentView _enrollmentPage = new EnrollmentView();
+            mainPanel.Children.Add(_enrollmentPage);
             if (enrollButton.Content.Equals("Enrollment Checkout"))
             {
                 enrollButton.Content = "Enroll All";
             } else if (enrollButton.Content.Equals("Enroll All"))
             {
-                RockEnrollHelper._enrollmentPage.checkAllCourses();
+                _enrollmentPage.checkAllCourses();
                 enrollButton.Content = "Confirm Actions";
             } else if (enrollButton.Content.Equals("Confirm Actions"))
             {
-                bool result = RockEnrollHelper._enrollmentPage.confirmCourses();
+                bool result = _enrollmentPage.confirmCourses();
                 if (result)
                 {
                     enrollButton.Content = "Finish";
                 }
             }
+
             //TODO
         } 
 

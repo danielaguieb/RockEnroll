@@ -25,40 +25,17 @@ namespace RockEnroll
         public EnrollmentView()
         {
             InitializeComponent();
-            //RockEnrollHelper.InitializeCourses();
             for (int i = 0; i < RockEnrollHelper.student.currentSchedule.Count(); i++)
             {
+
                 AddClass(RockEnrollHelper.student.currentSchedule[i]);
             }
 
         }
 
-        /*
-        public int findAvailableTime(Course course)
-        {
-            for (int i = 0; i < course.lecturesList.Count(); i++) {
-                bool conflict = false;
-                for(int j = 0; j < student.currentSchedule.Count(); i++)
-                {
-                    int z = student.currentSchedule[j].lectureNum;
-                    if (course.lecturesList[i].time.Equals(student.currentSchedule[j].lecturesList[z].time))
-                    {
-                        conflict = true;
-                        break;
-                    }
-                }
-                if (!conflict)
-                {
-                    return i;
-                }
-            }
-            return 1;
-        }
-        */
         public void AddClass(ClassInstance c)
         {
             CourseView view = new CourseView(ref c);
-            this.courseListViewer.Children.Add(view);
             view.deleteButton.IsEnabled = false;
             view.deleteButton.InvalidateVisual();
             view.cartButton.IsEnabled = true;

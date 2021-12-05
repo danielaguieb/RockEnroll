@@ -23,7 +23,6 @@ namespace RockEnroll
         public static AcademicRequirements _reqPage = new AcademicRequirements();
         public static Schedules _schedulePage = new Schedules();
         public static AdvSearchWindow _advsearch;
-        public static EnrollmentView _enrollmentPage;
 
         public static List<Course> fall21Courses = new List<Course>();
         public static List<Course> winter22Courses = new List<Course>();
@@ -84,7 +83,9 @@ namespace RockEnroll
         //Naive solution for finding available section
         public static int FindAvailableSection<T>(List<T> times) where T:Assignable
         {
-            int result = -1;
+            //Need to add conflict functionality
+            //int result = -1;
+            int result = 0;
             for (int i = 0; i < times.Count(); i++)
             {
                 bool conflict = false;

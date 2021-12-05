@@ -12,7 +12,7 @@
             <ColumnDefinition Width ="3*"/>
         </Grid.ColumnDefinitions>
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
-            <DockPanel Name ="courseListViewer"/>
+            <StackPanel Name ="courseListViewer" />
 
         </ScrollViewer>
     </Grid>
