@@ -62,7 +62,7 @@
                                     <ImageBrush ImageSource="Resources\bell.png" Stretch="Uniform"/>
                                 </Button.Background>
                             </Button>
-                            <Button x:Name="deleteButton" HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="25" MinWidth="29" Grid.Column="1" Click="deleteCourse">
+                            <Button x:Name="deleteButton" HorizontalAlignment="Left" VerticalAlignment="Center" MinHeight="25" MinWidth="29" Grid.Column="1" Click="deleteCourse">
                                 <Button.BorderBrush>
                                     <ImageBrush/>
                                 </Button.BorderBrush>
@@ -70,6 +70,15 @@
                                     <ImageBrush ImageSource="Resources\trash-can.png" Stretch="Uniform"/>
                                 </Button.Background>
                             </Button>
+                            <Button x:Name="cartButton" HorizontalAlignment="Left" IsEnabled="False" VerticalAlignment="Center" MinHeight="25" MinWidth="29" Grid.Column="1" Click="enrollCourse" Margin="29,0,0,0">
+                                <Button.BorderBrush>
+                                    <ImageBrush/>
+                                </Button.BorderBrush>
+                                <Button.Background>
+                                    <ImageBrush ImageSource="Resources\pin2.png" Stretch="Uniform"/>
+                                </Button.Background>
+                            </Button>
+                            <!-- For Enrollment-->
                         </Grid>
 
                     </Grid>

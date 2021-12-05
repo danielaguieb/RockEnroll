@@ -23,6 +23,7 @@ namespace RockEnroll
         public static AcademicRequirements _reqPage = new AcademicRequirements();
         public static Schedules _schedulePage = new Schedules();
         public static AdvSearchWindow _advsearch;
+        public static EnrollmentView _enrollmentPage;
 
         public static List<Course> fall21Courses = new List<Course>();
         public static List<Course> winter22Courses = new List<Course>();
@@ -77,6 +78,7 @@ namespace RockEnroll
             soci321.prerequisites.Add(soci201);
             soci201.successors.Add(soci321);
             allCourses.Add(soci321);
+
         }
 
         //Naive solution for finding available section

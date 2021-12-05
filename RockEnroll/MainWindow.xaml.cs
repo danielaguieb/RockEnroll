@@ -31,6 +31,7 @@ namespace RockEnroll
             InitializeComponent();
             RockEnrollHelper.InitializeCourses();
             RockEnrollHelper.AddCourse(RockEnrollHelper.allCourses[0]);
+            RockEnrollHelper.AddCourse(RockEnrollHelper.allCourses[1]);
             Switcher.pageSwitcher = this;
         }
 
@@ -64,6 +65,32 @@ namespace RockEnroll
             RockEnrollHelper._advsearch.Show();
         }
 
+        private void scheduleTabButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void enrollButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainPanel.Children.Clear();
+            mainPanel.Children.Add(RockEnrollHelper._enrollmentPage);
+            if (enrollButton.Content.Equals("Enrollment Checkout"))
+            {
+                enrollButton.Content = "Enroll All";
+            } else if (enrollButton.Content.Equals("Enroll All"))
+            {
+                RockEnrollHelper._enrollmentPage.checkAllCourses();
+                enrollButton.Content = "Confirm Actions";
+            } else if (enrollButton.Content.Equals("Confirm Actions"))
+            {
+                bool result = RockEnrollHelper._enrollmentPage.confirmCourses();
+                if (result)
+                {
+                    enrollButton.Content = "Finish";
+                }
+            }
+            //TODO
+        } 
 
     }
 }
