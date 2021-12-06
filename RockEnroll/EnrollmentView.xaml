@@ -18,8 +18,12 @@
         <Expander Grid.Column="1" HorizontalAlignment="Center" Height="146" Header="Legend" Margin="0,43,0,0" VerticalAlignment="Top" Width="323">
             <Grid Background="#FFE5E5E5"/>
         </Expander>
-        <Expander Grid.Column="1" HorizontalAlignment="Center" Height="146" Header="Notifications" Margin="0,194,0,0" VerticalAlignment="Top" Width="323">
-            <Grid Background="#FFE5E5E5"/>
+        <Expander Name="NotificationBox"  Grid.Column="1" HorizontalAlignment="Center" Height="146" Header="Notifications" Margin="0,194,0,0" VerticalAlignment="Top" Width="323">
+            <Grid Background="#FFE5E5E5">
+                <TextBlock Name="NotificationText" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.812,-1.032">
+                    Successfully enrolled in courses:
+                </TextBlock>
+            </Grid>
         </Expander>
     </Grid>
 </UserControl>

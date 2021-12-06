@@ -133,6 +133,16 @@ namespace RockEnroll
             _coursePage.AddClass(c);
         }
 
+        public static void updateCoursePage()
+        {
+            _coursePage = new CourseList();
+            for (int i = 0; i < student.currentSchedule.Count(); i++)
+            {
+                ClassInstance c = (ClassInstance)RockEnrollHelper.student.currentSchedule[i];
+                _coursePage.AddClass(c);
+            }
+        }
+
         public static void RemoveCourse(ClassInstance c)
         {
             student.currentSchedule.Remove(c);
@@ -288,7 +298,10 @@ namespace RockEnroll
         public Terms term { get; set; }
 
         public bool enrolled { get; set; }
-        
+        public bool swapped { get; set; }
+        public bool dropped { get; set; }
+        public bool waitListed { get; set; }
+
         public ClassInstance(int courseID, string courseTitle, Faculty faculty, Department department, departmentConsent departmentConsentRequirement, int units, string courseDescription, Terms term, int lecture, int tutorial = 0, int lab = 0) :
             base(courseID, courseTitle, faculty, department, departmentConsentRequirement, units, courseDescription)
         {
@@ -297,6 +310,9 @@ namespace RockEnroll
             this.labNum = lab;
             this.term = term;
             this.enrolled = false;
+            this.swapped = false;
+            this.dropped = false;
+            this.waitListed = false;
         }
 
         public ClassInstance(Course course, Terms term, int lecture,  int tutorial = 0, int lab = 0) : base(course)
@@ -306,6 +322,9 @@ namespace RockEnroll
             this.labNum = lab;
             this.term = term;
             this.enrolled = false;
+            this.swapped = false;
+            this.dropped = false;
+            this.waitListed = false;
         }
     }
 

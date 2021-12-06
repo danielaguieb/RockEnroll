@@ -32,6 +32,11 @@ namespace RockEnroll
             this.classInstance = classInstance;
             this.courseNameText.Content = classInstance.department.ToString() + "\n" + classInstance.courseID.ToString();
             this.courseTitleText.Content = classInstance.courseTitle;
+            if (classInstance.enrolled)
+            {
+                this.actionText.Content = "Enrolled";
+            }
+            AddLectureSections(classInstance.lecturesList);
             AddLectureSections(classInstance.lecturesList);
             AddTutorialSections(classInstance.tutorialsList);
             AddLabSections(classInstance.labsList);

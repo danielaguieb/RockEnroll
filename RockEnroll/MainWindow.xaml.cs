@@ -23,8 +23,7 @@ namespace RockEnroll
 
         //public RockEnrollHelper Helper { get; set; } = new();
 
-
-
+        EnrollmentView _enrollmentPage;
 
         public MainWindow()
         {
@@ -75,13 +74,24 @@ namespace RockEnroll
 
         private void enrollButton_Click(object sender, RoutedEventArgs e)
         {
-            mainPanel.Children.Clear();
-            EnrollmentView _enrollmentPage = new EnrollmentView();
-            mainPanel.Children.Add(_enrollmentPage);
-
-            if (enrollButton.Content.Equals("Enrollment Checkout"))
+            if(enrollButton.Content.Equals("Enrollment Checkout"))
             {
-                enrollButton.Content = "Enroll All";
+                mainPanel.Children.Clear();
+                _enrollmentPage = new EnrollmentView();
+                mainPanel.Children.Add(_enrollmentPage);
+
+                if ( _enrollmentPage.isAllToEnroll() )
+                {
+                    enrollButton.Content = "Enroll All";
+                } 
+                else if (_enrollmentPage.isActionNeeded() )
+                {
+                    enrollButton.Content = "Confirm Actions";
+                }
+                else
+                {
+                    enrollButton.Content = "Finish"; //Nothing to do
+                }
             }
             else if (enrollButton.Content.Equals("Enroll All"))
             {
@@ -98,8 +108,11 @@ namespace RockEnroll
             }
             else if (enrollButton.Content.Equals("Finish"))
             {
-                _enrollmentPage.finishCourses();
-                enrollButton.Content = "Confirm Actions";
+                // Go back to Course List
+                mainPanel.Children.Clear();
+                RockEnrollHelper.updateCoursePage();
+                mainPanel.Children.Add(RockEnrollHelper._coursePage);
+                enrollButton.Content = "Enrollment Checkout";
             }
             //TODO  --else do something
         }

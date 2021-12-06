@@ -22,26 +22,73 @@ namespace RockEnroll
     /// </summary>
     public partial class EnrollmentView : UserControl
     {
+        private bool actionNeeded = false;
+        private int toEnrollCtr = 0;
 
         public EnrollmentView()
         {
             InitializeComponent();
             for (int i = 0; i < RockEnrollHelper.student.currentSchedule.Count(); i++)
             {
-
-                AddClass(RockEnrollHelper.student.currentSchedule[i]);
+                bool foundCourseToAction = AddClass(RockEnrollHelper.student.currentSchedule[i]);
+                if (foundCourseToAction)
+                {
+                    this.actionNeeded = true;
+                }
             }
 
         }
 
-        public void AddClass(ClassInstance c)
+        public bool isActionNeeded()
         {
+            return this.actionNeeded;
+        }
+
+        public bool AddClass(ClassInstance c)
+        {
+            bool foundCourseToAction = false;
             CourseView view = new CourseView(ref c);
             Button actionButton = view.actionButton;
-            changeButtonImage(actionButton, "Resources\\inCart.png");
-            view.setActionMode(CourseView.ACTION_ENROLL);
+            if ( c.enrolled )
+            {
+                changeButtonImage(actionButton, "Resources\\enroll.png");
+                view.actionText.Content = "Enrolled";
+            }
+            else if ( c.swapped || c.dropped || c.waitListed )
+            {
+                foundCourseToAction = true;
+                if (c.swapped)
+                {
+                    changeButtonImage(actionButton, "Resources\\swap.png");
+                } else if ( c.dropped )
+                {
+                    changeButtonImage(actionButton, "Resources\\drop.png");
+                } else if ( c.waitListed )
+                {
+                    changeButtonImage(actionButton, "Resources\\inCart.png");
+                }
+            } 
+            else
+            {
+                changeButtonImage(actionButton, "Resources\\inCart.png");
+                this.toEnrollCtr++;
+            }
+            view.setActionMode(CourseView.ACTION_ENROLL); //TODO only if there is something to action
 
             this.courseListViewer.Children.Add(view);
+            return foundCourseToAction;
+        }
+
+        public bool isAllToEnroll()
+        {
+            if ( toEnrollCtr == RockEnrollHelper.student.currentSchedule.Count() )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void checkAllCourses()
@@ -50,24 +97,65 @@ namespace RockEnroll
             for ( int i = 0; i<this.courseListViewer.Children.Count; i++)
             {
                 CourseView view = (CourseView)this.courseListViewer.Children[i];
-                //view.ToolTip = "Hello Kylie: " + i; //temp for now
                 Button actionButton = view.actionButton;
-                changeButtonImage(actionButton, "Resources\\enroll.png");
-
+                changeButtonImage(actionButton, "Resources\\enroll.png"); //check mark
+                view.actionText.Content = "Enrolling";
             }
+
         }
 
         public bool confirmCourses()
         {
             this.courseListViewer.ToolTip = "confirmCourses";
-            //TODO
+ 
+            String messageTitle = "Caution: Action item needs your attention.";
+            String messageText = "Do you wish to enroll in the following courses?\r\n";
+
+            //Concatenate all the courses into listOfCourses
+            String listOfCourses = getListOfCourses();
+            messageText += listOfCourses;
+            MessageBoxResult d;
+            d = MessageBox.Show(messageText, messageTitle, MessageBoxButton.OKCancel, MessageBoxImage.Information);
+            if (d == MessageBoxResult.OK)
+            {
+                enrollCourses(listOfCourses);
+            }
             return true; //TODO
         }
 
-        public void finishCourses()
+        private String getListOfCourses()
         {
-            this.courseListViewer.ToolTip = "finishCourses";
-            //TODO
+            String listOfCourses = "";
+            /*for (int i = 0; i < this.courseListViewer.Children.Count; i++)
+            {
+                CourseView view = (CourseView)this.courseListViewer.Children[i];
+                listOfCourses += view.courseNameText.Content + "\r\n";
+            }*/
+            for (int i = 0; i < RockEnrollHelper.student.currentSchedule.Count(); i++)
+            {
+                ClassInstance sched = (ClassInstance)RockEnrollHelper.student.currentSchedule[i];
+                listOfCourses += sched.department + " " + sched.courseID + "\r\n";
+            }
+            return listOfCourses;
+        }
+        
+        private void enrollCourses(String listOfCourses)
+        {
+            // Set text of all classes to Enrolled
+            this.courseListViewer.ToolTip = "Enrolled Courses";
+            for (int i = 0; i < this.courseListViewer.Children.Count; i++)
+            {
+                CourseView view = (CourseView)this.courseListViewer.Children[i];
+                Button actionButton = view.actionButton;
+                view.actionText.Content = "Enrolled";
+
+                ClassInstance sched = (ClassInstance)RockEnrollHelper.student.currentSchedule[i];
+                sched.enrolled = true;
+            }
+
+            // Show Notification on the page
+            this.NotificationText.Text = "Successfully enrolled in courses:\r\n" + listOfCourses;
+            this.NotificationBox.IsExpanded = true;
         }
 
         public void changeButtonImage(Button button, String resoureName)
