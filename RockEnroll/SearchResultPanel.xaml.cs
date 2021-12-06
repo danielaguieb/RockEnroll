@@ -28,10 +28,25 @@ namespace RockEnroll
         public void updateResults(Search search)
         {
             resultList.Items.Clear();
-            foreach (Course i in search.results)
+            foreach (KeyValuePair<Department,List<Course>> i in search.results)
             {
-                resultList.Items.Add(i.courseTitle);
+                Expander x = new();
+                x.Header = Enum.GetName(i.Key);
+                resultList.Items.Add(x);
+                StackPanel y = new();
+                x.Content = y;
+                foreach (Course j in i.Value)
+                {
+                    TextBlock z = new();
+                    z.Text = j.department + j.courseID + ": " + j.courseTitle;
+                    y.Children.Add(z);
+                }
             }
+            //
+            //foreach (Course i in search.results)
+            //{
+            //    resultList.Items.Add(i.courseTitle);
+            //}
         }
     }
 }

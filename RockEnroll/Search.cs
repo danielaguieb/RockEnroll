@@ -28,7 +28,8 @@ namespace RockEnroll
         public bool waitListable = false;
         public bool otherSemester = false;
 
-        public List<Course> results = new();
+        public Dictionary<Department, List<Course>> results = new();
+        private List<Course> tempcourses;
 
         public Search(string search)
         {
@@ -204,7 +205,9 @@ namespace RockEnroll
 
                 }
 
-                results.Add(i);        
+                if (!results.ContainsKey(i.department)) results.Add(i.department, new List<Course>());
+
+                results[i.department].Add(i);    
             }
 
             

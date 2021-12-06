@@ -8,6 +8,44 @@
         WindowStartupLocation="CenterOwner"
         Height="450" Width="800" WindowStyle="None">
     <Window.Resources>
+        <Style x:Key ="RoundButtonStyle" TargetType= "{x:Type Button}">
+            <Setter Property="Background" Value="#aebcd6ff"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Background="{TemplateBinding Background}">
+                            <TextBlock Text="{TemplateBinding Content}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value=" #4396bf" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key ="RoundToggleButtonStyle" TargetType= "{x:Type ToggleButton}">
+            <Setter Property="Background" Value="#aebcd6ff"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5" Background="{TemplateBinding Background}">
+                            <TextBlock Text="{TemplateBinding Content}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background" Value=" #4396bf" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="3"/>
         </Style>
@@ -18,9 +56,6 @@
         <Style TargetType="CheckBox">
             <Setter Property="Margin" Value="3"/>
         </Style>
-        <Style TargetType="Button">
-            <Setter Property="Margin" Value="5"/>
-        </Style>
         <Style TargetType="ComboBox">
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Height" Value="22"/>
@@ -29,7 +64,7 @@
 
     <StackPanel Orientation="Horizontal">
         <StackPanel>
-            <TextBox Name="searchbar" TextChanged="Searchbar_TextChanged">
+            <TextBox Name="searchbar" TextChanged="Searchbar_TextChanged" Margin="5,5,5,5">
                 Search
             </TextBox>
             <CheckBox>
@@ -82,8 +117,8 @@
 
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Name="Reset_Filters_Button" Click="Reset_Filters_Button_Click">Reset Filters</Button>
-                <Button Name="Apply_Button" Background="Red" Click="Apply_Button_Click">Apply</Button>
+                <Button Style="{StaticResource RoundButtonStyle}" Name="Reset_Filters_Button" Click="Reset_Filters_Button_Click">Reset Filters</Button>
+                <Button Style="{StaticResource RoundButtonStyle}" Name="Apply_Button" Background="Red" Click="Apply_Button_Click">Apply</Button>
             </StackPanel>
 
         </StackPanel>
@@ -92,9 +127,10 @@
         <StackPanel Name="putSearchHere" Width="488">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <TextBlock Text="Results" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                <Button Width="90" HorizontalAlignment="Right" Margin="10" Click="Back_Button_Click">Back</Button>
+                <Rectangle Width="337"/>
+                <Button Style="{StaticResource RoundButtonStyle}" Width="90" HorizontalAlignment="Right" Margin="10" Click="Back_Button_Click">Back</Button>
             </StackPanel>
-            
+
         </StackPanel>
 
     </StackPanel>
