@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.Windows.Resources;
 using System.Windows.Shapes;
 
 namespace RockEnroll
@@ -36,10 +37,9 @@ namespace RockEnroll
         public void AddClass(ClassInstance c)
         {
             CourseView view = new CourseView(ref c);
-            view.deleteButton.IsEnabled = false;
-            view.deleteButton.InvalidateVisual();
-            view.cartButton.IsEnabled = true;
-            view.cartButton.BringIntoView();
+            Button actionButton = view.actionButton;
+            changeButtonImage(actionButton, "Resources\\inCart.png");
+            view.setActionMode(CourseView.ACTION_ENROLL);
 
             this.courseListViewer.Children.Add(view);
         }
@@ -50,15 +50,34 @@ namespace RockEnroll
             for ( int i = 0; i<this.courseListViewer.Children.Count; i++)
             {
                 CourseView view = (CourseView)this.courseListViewer.Children[i];
-                view.ToolTip = "Hello Kylie: " + i; //temp for now
-                //view.cartButton.SetResourceReference("Resources\\checkMark.png"); //TODO
+                //view.ToolTip = "Hello Kylie: " + i; //temp for now
+                Button actionButton = view.actionButton;
+                changeButtonImage(actionButton, "Resources\\enroll.png");
+
             }
         }
 
         public bool confirmCourses()
         {
+            this.courseListViewer.ToolTip = "confirmCourses";
             //TODO
             return true; //TODO
+        }
+
+        public void finishCourses()
+        {
+            this.courseListViewer.ToolTip = "finishCourses";
+            //TODO
+        }
+
+        public void changeButtonImage(Button button, String resoureName)
+        {
+            Uri resourceUri = new Uri(resoureName, UriKind.Relative);
+            StreamResourceInfo streamInfo = Application.GetResourceStream(resourceUri);
+            BitmapFrame bitmap = BitmapFrame.Create(streamInfo.Stream);
+            var brush = new ImageBrush();
+            brush.ImageSource = bitmap;
+            button.Background = brush;
         }
     }
 }

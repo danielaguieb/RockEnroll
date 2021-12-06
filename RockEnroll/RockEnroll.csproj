@@ -15,6 +15,10 @@
     <None Remove="Resources\pin2.png" />
     <None Remove="Resources\search.png" />
     <None Remove="Resources\trash-can.png" />
+	<None Remove="Resources\inCart.png" />
+	<None Remove="Resources\enroll.png" />
+	<None Remove="Resources\swap.png" />
+	<None Remove="Resources\drop.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +30,10 @@
     <Resource Include="Resources\pin2.png" />
     <Resource Include="Resources\search.png" />
     <Resource Include="Resources\trash-can.png" />
+	<Resource Include="Resources\inCart.png" />
+	<Resource Include="Resources\enroll.png" />
+	<Resource Include="Resources\swap.png" />
+	<Resource Include="Resources\drop.png" />
   </ItemGroup>
 
   <ItemGroup>

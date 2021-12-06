@@ -21,6 +21,11 @@ namespace RockEnroll
     /// </summary>
     public partial class CourseView : UserControl
     {
+        public const int ACTION_DELETE = 1;
+        public const int ACTION_ENROLL = 2;
+
+        private int actionMode = ACTION_DELETE;
+
         public CourseView(ref ClassInstance classInstance)
         {
             InitializeComponent();
@@ -78,14 +83,56 @@ namespace RockEnroll
 
         }
 
+        /*
         private void deleteCourse(object sender, RoutedEventArgs e)
         {
             (this.Parent as Panel).Children.Remove(this);
             RockEnrollHelper.RemoveCourse(classInstance);
-        }
-        private void enrollCourse(object sender, RoutedEventArgs e)
+        }*/
+
+        
+        //Renamed the deleteCourse to something generic as we will need to reuse for Enrollment too
+        private void actionCourse(object sender, RoutedEventArgs e)
         {
-            //TODO(this.Parent as Panel).Children.Enroll(this);
+            switch (this.getActionMode())
+            {
+                case ACTION_DELETE:
+                    (this.Parent as Panel).Children.Remove(this);
+                    RockEnrollHelper.RemoveCourse(classInstance);
+                    break;
+                case ACTION_ENROLL:
+                    showMessage("Attempting to enroll", "Enroll");
+                    //if button label is Remove, do the removal accordingly
+                    //else if enroll, do the appropriate action
+                    Panel panel = (this.Parent as Panel);
+                    //TODO
+                    break;
+                default:
+                    break;
+            }
+
+        }
+
+        public void setActionMode(int actionMode)
+        {
+            this.actionMode = actionMode;
+        }
+
+        public int getActionMode()
+        {
+            return this.actionMode;
+        }
+
+        public void showMessage(String messageTitle, String messageText)
+        {
+            //Console.WriteLine(messageTitle + "\t" + messageText);
+
+            MessageBoxResult d;
+            d = MessageBox.Show(messageTitle, messageText, MessageBoxButton.YesNo, MessageBoxImage.Information);
+            if (d == MessageBoxResult.Yes)
+            {
+                //Close(); //The Close() didnt work.
+            }
         }
     }
 }

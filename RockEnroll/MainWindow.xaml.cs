@@ -78,14 +78,17 @@ namespace RockEnroll
             mainPanel.Children.Clear();
             EnrollmentView _enrollmentPage = new EnrollmentView();
             mainPanel.Children.Add(_enrollmentPage);
+
             if (enrollButton.Content.Equals("Enrollment Checkout"))
             {
                 enrollButton.Content = "Enroll All";
-            } else if (enrollButton.Content.Equals("Enroll All"))
+            }
+            else if (enrollButton.Content.Equals("Enroll All"))
             {
                 _enrollmentPage.checkAllCourses();
                 enrollButton.Content = "Confirm Actions";
-            } else if (enrollButton.Content.Equals("Confirm Actions"))
+            }
+            else if (enrollButton.Content.Equals("Confirm Actions"))
             {
                 bool result = _enrollmentPage.confirmCourses();
                 if (result)
@@ -93,9 +96,13 @@ namespace RockEnroll
                     enrollButton.Content = "Finish";
                 }
             }
-
-            //TODO
-        } 
+            else if (enrollButton.Content.Equals("Finish"))
+            {
+                _enrollmentPage.finishCourses();
+                enrollButton.Content = "Confirm Actions";
+            }
+            //TODO  --else do something
+        }
 
     }
 }

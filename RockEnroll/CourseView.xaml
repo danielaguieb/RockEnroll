@@ -35,7 +35,7 @@
                                 <RowDefinition/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <Label x:Name="courseTitleText"  Grid.Row="0" Content="Course Title" MinWidth="200" FontWeight="Bold" FontSize="15"/>
+                            <Label x:Name="courseTitleText"  Grid.Row="0" Content="Course Title" Width="300" FontWeight="Bold" FontSize="15"/>
                             <Label x:Name="campusText" Content="Campus" MinWidth="200" Grid.Row="1"/>
                         </Grid>
                         <Grid Name="sectionsGrid" Grid.Column="2">
@@ -62,7 +62,7 @@
                                     <ImageBrush ImageSource="Resources\bell.png" Stretch="Uniform"/>
                                 </Button.Background>
                             </Button>
-                            <Button x:Name="deleteButton" HorizontalAlignment="Left" VerticalAlignment="Center" MinHeight="25" MinWidth="29" Grid.Column="1" Click="deleteCourse">
+                            <Button x:Name="actionButton" HorizontalAlignment="Left" VerticalAlignment="Center" MinHeight="25" MinWidth="29" Grid.Column="1" Click="actionCourse">
                                 <Button.BorderBrush>
                                     <ImageBrush/>
                                 </Button.BorderBrush>
@@ -70,15 +70,6 @@
                                     <ImageBrush ImageSource="Resources\trash-can.png" Stretch="Uniform"/>
                                 </Button.Background>
                             </Button>
-                            <Button x:Name="cartButton" HorizontalAlignment="Left" IsEnabled="False" VerticalAlignment="Center" MinHeight="25" MinWidth="29" Grid.Column="1" Click="enrollCourse" Margin="29,0,0,0">
-                                <Button.BorderBrush>
-                                    <ImageBrush/>
-                                </Button.BorderBrush>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="Resources\pin2.png" Stretch="Uniform"/>
-                                </Button.Background>
-                            </Button>
-                            <!-- For Enrollment-->
                         </Grid>
 
                     </Grid>
