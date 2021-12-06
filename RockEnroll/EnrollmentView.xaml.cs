@@ -53,6 +53,7 @@ namespace RockEnroll
             {
                 changeButtonImage(actionButton, "Resources\\enroll.png");
                 view.actionText.Content = "Enrolled";
+                view.CourseCheckBox.IsChecked = true;
             }
             else if ( c.swapped || c.dropped || c.waitListed )
             {
@@ -119,8 +120,12 @@ namespace RockEnroll
             if (d == MessageBoxResult.OK)
             {
                 enrollCourses(listOfCourses);
+                return true;
+            } else
+            {
+                return false;
             }
-            return true; //TODO
+            
         }
 
         private String getListOfCourses()

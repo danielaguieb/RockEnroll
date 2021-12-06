@@ -15,7 +15,7 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <CheckBox Grid.Column="0" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,15,0" Height="16"/>
+        <CheckBox Name="CourseCheckBox" Grid.Column="0" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,15,0" Height="16" Click="checkBoxAction"/>
         <Border Grid.Column ="1" BorderThickness="1" BorderBrush="Black" CornerRadius="5" Margin="5,0,0,0" Grid.ColumnSpan="2">
             <Expander  VerticalAlignment="Center" FlowDirection="RightToLeft" HorizontalAlignment="Stretch">
                 <Expander.Header>
@@ -53,7 +53,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
-
+                                <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="25" MinWidth="29" >
                                 <Button.BorderBrush>
@@ -71,9 +71,47 @@
                                     <ImageBrush ImageSource="Resources\trash-can.png" Stretch="Uniform"/>
                                 </Button.Background>
                             </Button>
+                            <StackPanel Name="panelDropDown" Margin="28,0,0,0" Visibility="Collapsed" Grid.ColumnSpan="3">
+                                <Menu   Name="menuDropDown"  Visibility="Hidden"  HorizontalAlignment="Stretch" Margin="0,10,0,0"  VerticalAlignment="Center" >
+                                    <Menu.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <VirtualizingStackPanel Orientation="Vertical"/>
+                                        </ItemsPanelTemplate>
+                                    </Menu.ItemsPanel>
+                                    <MenuItem Click="inCartAction">
+                                        <MenuItem.Header>
+                                            <DockPanel>
+                                                <Image Height="32" Source="Resources\inCart.png"></Image>
+                                            </DockPanel>
+                                        </MenuItem.Header>
+                                    </MenuItem>
+                                    <MenuItem Click="enrollAction" >
+                                        <MenuItem.Header>
+                                            <DockPanel>
+                                                <Image Height="32" Source="Resources\enroll.png"></Image>
+                                            </DockPanel>
+                                        </MenuItem.Header>
+                                    </MenuItem>
+                                    <MenuItem Click="dropAction">
+                                        <MenuItem.Header>
+                                            <DockPanel>
+                                                <Image Height="32" Source="Resources\drop.png"></Image>
+                                            </DockPanel>
+                                        </MenuItem.Header>
+                                    </MenuItem>
+                                    <MenuItem Click="swapAction">
+                                        <MenuItem.Header>
+                                            <DockPanel>
+                                                <Image Height="32" Source="Resources\swap.png"></Image>
+                                            </DockPanel>
+                                        </MenuItem.Header>
+                                    </MenuItem>
+                                </Menu>
+                            </StackPanel>
                         </Grid>
 
                     </Grid>
+
                 </Expander.Header>
             </Expander>
         </Border>

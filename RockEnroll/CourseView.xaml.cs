@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.Windows.Resources;
 using System.Windows.Shapes;
 
 namespace RockEnroll
@@ -25,6 +26,7 @@ namespace RockEnroll
         public const int ACTION_ENROLL = 2;
 
         private int actionMode = ACTION_DELETE;
+        private String saveActionText;
 
         public CourseView(ref ClassInstance classInstance)
         {
@@ -35,7 +37,10 @@ namespace RockEnroll
             if (classInstance.enrolled)
             {
                 this.actionText.Content = "Enrolled";
+                // -- Checkbox is checked so when it is unchecked (by the user) it indicates a drop action
+                this.CourseCheckBox.IsChecked = true;
             }
+            saveActionText = this.actionText.Content.ToString();
             AddLectureSections(classInstance.lecturesList);
             AddLectureSections(classInstance.lecturesList);
             AddTutorialSections(classInstance.tutorialsList);
@@ -106,7 +111,9 @@ namespace RockEnroll
                     RockEnrollHelper.RemoveCourse(classInstance);
                     break;
                 case ACTION_ENROLL:
-                    showMessage("Attempting to enroll", "Enroll");
+                    //showMessage("Attempting to enroll", "Enroll");
+                    this.panelDropDown.Visibility = Visibility.Visible;
+                    this.menuDropDown.Visibility = Visibility.Visible;
                     //if button label is Remove, do the removal accordingly
                     //else if enroll, do the appropriate action
                     Panel panel = (this.Parent as Panel);
@@ -116,6 +123,58 @@ namespace RockEnroll
                     break;
             }
 
+        }
+
+        private void checkBoxAction(object sender, RoutedEventArgs e)
+        {
+            if (CourseCheckBox.IsChecked == false)
+            {
+                this.saveActionText = this.actionText.Content.ToString();
+                this.actionText.Content = "Dropping";
+                //TODO - somehow change the button to "Enrollment Checkout"
+            }
+            else
+            {
+                this.actionText.Content = this.saveActionText;
+            }
+
+        }
+
+        private void inCartAction(object sender, RoutedEventArgs e)
+        {
+            this.panelDropDown.Visibility = Visibility.Collapsed;
+            this.menuDropDown.Visibility = Visibility.Collapsed;
+            //TODO
+            changeButtonImage(actionButton, "Resources\\inCart.png"); //check mark
+            this.actionText.Content = "In Cart";
+        }
+
+        private void enrollAction(object sender, RoutedEventArgs e)
+        {
+            this.panelDropDown.Visibility = Visibility.Collapsed;
+            this.menuDropDown.Visibility = Visibility.Collapsed;
+            //TODO
+            changeButtonImage(actionButton, "Resources\\enroll.png"); //check mark
+            this.actionText.Content = "Enrolling";
+        }
+
+        private void dropAction(object sender, RoutedEventArgs e)
+        {
+            this.panelDropDown.Visibility = Visibility.Collapsed;
+            this.menuDropDown.Visibility = Visibility.Collapsed;
+            //TODO
+            changeButtonImage(actionButton, "Resources\\drop.png"); //check mark
+            this.actionText.Content = "Dropping";
+
+        }
+
+        private void swapAction(object sender, RoutedEventArgs e)
+        {
+            this.panelDropDown.Visibility = Visibility.Collapsed;
+            this.menuDropDown.Visibility = Visibility.Collapsed;
+            //TODO
+            changeButtonImage(actionButton, "Resources\\swap.png"); //check mark
+            this.actionText.Content = "Swapping";
         }
 
         public void setActionMode(int actionMode)
@@ -138,6 +197,16 @@ namespace RockEnroll
             {
                 //Close(); //The Close() didnt work.
             }
+        }
+
+        public void changeButtonImage(Button button, String resoureName)
+        {
+            Uri resourceUri = new Uri(resoureName, UriKind.Relative);
+            StreamResourceInfo streamInfo = Application.GetResourceStream(resourceUri);
+            BitmapFrame bitmap = BitmapFrame.Create(streamInfo.Stream);
+            var brush = new ImageBrush();
+            brush.ImageSource = bitmap;
+            button.Background = brush;
         }
     }
 }

@@ -19,6 +19,7 @@
 	<None Remove="Resources\enroll.png" />
 	<None Remove="Resources\swap.png" />
 	<None Remove="Resources\drop.png" />
+	<None Remove="Resources\enrollmentLegend.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +35,7 @@
 	<Resource Include="Resources\enroll.png" />
 	<Resource Include="Resources\swap.png" />
 	<Resource Include="Resources\drop.png" />
+	<Resource Include="Resources\enrollmentLegend.png" />
   </ItemGroup>
 
   <ItemGroup>
