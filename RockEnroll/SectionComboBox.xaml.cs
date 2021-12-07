@@ -20,7 +20,8 @@ namespace RockEnroll
     /// </summary>
     public partial class SectionComboBox : UserControl
     {
-        public SectionComboBox(List<Lecture> list, ref ClassInstance classInstance)
+        private UserControl parent;
+        public SectionComboBox(List<Lecture> list, ref ClassInstance classInstance, UserControl parent)
         {
             InitializeComponent();
 
@@ -29,11 +30,11 @@ namespace RockEnroll
             this.classInstance = classInstance;
             this.sectionType = 0;
             this.comboBox.SelectedIndex = classInstance.lectureNum;
-            
 
+            this.parent = parent;
         }
 
-        public SectionComboBox(List<Tutorial> list, ref ClassInstance classInstance)
+        public SectionComboBox(List<Tutorial> list, ref ClassInstance classInstance, UserControl parent)
         {
             InitializeComponent();
 
@@ -43,8 +44,10 @@ namespace RockEnroll
             this.sectionType = 1;
             this.comboBox.SelectedIndex = classInstance.tutorialNum;
 
+            this.parent = parent;
+
         }
-        public SectionComboBox(List<Lab> list, ref ClassInstance classInstance)
+        public SectionComboBox(List<Lab> list, ref ClassInstance classInstance, UserControl parent)
         {
             InitializeComponent();
 
@@ -53,6 +56,8 @@ namespace RockEnroll
             this.classInstance = classInstance;
             this.sectionType = 3;
             this.comboBox.SelectedIndex = classInstance.labNum;
+
+            this.parent = parent;
 
         }
 
@@ -113,6 +118,13 @@ namespace RockEnroll
                     RockEnrollHelper.SwapSection(this.classInstance, this.classInstance.lectureNum, this.classInstance.tutorialNum, i);
                     break;
 
+            }
+
+            if (this.parent != null && this.parent is CourseView)
+            {
+
+                CourseView view = (CourseView)this.parent;
+                view.swapRequested(this.classInstance);
             }
 
 
