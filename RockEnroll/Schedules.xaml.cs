@@ -20,12 +20,30 @@ namespace RockEnroll
     /// </summary>
     public partial class Schedules : UserControl
     {
+
+
+
         public Schedules()
         {
             InitializeComponent();
         }
 
         private void AdvancedSearchClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
         }
