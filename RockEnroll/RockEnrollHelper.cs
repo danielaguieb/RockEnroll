@@ -362,6 +362,30 @@ namespace RockEnroll
             }
             return result;
         }
+
+        public static void PopulateSchedule()
+        {
+            List<ClassInstance> mondayLectures = new List<ClassInstance>();
+            for (int i = 0; i < student.currentSchedule.Count; i++)
+            {
+                int lecNum = student.currentSchedule[i].lectureNum;
+                int tutNum = student.currentSchedule[i].tutorialNum;
+
+                TimeBlock lecTime = student.currentSchedule[i].lecturesList[lecNum].time;
+                TimeBlock tutTime = student.currentSchedule[i].tutorialsList[tutNum].time;
+
+                if (lecTime.monday)
+                {
+                    mondayLectures.Add(student.currentSchedule[i]);
+                }
+
+            }
+
+            // The default comparer doesn't work here
+            mondayLectures.Sort();
+
+        }
+
         public static void AddCourse(Course course, bool view = false)
         {
             int lecNum = 0;
