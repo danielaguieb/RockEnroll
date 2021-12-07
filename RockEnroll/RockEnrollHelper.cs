@@ -78,6 +78,25 @@ namespace RockEnroll
             soci201.successors.Add(soci321);
             allCourses.Add(soci321);
 
+            Course test211 = new Course(211, "Test Course", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "Test Course for wait list testing");
+            test211.lecturesList.Add(new Lecture(test211, tbLec1_1, "Kylie Sicat", Campus.UniversityOfCalgary, "Social Science Rm 109", 200, 200, 0, 30, ""));
+            test211.lecturesList.Add(new Lecture(test211, tbLec1_2, "Kylie Kylie", Campus.UniversityOfCalgary, "Social Science Rm 109", 199, 200, 0, 30, ""));
+            test211.tutorialsList.Add(new Tutorial(test211, tbTut1_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            test211.tutorialsList.Add(new Tutorial(test211, tbTut1_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            test211.tutorialsList.Add(new Tutorial(test211, tbTut1_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            allCourses.Add(test211);
+
+
+        }
+
+        public static bool checkClassCapacity(int courseId)
+        {
+            //TODO - we need the lecture too
+            // get the Course based on the courseId
+            if (courseId == 211) // forcing to show wait listed only for 1 course
+                return false;
+            else
+                return true;
         }
 
         //Naive solution for finding available section

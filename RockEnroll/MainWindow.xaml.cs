@@ -31,6 +31,7 @@ namespace RockEnroll
             RockEnrollHelper.InitializeCourses();
             RockEnrollHelper.AddCourse(RockEnrollHelper.allCourses[0]);
             RockEnrollHelper.AddCourse(RockEnrollHelper.allCourses[1]);
+            RockEnrollHelper.AddCourse(RockEnrollHelper.allCourses[2]);
             Switcher.pageSwitcher = this;
         }
 
@@ -72,35 +73,42 @@ namespace RockEnroll
 
         }
 
+        public void changeToConfirmAction()
+        {
+            enrollButton.Content = "Confirm Actions";
+        }
+
         private void enrollButton_Click(object sender, RoutedEventArgs e)
         {
             if(enrollButton.Content.Equals("Enrollment Checkout"))
             {
                 mainPanel.Children.Clear();
-                _enrollmentPage = new EnrollmentView();
+                _enrollmentPage = new EnrollmentView(this);
                 mainPanel.Children.Add(_enrollmentPage);
 
                 if ( _enrollmentPage.isAllToEnroll() )
                 {
+                    //enrollButton.Content = "Confirm Actions"; //TODO - force confirm actions for now
                     enrollButton.Content = "Enroll All";
-                } 
+                }
                 else if (_enrollmentPage.isActionNeeded() )
                 {
                     enrollButton.Content = "Confirm Actions";
                 }
                 else
                 {
+                    //enrollButton.Content = "Confirm Actions"; //TODO - force confirm actions for now
                     enrollButton.Content = "Finish"; //Nothing to do
                 }
             }
             else if (enrollButton.Content.Equals("Enroll All"))
             {
-                _enrollmentPage.checkAllCourses();
+                _enrollmentPage.enrollAllCourses();
                 enrollButton.Content = "Confirm Actions";
             }
             else if (enrollButton.Content.Equals("Confirm Actions"))
             {
-                bool result = _enrollmentPage.confirmCourses();
+                bool result = _enrollmentPage.confirmActions();
                 if (result)
                 {
                     enrollButton.Content = "Finish";

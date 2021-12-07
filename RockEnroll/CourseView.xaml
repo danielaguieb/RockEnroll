@@ -55,7 +55,7 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="25" MinWidth="29" >
+                            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="29" MinWidth="29" >
                                 <Button.BorderBrush>
                                     <ImageBrush/>
                                 </Button.BorderBrush>
@@ -63,7 +63,7 @@
                                     <ImageBrush ImageSource="Resources\bell.png" Stretch="Uniform"/>
                                 </Button.Background>
                             </Button>
-                            <Button x:Name="actionButton" HorizontalAlignment="Left" VerticalAlignment="Center" MinHeight="25" MinWidth="29" Grid.Column="1" Click="actionCourse">
+                            <Button x:Name="actionButton" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="7,0,0,0" MinHeight="29" MinWidth="29" Grid.Column="1" Click="actionCourse">
                                 <Button.BorderBrush>
                                     <ImageBrush/>
                                 </Button.BorderBrush>
@@ -72,7 +72,7 @@
                                 </Button.Background>
                             </Button>
                             <StackPanel Name="panelDropDown" Margin="28,0,0,0" Visibility="Collapsed" Grid.ColumnSpan="3">
-                                <Menu   Name="menuDropDown"  Visibility="Hidden"  HorizontalAlignment="Stretch" Margin="0,10,0,0"  VerticalAlignment="Center" >
+                                <Menu   Name="menuDropDown"  Visibility="Hidden"  HorizontalAlignment="Stretch" Margin="0,0,0,0"  VerticalAlignment="Center" >
                                     <Menu.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <VirtualizingStackPanel Orientation="Vertical"/>
@@ -81,28 +81,28 @@
                                     <MenuItem Click="inCartAction">
                                         <MenuItem.Header>
                                             <DockPanel>
-                                                <Image Height="32" Source="Resources\inCart.png"></Image>
+                                                <Image Height="29" Source="Resources\inCart.png"></Image>
                                             </DockPanel>
                                         </MenuItem.Header>
                                     </MenuItem>
                                     <MenuItem Click="enrollAction" >
                                         <MenuItem.Header>
                                             <DockPanel>
-                                                <Image Height="32" Source="Resources\enroll.png"></Image>
+                                                <Image Height="29" Source="Resources\enroll.png"></Image>
                                             </DockPanel>
                                         </MenuItem.Header>
                                     </MenuItem>
                                     <MenuItem Click="dropAction">
                                         <MenuItem.Header>
                                             <DockPanel>
-                                                <Image Height="32" Source="Resources\drop.png"></Image>
+                                                <Image Height="29" Source="Resources\drop.png"></Image>
                                             </DockPanel>
                                         </MenuItem.Header>
                                     </MenuItem>
                                     <MenuItem Click="swapAction">
                                         <MenuItem.Header>
                                             <DockPanel>
-                                                <Image Height="32" Source="Resources\swap.png"></Image>
+                                                <Image Height="29" Source="Resources\swap.png"></Image>
                                             </DockPanel>
                                         </MenuItem.Header>
                                     </MenuItem>

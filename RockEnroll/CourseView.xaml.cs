@@ -28,24 +28,34 @@ namespace RockEnroll
         private int actionMode = ACTION_DELETE;
         private String saveActionText;
 
+        private UserControl parent;
+
         public CourseView(ref ClassInstance classInstance)
         {
             InitializeComponent();
             this.classInstance = classInstance;
             this.courseNameText.Content = classInstance.department.ToString() + "\n" + classInstance.courseID.ToString();
             this.courseTitleText.Content = classInstance.courseTitle;
+            bool foundCourseToAction = false;
+            this.setStatus(classInstance, ref foundCourseToAction);
+            /*
             if (classInstance.enrolled)
             {
                 this.actionText.Content = "Enrolled";
                 // -- Checkbox is checked so when it is unchecked (by the user) it indicates a drop action
                 this.CourseCheckBox.IsChecked = true;
-            }
+            }*/
             saveActionText = this.actionText.Content.ToString();
             AddLectureSections(classInstance.lecturesList);
             AddLectureSections(classInstance.lecturesList);
             AddTutorialSections(classInstance.tutorialsList);
             AddLabSections(classInstance.labsList);
 
+        }
+
+        public CourseView(ref ClassInstance classInstance, UserControl parent) : this(ref classInstance)
+        {
+            this.parent = parent;
         }
 
         private ClassInstance classInstance;
@@ -57,15 +67,51 @@ namespace RockEnroll
             }
         }
 
+        public int setStatus(ClassInstance c, ref bool foundCourseToAction)
+        {
+            if (c.enrolled)
+            {
+                changeButtonImage(actionButton, "Resources\\enroll.png");
+                this.actionText.Content = "Enrolled";
+                this.CourseCheckBox.IsChecked = true;
+                return 0;
+            }
+            else if (c.swapped || c.dropped || c.waitListed)
+            {
+                foundCourseToAction = true;
+                if (c.swapped)
+                {
+                    changeButtonImage(actionButton, "Resources\\enroll.png");
+                    this.actionText.Content = "Enrolled";
+                }
+                else if (c.dropped)
+                {
+                    changeButtonImage(actionButton, "Resources\\drop.png");
+                    this.actionText.Content = "Dropped";
+                }
+                else if (c.waitListed)
+                {
+                    changeButtonImage(actionButton, "Resources\\inCart.png");
+                    this.actionText.Content = "Waitlisted";
+                }
+            }
+            else
+            {
+                changeButtonImage(actionButton, "Resources\\inCart.png");
+                return 1;
+            }
+            return 0;
+        }
+
         private void AddLectureSections(List<Lecture> list)
         {
             if(list.Count() == 0)
             {
                 return;
             }
-            SectionComboBox s = new SectionComboBox(list, ref this.classInstance);
+            SectionComboBox s = new SectionComboBox(list, ref this.classInstance, this);
             this.sectionsGrid.Children.Add(s);
-            Grid.SetRow(s, 0);
+            Grid.SetRow(s, 0);     
 
         }
 
@@ -75,7 +121,7 @@ namespace RockEnroll
             {
                 return;
             }
-            SectionComboBox s = new SectionComboBox(list, ref this.classInstance);
+            SectionComboBox s = new SectionComboBox(list, ref this.classInstance, this);
             this.sectionsGrid.Children.Add(s);
             Grid.SetRow(s, 1);
 
@@ -87,10 +133,24 @@ namespace RockEnroll
             {
                 return;
             }
-            SectionComboBox s = new SectionComboBox(list, ref this.classInstance);
+            SectionComboBox s = new SectionComboBox(list, ref this.classInstance, this);
             this.sectionsGrid.Children.Add(s);
             Grid.SetRow(s, 2);
 
+        }
+
+        public void swapRequested(ClassInstance c)
+        {
+            //TODO - Check if the new class to swap to has space
+            
+            changeButtonImage(actionButton, "Resources\\swap.png");
+            this.actionText.Content = "Swapping";
+
+            if (this.parent != null && this.parent is EnrollmentView)
+            {
+                EnrollmentView view = (EnrollmentView)this.parent;
+                view.changeToConfirmAction();
+            }
         }
 
         /*
@@ -100,7 +160,7 @@ namespace RockEnroll
             RockEnrollHelper.RemoveCourse(classInstance);
         }*/
 
-        
+
         //Renamed the deleteCourse to something generic as we will need to reuse for Enrollment too
         private void actionCourse(object sender, RoutedEventArgs e)
         {
@@ -114,10 +174,6 @@ namespace RockEnroll
                     //showMessage("Attempting to enroll", "Enroll");
                     this.panelDropDown.Visibility = Visibility.Visible;
                     this.menuDropDown.Visibility = Visibility.Visible;
-                    //if button label is Remove, do the removal accordingly
-                    //else if enroll, do the appropriate action
-                    Panel panel = (this.Parent as Panel);
-                    //TODO
                     break;
                 default:
                     break;
@@ -162,19 +218,31 @@ namespace RockEnroll
         {
             this.panelDropDown.Visibility = Visibility.Collapsed;
             this.menuDropDown.Visibility = Visibility.Collapsed;
-            //TODO
+            
             changeButtonImage(actionButton, "Resources\\drop.png"); //check mark
             this.actionText.Content = "Dropping";
 
+            //TODO - signal the parent class to refresh the buttons below
+            /*EnrollmentView enrollView = (EnrollmentView)this.Parent;
+            MainWindow mainWindow = (MainWindow)enrollView.Parent;
+            mainWindow.enrollButton.Content = "Confirm Actions";*/
+
+            if (this.parent != null && this.parent is EnrollmentView)
+            {
+                EnrollmentView view = (EnrollmentView)this.parent;
+                view.changeToConfirmAction();
+            }
+       
         }
 
         private void swapAction(object sender, RoutedEventArgs e)
         {
             this.panelDropDown.Visibility = Visibility.Collapsed;
             this.menuDropDown.Visibility = Visibility.Collapsed;
-            //TODO
+            //TODO //only allow if there is space in the new class
             changeButtonImage(actionButton, "Resources\\swap.png"); //check mark
             this.actionText.Content = "Swapping";
+
         }
 
         public void setActionMode(int actionMode)
@@ -199,7 +267,7 @@ namespace RockEnroll
             }
         }
 
-        public void changeButtonImage(Button button, String resoureName)
+        public static void changeButtonImage(Button button, String resoureName)
         {
             Uri resourceUri = new Uri(resoureName, UriKind.Relative);
             StreamResourceInfo streamInfo = Application.GetResourceStream(resourceUri);
@@ -208,5 +276,7 @@ namespace RockEnroll
             brush.ImageSource = bitmap;
             button.Background = brush;
         }
+
+
     }
 }
