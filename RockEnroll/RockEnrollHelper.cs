@@ -382,7 +382,10 @@ namespace RockEnroll
 
         public static void AddCourse(ClassInstance c)
         {
-
+            if (student.currentSchedule.Contains(c))
+            {
+                return;
+            }
             student.currentSchedule.Add(c);
             _coursePage.AddClass(c);
         }

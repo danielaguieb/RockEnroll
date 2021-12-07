@@ -450,9 +450,32 @@ namespace RockEnroll
                 d = MessageBox.Show(messageText, messageTitle, MessageBoxButton.OKCancel, MessageBoxImage.Information);
                 if (!(d == MessageBoxResult.OK))
                 {
-                     bell.IsChecked = (!bell.IsChecked);
-                }
+                    bell.Checked -= notificationStatus;
+                    bell.Unchecked -= notificationStatus;
+                    bell.IsChecked = bell.IsChecked = (!bell.IsChecked);
+                    bell.Checked += notificationStatus;
+                    bell.Unchecked += notificationStatus;
+            }
             
         }
+
+        private void showtimesClick(object sender, MouseButtonEventArgs e)
+        {
+            tobeImplemented();
+
+        }
+
+        public void tobeImplemented()
+        {
+            //Console.WriteLine(messageTitle + "\t" + messageText);
+
+            MessageBoxResult d;
+            d = MessageBox.Show("To be Implemented", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (d == MessageBoxResult.Yes)
+            {
+                //Close(); //The Close() didnt work.
+            }
+        }
+
     }
 }

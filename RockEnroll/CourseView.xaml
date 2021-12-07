@@ -112,7 +112,10 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <Label Content="Show All Times..." HorizontalAlignment="Left" Margin="1,0,0,0" Grid.Row="3" VerticalAlignment="Center" MinWidth="75"/>
+                            <Label HorizontalAlignment="Left" Margin="1,0,0,0" Grid.Row="3" VerticalAlignment="Center" MinWidth="75" MouseLeftButtonDown="showtimesClick">
+                                <TextBlock TextDecorations="Underline" Foreground="Blue"> Show All Times...</TextBlock>
+
+                            </Label>
 
                         </Grid>
                         <Grid Grid.Column="4">
