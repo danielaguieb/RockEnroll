@@ -8,16 +8,17 @@
 	        VerticalAlignment="Stretch"
              Name ="userControl"
              >
-    <Border Name="b" >
-        <Grid >
+    <Grid >
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width ="4*"/>
                 <ColumnDefinition Width ="3*"/>
             </Grid.ColumnDefinitions>
-            <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Hidden">
-                <Grid Name ="courseListViewer"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Name ="b" Height="*" />
+            </Grid.RowDefinitions>
+            <ScrollViewer Name="scrollViewer" Grid.Column="0" VerticalScrollBarVisibility="Hidden" Height="800">
+                <Grid Name ="courseListViewer" VerticalAlignment="Top"/>
             </ScrollViewer>
-    </Grid>
-    </Border>
+        </Grid>
 </UserControl>

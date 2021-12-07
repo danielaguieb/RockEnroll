@@ -85,6 +85,7 @@ namespace RockEnroll
             addRequisite(c.prerequisites, 0);
             addRequisite(c.antirequisites, 1);
             addRequisite(c.successors, 2);
+            this.unitsText.Text = "Course Units: " + c.courseUnits.ToString() + " units";
             this.courseDesc.Text = "Description: " + c.courseDescription;
             BrushConverter bc = new BrushConverter();
             this.courseNameText.Background = (Brush)bc.ConvertFrom("#aebcd6ff");
@@ -114,8 +115,8 @@ namespace RockEnroll
                     changeButtonImage(actionButton, "Resources\\warning.png");
                     this.actionText.Content = "Prerequisites Missing";
                     this.actionText.Background = Brushes.Yellow;
-                    this.actionText.Foreground = Brushes.White;
-                    this.courseExpander.Background = (Brush)bc.ConvertFrom("#FFFFFACD");
+                    this.actionText.Foreground = Brushes.Black;
+                    this.courseNameText.Background = (Brush)bc.ConvertFrom("#FFFFFACD");
                     this.actionButton.IsHitTestVisible = false;
                 }
                 else
@@ -450,9 +451,32 @@ namespace RockEnroll
                 d = MessageBox.Show(messageText, messageTitle, MessageBoxButton.OKCancel, MessageBoxImage.Information);
                 if (!(d == MessageBoxResult.OK))
                 {
-                     bell.IsChecked = (!bell.IsChecked);
-                }
+                    bell.Checked -= notificationStatus;
+                    bell.Unchecked -= notificationStatus;
+                    bell.IsChecked = bell.IsChecked = (!bell.IsChecked);
+                    bell.Checked += notificationStatus;
+                    bell.Unchecked += notificationStatus;
+            }
             
         }
+
+        private void showtimesClick(object sender, MouseButtonEventArgs e)
+        {
+            tobeImplemented();
+
+        }
+
+        public void tobeImplemented()
+        {
+            //Console.WriteLine(messageTitle + "\t" + messageText);
+
+            MessageBoxResult d;
+            d = MessageBox.Show("To be Implemented", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (d == MessageBoxResult.Yes)
+            {
+                //Close(); //The Close() didnt work.
+            }
+        }
+
     }
 }

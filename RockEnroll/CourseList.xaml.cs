@@ -25,7 +25,6 @@ namespace RockEnroll
         {
             InitializeComponent();
             
-            
         }
 
         /*
@@ -115,5 +114,6 @@ namespace RockEnroll
                 c.conflictText.Visibility = Visibility.Hidden;
             }
         }
+
     }
 }

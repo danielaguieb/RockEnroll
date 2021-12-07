@@ -112,7 +112,10 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <Label Content="Show All Times..." HorizontalAlignment="Left" Margin="1,0,0,0" Grid.Row="3" VerticalAlignment="Center" MinWidth="75"/>
+                            <Label HorizontalAlignment="Left" Margin="1,0,0,0" Grid.Row="3" VerticalAlignment="Center" MinWidth="75" MouseLeftButtonDown="showtimesClick">
+                                <TextBlock TextDecorations="Underline" Foreground="Blue"> Show All Times...</TextBlock>
+
+                            </Label>
 
                         </Grid>
                         <Grid Grid.Column="4">
@@ -193,9 +196,11 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
+                                <RowDefinition/>
                             </Grid.RowDefinitions>
+                            <TextBlock Grid.Row ="3" Name="courseDesc" TextWrapping="Wrap" MaxWidth="{Binding ElementName=crsView,Path=ActualWidth}" Margin="5,0,0,0"/>
+                            <TextBlock Grid.Row ="4" Name="unitsText" TextWrapping="Wrap" MaxWidth="{Binding ElementName=crsView,Path=ActualWidth}" Margin="5,0,0,10"/>
 
-                            <TextBlock Grid.Row ="3" Name="courseDesc" TextWrapping="Wrap" MaxWidth="{Binding ElementName=crsView,Path=ActualWidth}" Margin="5,0,5,0"/>
                         </Grid>
 
 
