@@ -56,7 +56,8 @@ namespace RockEnroll
             courseListViewer.RowDefinitions.Add(new RowDefinition());
             this.courseListViewer.Children.Add(view);
             Grid.SetRow(view, courseListViewer.RowDefinitions.Count - 1);
-            
+            displayConflict(view);
+
         }
 
         public void updateSections()
@@ -65,12 +66,53 @@ namespace RockEnroll
             {
                 c.classInfoGrid.Children.Clear();
 
-                    c.AddLectureDescription();
+                c.AddLectureDescription();
 
-                    c.AddTutorialDescription();
-                    c.AddLabDescription();
+                c.AddTutorialDescription();
+                c.AddLabDescription();
+                displayConflict(c);
+               
 
+            }
+        }
 
+        public void displayConflict(CourseView c)
+        {
+            List<(ClassInstance, int, int, int)> conflicts = RockEnrollHelper.FindConflict(c.ClassInstance);
+            if (conflicts.Count() != 0)
+            {
+                c.conflictText.Visibility = Visibility.Visible;
+                string text = "Conflict with: ";
+                for (int i = 0; i < conflicts.Count(); i++)
+                {
+                    text += conflicts[i].Item1.department.ToString() + " " + conflicts[i].Item1.courseID.ToString() + ": ";
+                    if (conflicts[i].Item2 != -1)
+                    {
+                        text += "LEC 0" + (conflicts[i].Item2 + 1).ToString() + " ";
+                    }
+
+                    if (conflicts[i].Item3 != -1)
+                    {
+                        text += "TUT 0" + (conflicts[i].Item3 + 1).ToString() + " ";
+                    }
+                    if (conflicts[i].Item4 != -1)
+                    {
+                        text += "LAB 0" + (conflicts[i].Item3 + 1).ToString() + " ";
+                    }
+
+                    if (i != conflicts.Count() - 1)
+                    {
+                        text += ", ";
+                    }
+                }
+
+                c.conflictText.Content = text;
+
+            }
+            else
+            {
+                c.conflictText.Content = "";
+                c.conflictText.Visibility = Visibility.Hidden;
             }
         }
     }

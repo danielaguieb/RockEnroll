@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:RockEnroll"
         mc:Ignorable="d"
         Title="MainWindow" 
-        WindowState="Maximized">
+        WindowState="Maximized"
+        ResizeMode="NoResize">
     <Window.Resources>
         <Style x:Key ="RoundButtonStyle" TargetType= "{x:Type Button}">
             <Setter Property="Background" Value="#aebcd6ff"/>

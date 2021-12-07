@@ -31,7 +31,6 @@ namespace RockEnroll
 
         // all courses list here; create courses first before adding them, to modify prereqs
         public static List<Course> allCourses = new List<Course>();
-
         public static void InitializeCourses()
         {
             //Lecture Timeblocks 
@@ -275,6 +274,53 @@ namespace RockEnroll
                 return true;
         }
 
+        public static List<(ClassInstance, int, int, int)> FindConflict(ClassInstance cor)
+        {
+            List<(ClassInstance,int,int,int)> conflicts = new List<(ClassInstance,int,int,int)>();
+          
+            bool conflict = false;
+            foreach (ClassInstance c in student.currentSchedule)
+            {
+                if(c == cor)
+                {
+                    continue;
+                }
+                int lec1 = -1, tut1 = -1, lab1 = -1;
+                conflict = false;
+                if ((c.lecturesList.Count() != 0))
+                {
+                    if (c.lecturesList[c.lectureNum].time.StartTime.Equals(cor.lecturesList[cor.lectureNum].time.StartTime))
+                    {
+                        conflict = true;
+                        lec1 = c.lectureNum;
+                    }
+                }
+                if ((c.tutorialsList.Count() != 0))
+                {
+                    if (c.tutorialsList[c.tutorialNum].time.StartTime.Equals(cor.tutorialsList[cor.tutorialNum].time.StartTime))
+                    {
+                        conflict = true;
+                        tut1 = c.tutorialNum;
+                    }
+                }
+                if ((c.labsList.Count() != 0))
+                {
+                    if (c.labsList[c.labNum].time.StartTime.Equals(c.labsList[cor.labNum].time.StartTime))
+                    {
+                        conflict = true;
+                        lab1 = c.labNum;
+                    }
+                }
+
+                if (conflict)
+                {
+                    conflicts.Add((c, lec1, tut1, lab1));
+                }
+            }
+
+            return conflicts;
+        }
+
         //Naive solution for finding available section
         public static int FindAvailableSection<T>(List<T> times) where T : Assignable
         {
@@ -302,7 +348,7 @@ namespace RockEnroll
                     }
                     if ((c.labsList.Count() != 0))
                     {
-                        if (c.labsList[c.labNum].time.StartTime.Equals(times[i].time.StartTime))
+                        if (c.labsList[c.labNum].time.StartTime.Equals(times[i].time.StartTime)) 
                         {
                             conflict = true;
                         }

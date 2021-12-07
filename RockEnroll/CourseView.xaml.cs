@@ -431,5 +431,28 @@ namespace RockEnroll
             button.Background = brush;
         }
 
+        private void notificationStatus(object sender, RoutedEventArgs e)
+        {
+
+                string messageTitle = "Caution: Action item needs your attention.";
+                string messageText;
+                if ((bool)bell.IsChecked)
+                {
+                    messageText = "Do you wish to enable notifications (to your UofC email) for the following course?\r\n";
+                }
+                else
+                {
+                    messageText = "Do you wish to disable notifications (to your UofC email) for the following course?\r\n";
+                }
+
+                messageText += this.classInstance.department.ToString() + " " + this.classInstance.courseID.ToString();
+                MessageBoxResult d;
+                d = MessageBox.Show(messageText, messageTitle, MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                if (!(d == MessageBoxResult.OK))
+                {
+                     bell.IsChecked = (!bell.IsChecked);
+                }
+            
+        }
     }
 }
