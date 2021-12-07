@@ -4,28 +4,60 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RockEnroll">
+    <UserControl.Resources>
+        <Style x:Key ="ToggleButtonStyle" TargetType= "{x:Type ToggleButton}">
+
+                <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="Resources\pin.png" Stretch="Uniform"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border Width="{TemplateBinding Width}"
+                Height="{TemplateBinding Height}"
+                Background="{TemplateBinding Background}" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="Resources\pin2.png" Stretch="Uniform"/>
+                        </Setter.Value>
+                        
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="False">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="Resources\pin.png" Stretch="Uniform"/>
+                        </Setter.Value>
+
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition  Width="35"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
-        <Label Name ="section"  Content="SEC:" FontSize="9" HorizontalAlignment="Left" MinWidth="20" Grid.Column="0"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="56" MinHeight="16" Grid.Column="1" Margin="0,2,0,2" SelectedValuePath="index" SelectionChanged="SectionChanged">
-        <ComboBox.ItemTemplate>
-            <DataTemplate>
+        <Label Name ="section"  Content="SEC:" HorizontalAlignment="Left" MinWidth="20" Grid.Column="0"/>
+        <ComboBox x:Name="comboBox" HorizontalContentAlignment="Center" VerticalAlignment="Center" MinHeight="16" Grid.Column="1" SelectedValuePath="index" SelectionChanged="SectionChanged" Background="White">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
                     <TextBlock Text="{Binding displayText }" />
-            </DataTemplate>
-        </ComboBox.ItemTemplate>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <Button  VerticalAlignment="Center" MinHeight="16" MinWidth="18" Grid.Column="2">
-            <Button.BorderBrush>
-                <ImageBrush/>
-            </Button.BorderBrush>
-            <Button.Background>
-                <ImageBrush ImageSource="Resources\pin.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
+        <ToggleButton  Style ="{StaticResource ToggleButtonStyle}" VerticalAlignment="Center" MinHeight="16" MinWidth="18" Grid.Column="2">
+        </ToggleButton>
     </Grid>
 </UserControl>

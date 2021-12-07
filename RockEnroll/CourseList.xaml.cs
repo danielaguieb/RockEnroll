@@ -52,9 +52,26 @@ namespace RockEnroll
         */
         public void AddClass(ClassInstance c)
         {
-            CourseView view = new CourseView(ref c);
+            CourseView view = new CourseView(ref c, true);
+            courseListViewer.RowDefinitions.Add(new RowDefinition());
             this.courseListViewer.Children.Add(view);
+            Grid.SetRow(view, courseListViewer.RowDefinitions.Count - 1);
             
+        }
+
+        public void updateSections()
+        {
+            foreach (CourseView c in courseListViewer.Children)
+            {
+                c.classInfoGrid.Children.Clear();
+
+                    c.AddLectureDescription();
+
+                    c.AddTutorialDescription();
+                    c.AddLabDescription();
+
+
+            }
         }
     }
 }

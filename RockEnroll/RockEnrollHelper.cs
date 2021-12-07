@@ -67,8 +67,9 @@ namespace RockEnroll
             soci201.tutorialsList.Add(new Tutorial(soci201, tbTut1_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
             soci201.tutorialsList.Add(new Tutorial(soci201, tbTut1_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
             allCourses.Add(soci201);
+            student.coursesTaken.Add(soci201);
 
-            Course soci321 = new Course(321, "Sociology of Health and Illness", Faculty.Arts, Department.SOCI,  Course.departmentConsent.OR, 3, null);
+            Course soci321 = new Course(321, "Sociology of Health and Illness", Faculty.Arts, Department.SOCI,  Course.departmentConsent.OR, 3, "Introduction to social factors influencing health, illness, and medicine. Topics covered may include the organization of medical institutions and occupations, the socialization of medical professionals, the social construction of illness, social determinants of health, and comparative health care systems and policy.");
             soci321.lecturesList.Add(new Lecture(soci321,tbLec1_1, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 50, 200, 0, 30, ""));
             soci321.lecturesList.Add(new Lecture(soci321,tbLec1_2, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 120, 200, 0, 30, ""));
             soci321.tutorialsList.Add(new Tutorial(soci321,tbTut2_1, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
@@ -77,6 +78,179 @@ namespace RockEnroll
             soci321.prerequisites.Add(soci201);
             soci201.successors.Add(soci321);
             allCourses.Add(soci321);
+
+            Course soci311 = new Course(311, "Introductory Social Statistics I", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "Univariate and bivariate statistics for survey data. Topics include cross tabular analysis, the normal distribution, confidence intervals for means, hypothesis testing, Chi-squared and F distributions and bivariate linear regression analysis. In labs statistical software to analyze survey data will be used.");
+            soci311.lecturesList.Add(new Lecture(soci311, tbLec3_1, "Mark Curr", Campus.UniversityOfCalgary, "Social Science Rm 109", 100, 200, 0, 30, ""));
+            soci311.lecturesList.Add(new Lecture(soci311, tbLec3_2, "John Smith", Campus.UniversityOfCalgary, "Social Science Rm 109", 200, 200, 0, 30, ""));
+            soci311.tutorialsList.Add(new Tutorial(soci311, tbTut1_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci311.tutorialsList.Add(new Tutorial(soci311, tbTut1_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci311.tutorialsList.Add(new Tutorial(soci311, tbTut1_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci311.prerequisites.Add(soci201);
+            soci201.successors.Add(soci311);
+            allCourses.Add(soci311);
+
+            Course soci313 = new Course(313, "Introductory Social Research Methods", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "Research processes including problem definition, data collection and analyses; quantitative and qualitative strategies.");
+            soci313.lecturesList.Add(new Lecture(soci313, tbLec1_1, "Mark Curr", Campus.UniversityOfCalgary, "Social Science Rm 109", 141, 200, 0, 30, ""));
+            soci313.lecturesList.Add(new Lecture(soci313, tbLec1_2, "JaneDoe", Campus.UniversityOfCalgary, "Social Science Rm 109", 15, 200, 0, 30, ""));
+            soci313.tutorialsList.Add(new Tutorial(soci313, tbTut2_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci313.tutorialsList.Add(new Tutorial(soci313, tbTut2_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci313.tutorialsList.Add(new Tutorial(soci313, tbTut2_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci313.prerequisites.Add(soci201);
+            soci201.successors.Add(soci313);
+            allCourses.Add(soci313);
+
+            Course soci315 = new Course(315, "Introductory Social Statistics II", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "Multivariate statistics for survey data; and measurement issues in quantitative research. Topics include reliability, multivariate tabular analysis, multiple regression, dummy variable regression, statistical interaction and path analysis. In labs statistical software to test measurement and causal models will be used.");
+            soci315.lecturesList.Add(new Lecture(soci315, tbLec2_1, "Mark Curr", Campus.UniversityOfCalgary, "Social Science Rm 109", 59, 200, 0, 30, ""));
+            soci315.lecturesList.Add(new Lecture(soci315, tbLec2_2, "JaneDoe", Campus.UniversityOfCalgary, "Social Science Rm 109", 22, 200, 0, 30, ""));
+            soci315.tutorialsList.Add(new Tutorial(soci315, tbTut1_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci315.tutorialsList.Add(new Tutorial(soci315, tbTut1_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci315.tutorialsList.Add(new Tutorial(soci315, tbTut1_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci315.prerequisites.Add(soci311);
+            soci311.successors.Add(soci315);
+            allCourses.Add(soci315);
+
+            Course soci325 = new Course(325, "Introduction to Deviance and Social Control", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "The presentation and analysis of theories of criminality and of non-criminal deviance, methods to uncover the incidence of deviance and criminality, a survey of forms of deviant and criminal behaviours, and the social and institutional responses to them.");
+            soci325.lecturesList.Add(new Lecture(soci325, tbLec2_1, "Mark Curr", Campus.UniversityOfCalgary, "Social Science Rm 109", 59, 200, 0, 30, ""));
+            soci325.lecturesList.Add(new Lecture(soci325, tbLec2_2, "JaneDoe", Campus.UniversityOfCalgary, "Social Science Rm 109", 22, 200, 0, 30, ""));
+            soci325.tutorialsList.Add(new Tutorial(soci325, tbTut1_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci325.tutorialsList.Add(new Tutorial(soci325, tbTut1_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci325.tutorialsList.Add(new Tutorial(soci325, tbTut1_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci325.prerequisites.Add(soci201);
+            soci201.successors.Add(soci325);
+            allCourses.Add(soci325);
+
+            Course soci327 = new Course(327, "Introduction to Criminal Justice", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "Introduction to the field of criminal justice in Canada from a sociological perspective. May include: examination of the definitions of crime; crime measurement; institutional responses to crime by the police, the courts and correctional services; and alternatives to the justice model.");
+            soci327.lecturesList.Add(new Lecture(soci327, tbLec3_1, "Mark Curr", Campus.UniversityOfCalgary, "Social Science Rm 109", 59, 200, 0, 30, ""));
+            soci327.lecturesList.Add(new Lecture(soci327, tbLec3_2, "JaneDoe", Campus.UniversityOfCalgary, "Social Science Rm 109", 22, 200, 0, 30, ""));
+            soci327.tutorialsList.Add(new Tutorial(soci327, tbTut2_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci327.tutorialsList.Add(new Tutorial(soci327, tbTut2_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci327.tutorialsList.Add(new Tutorial(soci327, tbTut2_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci327.prerequisites.Add(soci201);
+            soci201.successors.Add(soci327);
+            allCourses.Add(soci327);
+
+            Course soci329 = new Course(329, "The Sociology of Law", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "An introduction to sociological problems regarding the origin, impact and definition of law, dispute resolution, and the relationship between law and social change.");
+            soci329.lecturesList.Add(new Lecture(soci329, tbLec1_1, "Mark Curr", Campus.UniversityOfCalgary, "Social Science Rm 109", 59, 200, 0, 30, ""));
+            soci329.lecturesList.Add(new Lecture(soci329, tbLec1_2, "JaneDoe", Campus.UniversityOfCalgary, "Social Science Rm 109", 22, 200, 0, 30, ""));
+            soci329.tutorialsList.Add(new Tutorial(soci329, tbTut1_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci329.tutorialsList.Add(new Tutorial(soci329, tbTut1_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci329.tutorialsList.Add(new Tutorial(soci329, tbTut1_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci329.prerequisites.Add(soci201);
+            soci201.successors.Add(soci329);
+            allCourses.Add(soci329);
+
+            Course soci331 = new Course(331, "Classical Sociological Theory", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "The development of sociological theory from the nineteenth century to the Second World War.");
+            soci315.lecturesList.Add(new Lecture(soci331, tbLec3_1, "Mark Curr", Campus.UniversityOfCalgary, "Social Science Rm 109", 100, 200, 0, 30, ""));
+            soci315.lecturesList.Add(new Lecture(soci331, tbLec3_2, "JaneDoe", Campus.UniversityOfCalgary, "Social Science Rm 109", 24, 200, 0, 30, ""));
+            soci315.tutorialsList.Add(new Tutorial(soci331, tbTut2_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci315.tutorialsList.Add(new Tutorial(soci331, tbTut2_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci315.tutorialsList.Add(new Tutorial(soci331, tbTut2_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci315.prerequisites.Add(soci201);
+            soci201.successors.Add(soci331);
+            allCourses.Add(soci331);
+
+            Course soci333 = new Course(331, "Contemporary Sociological Theory", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "The development of sociological theory from the Second World War to the present.");
+            soci333.lecturesList.Add(new Lecture(soci333, tbLec1_1, "Mark Curr", Campus.UniversityOfCalgary, "Social Science Rm 109", 100, 200, 0, 30, ""));
+            soci333.lecturesList.Add(new Lecture(soci333, tbLec1_2, "JaneDoe", Campus.UniversityOfCalgary, "Social Science Rm 109", 24, 200, 0, 30, ""));
+            soci333.tutorialsList.Add(new Tutorial(soci333, tbTut1_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci333.tutorialsList.Add(new Tutorial(soci333, tbTut1_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci333.tutorialsList.Add(new Tutorial(soci333, tbTut1_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci333.prerequisites.Add(soci331);
+            soci331.successors.Add(soci333);
+            allCourses.Add(soci333);
+
+            Course soci421 = new Course(421, "Topics in Deviance and Criminology", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "Advanced study of contemporary issues in the research in deviance and crime.");
+            soci421.lecturesList.Add(new Lecture(soci421, tbLec2_1, "Samuel Baker", Campus.UniversityOfCalgary, "Social Science Rm 109", 100, 200, 0, 30, ""));
+            soci421.lecturesList.Add(new Lecture(soci421, tbLec2_2, "Samuel Baker", Campus.UniversityOfCalgary, "Social Science Rm 109", 24, 200, 0, 30, ""));
+            soci421.tutorialsList.Add(new Tutorial(soci421, tbTut2_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci421.tutorialsList.Add(new Tutorial(soci421, tbTut2_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci421.tutorialsList.Add(new Tutorial(soci421, tbTut2_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci421.prerequisites.Add(soci313);
+            soci421.prerequisites.Add(soci315);
+            soci421.prerequisites.Add(soci325);
+            soci421.prerequisites.Add(soci331);
+            soci421.prerequisites.Add(soci333);
+            soci313.successors.Add(soci421);
+            soci315.successors.Add(soci421);
+            soci325.successors.Add(soci421);
+            soci331.successors.Add(soci421);
+            soci333.successors.Add(soci421);
+            allCourses.Add(soci421);
+
+            Course soci423 = new Course(423, "The Sociology of Youth Crime", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "Explanations of the criminal activities of young people including an assessment of treatment strategies and legal regimes developed in response to this behaviour.");
+            soci423.lecturesList.Add(new Lecture(soci423, tbLec3_1, "Samuel Baker", Campus.UniversityOfCalgary, "Social Science Rm 109", 100, 200, 0, 30, ""));
+            soci423.lecturesList.Add(new Lecture(soci423, tbLec3_2, "Samuel Baker", Campus.UniversityOfCalgary, "Social Science Rm 109", 24, 200, 0, 30, ""));
+            soci423.tutorialsList.Add(new Tutorial(soci423, tbTut1_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci423.tutorialsList.Add(new Tutorial(soci423, tbTut1_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci423.tutorialsList.Add(new Tutorial(soci423, tbTut1_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci423.prerequisites.Add(soci313);
+            soci423.prerequisites.Add(soci315);
+            soci423.prerequisites.Add(soci325);
+            soci423.prerequisites.Add(soci331);
+            soci423.prerequisites.Add(soci333);
+            soci313.successors.Add(soci423);
+            soci315.successors.Add(soci423);
+            soci325.successors.Add(soci423);
+            soci331.successors.Add(soci423);
+            soci333.successors.Add(soci423);
+            allCourses.Add(soci423);
+
+
+            Course soci425 = new Course(425, "The Sociology of Violence", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "An exploration of violence in a variety of situations and social institutions and more general patterns of victimization in contemporary society.");
+            soci425.lecturesList.Add(new Lecture(soci425, tbLec1_1, "Samuel Baker", Campus.UniversityOfCalgary, "Social Science Rm 109", 100, 200, 0, 30, ""));
+            soci425.lecturesList.Add(new Lecture(soci425, tbLec1_2, "Samuel Baker", Campus.UniversityOfCalgary, "Social Science Rm 109", 24, 200, 0, 30, ""));
+            soci425.tutorialsList.Add(new Tutorial(soci425, tbTut2_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci425.tutorialsList.Add(new Tutorial(soci425, tbTut2_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci425.tutorialsList.Add(new Tutorial(soci425, tbTut2_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci425.prerequisites.Add(soci313);
+            soci425.prerequisites.Add(soci315);
+            soci425.prerequisites.Add(soci325);
+            soci425.prerequisites.Add(soci331);
+            soci425.prerequisites.Add(soci333);
+            soci313.successors.Add(soci425);
+            soci315.successors.Add(soci425);
+            soci325.successors.Add(soci425);
+            soci331.successors.Add(soci425);
+            soci333.successors.Add(soci425);
+            allCourses.Add(soci425);
+
+            Course soci427 = new Course(427, "The Social Organization of Criminal Justice", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "Comparative social organization of the criminal justice system from a sociological perspective; special attention to and analysis of the structure of the Canadian criminal justice system.");
+            soci427.lecturesList.Add(new Lecture(soci427, tbLec2_1, "Samuel Baker", Campus.UniversityOfCalgary, "Social Science Rm 109", 100, 200, 0, 30, ""));
+            soci427.lecturesList.Add(new Lecture(soci427, tbLec2_2, "Samuel Baker", Campus.UniversityOfCalgary, "Social Science Rm 109", 24, 200, 0, 30, ""));
+            soci427.tutorialsList.Add(new Tutorial(soci427, tbTut1_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci427.tutorialsList.Add(new Tutorial(soci427, tbTut1_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci427.tutorialsList.Add(new Tutorial(soci427, tbTut1_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci427.prerequisites.Add(soci313);
+            soci427.prerequisites.Add(soci315);
+            soci427.prerequisites.Add(soci325);
+            soci427.prerequisites.Add(soci331);
+            soci427.prerequisites.Add(soci333);
+            soci313.successors.Add(soci427);
+            soci315.successors.Add(soci427);
+            soci325.successors.Add(soci427);
+            soci331.successors.Add(soci427);
+            soci333.successors.Add(soci427);
+            allCourses.Add(soci427);
+
+            Course chem201 = new Course(201, "General Chemistry: Structure and Bonding", Faculty.Science, Department.CHEM, Course.departmentConsent.NONE, 3, "An introduction to university chemistry from theoretical and practical perspectives, that focuses on an exploration of the fundamental links between electronic structure, chemical bonding, molecular structure and the interactions of molecules using inorganic and organic examples.");
+            chem201.lecturesList.Add(new Lecture(chem201, tbLec1_1, "Miranda Frizzle", Campus.UniversityOfCalgary, "Science Theatres 140", 100, 200, 0, 30, ""));
+            chem201.lecturesList.Add(new Lecture(chem201, tbLec1_2, "Miranda Frizzle", Campus.UniversityOfCalgary, "Science Theatres 140", 24, 200, 0, 30, ""));
+            chem201.tutorialsList.Add(new Tutorial(chem201, tbTut2_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            chem201.tutorialsList.Add(new Tutorial(chem201, tbTut2_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            chem201.tutorialsList.Add(new Tutorial(chem201, tbTut2_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            chem201.labsList.Add(new Lab(chem201, tbLab1, "", Campus.UniversityOfCalgary, "EEEL 200", 5, 30, 0, 0, ""));
+            chem201.labsList.Add(new Lab(chem201, tbLab3, "", Campus.UniversityOfCalgary, "EEEL 201", 5, 30, 0, 0, ""));
+            student.coursesTaken.Add(chem201);
+            allCourses.Add(chem201);
+
+            Course cpsc217 = new Course(217, "Introduction to Computer Science for Multidisciplinary Studies I", Faculty.Science, Department.CPSC, Course.departmentConsent.NONE, 3, "Introduction to problem solving, analysis and design of small-scale computational systems and implementation using a procedural programming language. For students wishing to combine studies in computer science with studies in other disciplines.");
+            cpsc217.lecturesList.Add(new Lecture(cpsc217, tbLec2_1, "Miranda Frizzle", Campus.WebBased, "", 100, 200, 0, 30, ""));
+            cpsc217.lecturesList.Add(new Lecture(cpsc217, tbLec2_2, "Miranda Frizzle", Campus.WebBased, "", 24, 200, 0, 30, ""));
+            cpsc217.tutorialsList.Add(new Tutorial(cpsc217, tbTut1_1, "", Campus.WebBased, "", 5, 30, 0, 0, ""));
+            cpsc217.tutorialsList.Add(new Tutorial(cpsc217, tbTut1_2, "", Campus.WebBased, "", 5, 30, 0, 0, ""));
+            cpsc217.tutorialsList.Add(new Tutorial(cpsc217, tbTut1_3, "", Campus.WebBased, "", 5, 30, 0, 0, ""));
+            student.coursesTaken.Add(cpsc217);
+            allCourses.Add(cpsc217);
 
         }
 
@@ -121,14 +295,27 @@ namespace RockEnroll
             }
             return result;
         }
-        public static void AddCourse(Course course)
+        public static void AddCourse(Course course, bool view = false)
         {
-            //find which lecture and tutorial time fit
-            int lecNum = FindAvailableSection(course.lecturesList);
-            int tutNum = FindAvailableSection(course.tutorialsList);
-            int labNum = FindAvailableSection(course.labsList);
+            int lecNum = 0;
+            int tutNum = 0;
+            int labNum = 0;
+            if (!view)
+            {
+                //find which lecture and tutorial time fit
+                lecNum = FindAvailableSection(course.lecturesList);
+                tutNum = FindAvailableSection(course.tutorialsList);
+                labNum = FindAvailableSection(course.labsList);
+            }
 
             ClassInstance c = new ClassInstance(course, CurrentTerm, lecNum, tutNum, labNum);
+            student.currentSchedule.Add(c);
+            _coursePage.AddClass(c);
+        }
+
+        public static void AddCourse(ClassInstance c)
+        {
+
             student.currentSchedule.Add(c);
             _coursePage.AddClass(c);
         }
@@ -153,6 +340,7 @@ namespace RockEnroll
             c.lectureNum = lecNum;
             c.tutorialNum = tutNum;
             c.labNum = labNum;
+            _coursePage.updateSections();
         }
 
     }

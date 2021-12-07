@@ -10,9 +10,12 @@
     <None Remove="Resources\bell.png" />
     <None Remove="Resources\bell2.png" />
     <None Remove="Resources\checkmark.png" />
+    <None Remove="Resources\completed.png" />
     <None Remove="Resources\error.png" />
+    <None Remove="Resources\in-progress.png" />
     <None Remove="Resources\pin.png" />
     <None Remove="Resources\pin2.png" />
+    <None Remove="Resources\plus.png" />
     <None Remove="Resources\search.png" />
     <None Remove="Resources\trash-can.png" />
 	<None Remove="Resources\inCart.png" />
@@ -20,15 +23,19 @@
 	<None Remove="Resources\swap.png" />
 	<None Remove="Resources\drop.png" />
 	<None Remove="Resources\enrollmentLegend.png" />
+	<None Remove="Resources\warning.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\bell.png" />
     <Resource Include="Resources\bell2.png" />
     <Resource Include="Resources\checkmark.png" />
+    <Resource Include="Resources\completed.png" />
     <Resource Include="Resources\error.png" />
+    <Resource Include="Resources\in-progress.png" />
     <Resource Include="Resources\pin.png" />
     <Resource Include="Resources\pin2.png" />
+    <Resource Include="Resources\plus.png" />
     <Resource Include="Resources\search.png" />
     <Resource Include="Resources\trash-can.png" />
 	<Resource Include="Resources\inCart.png" />
@@ -36,6 +43,7 @@
 	<Resource Include="Resources\swap.png" />
 	<Resource Include="Resources\drop.png" />
 	<Resource Include="Resources\enrollmentLegend.png" />
+	<Resource Include="Resources\warning.png" />
   </ItemGroup>
 
   <ItemGroup>

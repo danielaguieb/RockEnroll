@@ -26,6 +26,9 @@
     <Compile Update="SectionComboBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="SectionDescription.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="AcademicRequirements.xaml">
@@ -53,6 +56,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SectionComboBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SectionDescription.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

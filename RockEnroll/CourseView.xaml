@@ -4,66 +4,117 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RockEnroll"
+             Name ="crsView"
+             Margin="5,0,0,5"
+            
              >
 
     <UserControl.Resources>
+        <Style x:Key ="RoundLabelStyle" TargetType= "{x:Type Label}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Label}">
+                        <Border BorderThickness="0.5" CornerRadius="3" Background="{TemplateBinding Background}">
+                            <TextBlock Text="{TemplateBinding Content}" FontSize="13" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
+        <Style x:Key ="ToggleButtonStyle" TargetType= "{x:Type ToggleButton}">
+
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="Resources\bell.png" Stretch="Uniform"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border Width="{TemplateBinding Width}"
+                Height="{TemplateBinding Height}"
+                Background="{TemplateBinding Background}" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="Resources\bell2.png" Stretch="Uniform"/>
+                        </Setter.Value>
+
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="False">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="Resources\bell.png" Stretch="Uniform"/>
+                        </Setter.Value>
+
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
-    <Grid HorizontalAlignment="Stretch" Margin="0,5,0,5">
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Name ="courseGrid" Width="auto" />
+            <ColumnDefinition  Width="*"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
-        <CheckBox Name="CourseCheckBox" Grid.Column="0" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,0,15,0" Height="16" Click="checkBoxAction"/>
-        <Border Grid.Column ="1" BorderThickness="1" BorderBrush="Black" CornerRadius="5" Margin="5,0,0,0" Grid.ColumnSpan="2">
-            <Expander  VerticalAlignment="Center" FlowDirection="RightToLeft" HorizontalAlignment="Stretch">
+        <CheckBox Name="CourseCheckBox" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,5,0" Click="checkBoxAction" HorizontalAlignment="Left"/>
+        <Border Grid.Column ="1" BorderThickness="1" BorderBrush="Black" CornerRadius="5">
+            <Expander Name="courseExpander"   VerticalAlignment="Center" FlowDirection="RightToLeft" HorizontalAlignment="Stretch" MinWidth="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Border}}, Path=ActualWidth}">
                 <Expander.Header>
-                    <Grid FlowDirection="LeftToRight" Margin="5,0,0,0" >
+                    <Grid FlowDirection="LeftToRight" MinWidth="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Border}}, Path=ActualWidth}" Margin="0,5,0,5">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="1*" MinWidth="80" />
+                            <ColumnDefinition Width="4*" MinWidth="200"/>
+                            <ColumnDefinition Width="3*" MinWidth="200"/>
+                            <ColumnDefinition Width="1*" MinWidth="60" />
 
                         </Grid.ColumnDefinitions>
-                        <Label x:Name="courseNameText" Content="COUR &#xA;NUM" HorizontalContentAlignment="Center" VerticalAlignment="Center" MinHeight="53" MinWidth="58" FontSize="14" Background="#FF84DAD6"  Margin="5,0,0,0" Grid.Column="0" />
-                        <Grid Grid.Column="1" HorizontalAlignment="Left" Width="350">
+                        <Label x:Name="courseNameText" Content="COUR &#xA;NUM" HorizontalContentAlignment="Center" VerticalAlignment="Center" Height="50" Width="50" FontSize="14" BorderBrush="Black" BorderThickness="1" Margin="25,0,0,0" Grid.Column="0" />
+                        <Grid Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,0,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
-                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                                <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <Label x:Name="courseTitleText"  Grid.Row="0" Content="Course Title" Width="300" FontWeight="Bold" FontSize="15" Margin="0,0,54,26" Grid.RowSpan="2"/>
-                            <Label x:Name="campusText" Content="Campus" MinWidth="200" Grid.Row="1" Margin="0,0,97,0" VerticalAlignment="Top" />
-                            <Label x:Name="actionText" Content="In Cart" Grid.Row="1" Width="70" Margin="280,0,5,0" VerticalAlignment="Center" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Name="courseTitleText"  Grid.Column="0" Text="Course Title" FontWeight="Bold" FontSize="17" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
+                                <Label x:Name="actionText" Style ="{StaticResource RoundLabelStyle}" Content="In Cart" Grid.Column="1" MinWidth="70" HorizontalAlignment ="Left" VerticalAlignment="Bottom" Margin="10,0,0,0" />
+
+                            </Grid>
+                            <Label x:Name="campusText" Content="Campus"  Grid.Row="1" Margin="0,0,0,0" VerticalAlignment="Center" />
+                            <Label x:Name="mprereqText" Content=""  Grid.Row="2"  VerticalAlignment="Top" HorizontalAlignment ="Left"  />
+                            
                         </Grid>
-                        <Grid Name="sectionsGrid" Grid.Column="2">
+                        <Grid Name="sectionsGrid" Grid.Column="2" HorizontalAlignment="Right">
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <Label Content="Show All Times..."  FontSize="9" HorizontalAlignment="Left" Margin="1,0,0,0" Grid.Row="3" VerticalAlignment="Center" Width="75"/>
+                            <Label Content="Show All Times..." HorizontalAlignment="Left" Margin="1,0,0,0" Grid.Row="3" VerticalAlignment="Center" MinWidth="75"/>
 
                         </Grid>
-                        <Grid Grid.Column="3" Margin="3,0,0,0">
+                        <Grid Grid.Column="3">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
-                                <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="25" MinWidth="29" >
-                                <Button.BorderBrush>
-                                    <ImageBrush/>
-                                </Button.BorderBrush>
-                                <Button.Background>
-                                    <ImageBrush ImageSource="Resources\bell.png" Stretch="Uniform"/>
-                                </Button.Background>
-                            </Button>
-                            <Button x:Name="actionButton" HorizontalAlignment="Left" VerticalAlignment="Center" MinHeight="25" MinWidth="29" Grid.Column="1" Click="actionCourse">
+                            <ToggleButton Style ="{StaticResource ToggleButtonStyle}" VerticalAlignment="Center" MinHeight="25" MinWidth="29" >
+                            </ToggleButton>
+                            <Button x:Name="actionButton"  VerticalAlignment="Center" MinHeight="35" MinWidth="30" Grid.Column="1" Click="actionCourse">
                                 <Button.BorderBrush>
                                     <ImageBrush/>
                                 </Button.BorderBrush>
@@ -71,7 +122,7 @@
                                     <ImageBrush ImageSource="Resources\trash-can.png" Stretch="Uniform"/>
                                 </Button.Background>
                             </Button>
-                            <StackPanel Name="panelDropDown" Margin="28,0,0,0" Visibility="Collapsed" Grid.ColumnSpan="3">
+                            <StackPanel Name="panelDropDown" Visibility="Collapsed" Grid.ColumnSpan="3">
                                 <Menu   Name="menuDropDown"  Visibility="Hidden"  HorizontalAlignment="Stretch" Margin="0,10,0,0"  VerticalAlignment="Center" >
                                     <Menu.ItemsPanel>
                                         <ItemsPanelTemplate>
@@ -113,8 +164,39 @@
                     </Grid>
 
                 </Expander.Header>
+                <Grid FlowDirection="LeftToRight">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid Name="classInfoGrid" Grid.Row="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                        </Grid>
+                        <Grid Name="courseInfoGrid" Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row ="3" Name="courseDesc" TextWrapping="Wrap" MaxWidth="{Binding ElementName=crsView,Path=ActualWidth}" Margin="5,0,5,0"/>
+                        </Grid>
+
+
+
+                    </Grid>
+                </Grid>
+
             </Expander>
+            
         </Border>
+        
 
     </Grid>
 </UserControl>
