@@ -23,6 +23,29 @@ namespace RockEnroll
         public AcademicRequirements()
         {
             InitializeComponent();
+            InitializeReqList();
         }
+
+        private void InitializeReqList()
+        {
+            ReqExpander q = insertreqhere.Children[0] as ReqExpander;
+            q.reqname.Text = "Core Requirments";
+
+            q = insertreqhere.Children[1] as ReqExpander;
+            q.reqname.Text = "Advanced-Level Sociology";
+
+            q = insertreqhere.Children[2] as ReqExpander;
+            q.reqname.Text = "Sociology Options";
+
+            q = insertreqhere.Children[3] as ReqExpander;
+            q.reqname.Text = "Options";
+
+            q = insertreqhere.Children[4] as ReqExpander;
+            q.reqname.Text = "Faculty of Science Options";
+            q.bordee.Background = Brushes.LightGreen;
+            q.check.Opacity = 100;
+        }
+
+    
     }
 }

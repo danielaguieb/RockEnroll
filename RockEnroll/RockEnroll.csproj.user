@@ -8,6 +8,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="ReqExpander.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="SearchResultPanel.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -44,6 +47,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ReqExpander.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SearchResultPanel.xaml">
