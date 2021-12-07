@@ -18,7 +18,7 @@ namespace RockEnroll
         {
             get { return currentTerm; }
             set { currentTerm = value; }
-        } 
+        }
         public static CourseList _coursePage = new CourseList();
         public static AcademicRequirements _reqPage = new AcademicRequirements();
         public static Schedules _schedulePage = new Schedules();
@@ -61,23 +61,24 @@ namespace RockEnroll
 
             // add courses here
             Course soci201 = new Course(201, "Introductory Sociology", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "Sociology as a discipline examines how the society in which we live influences our thinking and behaviour. An introduction to sociology through the study of society, social institutions, group behaviour and social change.");
-            soci201.lecturesList.Add(new Lecture(soci201, tbLec1_1, "John Smith", Campus.UniversityOfCalgary,"Social Science Rm 109", 50, 200, 0, 30, ""));
+            soci201.lecturesList.Add(new Lecture(soci201, tbLec1_1, "John Smith", Campus.UniversityOfCalgary, "Social Science Rm 109", 50, 200, 0, 30, ""));
             soci201.lecturesList.Add(new Lecture(soci201, tbLec1_2, "John Smith", Campus.UniversityOfCalgary, "Social Science Rm 109", 120, 200, 0, 30, ""));
-            soci201.tutorialsList.Add(new Tutorial(soci201, tbTut1_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0,0,""));
+            soci201.tutorialsList.Add(new Tutorial(soci201, tbTut1_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
             soci201.tutorialsList.Add(new Tutorial(soci201, tbTut1_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
             soci201.tutorialsList.Add(new Tutorial(soci201, tbTut1_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
             allCourses.Add(soci201);
             student.coursesTaken.Add(soci201);
 
-            Course soci321 = new Course(321, "Sociology of Health and Illness", Faculty.Arts, Department.SOCI,  Course.departmentConsent.OR, 3, "Introduction to social factors influencing health, illness, and medicine. Topics covered may include the organization of medical institutions and occupations, the socialization of medical professionals, the social construction of illness, social determinants of health, and comparative health care systems and policy.");
-            soci321.lecturesList.Add(new Lecture(soci321,tbLec1_1, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 50, 200, 0, 30, ""));
-            soci321.lecturesList.Add(new Lecture(soci321,tbLec1_2, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 120, 200, 0, 30, ""));
-            soci321.tutorialsList.Add(new Tutorial(soci321,tbTut2_1, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
-            soci321.tutorialsList.Add(new Tutorial(soci321,tbTut2_2, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
-            soci321.tutorialsList.Add(new Tutorial(soci321,tbTut2_3, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
+            Course soci321 = new Course(321, "Sociology of Health and Illness", Faculty.Arts, Department.SOCI, Course.departmentConsent.OR, 3, "Introduction to social factors influencing health, illness, and medicine. Topics covered may include the organization of medical institutions and occupations, the socialization of medical professionals, the social construction of illness, social determinants of health, and comparative health care systems and policy.");
+            soci321.lecturesList.Add(new Lecture(soci321, tbLec1_1, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 50, 200, 0, 30, ""));
+            soci321.lecturesList.Add(new Lecture(soci321, tbLec1_2, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 120, 200, 0, 30, ""));
+            soci321.tutorialsList.Add(new Tutorial(soci321, tbTut2_1, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
+            soci321.tutorialsList.Add(new Tutorial(soci321, tbTut2_2, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
+            soci321.tutorialsList.Add(new Tutorial(soci321, tbTut2_3, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
             soci321.prerequisites.Add(soci201);
             soci201.successors.Add(soci321);
             allCourses.Add(soci321);
+
 
             Course soci311 = new Course(311, "Introductory Social Statistics I", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "Univariate and bivariate statistics for survey data. Topics include cross tabular analysis, the normal distribution, confidence intervals for means, hypothesis testing, Chi-squared and F distributions and bivariate linear regression analysis. In labs statistical software to analyze survey data will be used.");
             soci311.lecturesList.Add(new Lecture(soci311, tbLec3_1, "Mark Curr", Campus.UniversityOfCalgary, "Social Science Rm 109", 100, 200, 0, 30, ""));
@@ -252,10 +253,30 @@ namespace RockEnroll
             student.coursesTaken.Add(cpsc217);
             allCourses.Add(cpsc217);
 
+
+            Course test211 = new Course(211, "Test Course", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "Test Course for wait list testing");
+            test211.lecturesList.Add(new Lecture(test211, tbLec1_1, "Kylie Sicat", Campus.UniversityOfCalgary, "Social Science Rm 109", 200, 200, 0, 30, ""));
+            test211.lecturesList.Add(new Lecture(test211, tbLec1_2, "Kylie Kylie", Campus.UniversityOfCalgary, "Social Science Rm 109", 199, 200, 0, 30, ""));
+            test211.tutorialsList.Add(new Tutorial(test211, tbTut1_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            test211.tutorialsList.Add(new Tutorial(test211, tbTut1_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            test211.tutorialsList.Add(new Tutorial(test211, tbTut1_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            allCourses.Add(test211);
+
+
+        }
+
+        public static bool checkClassCapacity(int courseId)
+        {
+            //TODO - we need the lecture too
+            // get the Course based on the courseId
+            if (courseId == 211) // forcing to show wait listed only for 1 course
+                return false;
+            else
+                return true;
         }
 
         //Naive solution for finding available section
-        public static int FindAvailableSection<T>(List<T> times) where T:Assignable
+        public static int FindAvailableSection<T>(List<T> times) where T : Assignable
         {
             //Need to add conflict functionality
             //int result = -1;
@@ -335,7 +356,7 @@ namespace RockEnroll
             student.currentSchedule.Remove(c);
         }
 
-        public static void SwapSection(ClassInstance c, int lecNum , int tutNum, int labNum)
+        public static void SwapSection(ClassInstance c, int lecNum, int tutNum, int labNum)
         {
             c.lectureNum = lecNum;
             c.tutorialNum = tutNum;
@@ -403,7 +424,7 @@ namespace RockEnroll
         [Description("Statistics")] STAT
     }
 
-    
+
     public class Course
     {
 
@@ -471,7 +492,7 @@ namespace RockEnroll
             this.successors = course.successors;
             this.lecturesList = course.lecturesList;
             this.tutorialsList = course.tutorialsList;
-            this.labsList =course.labsList;
+            this.labsList = course.labsList;
             this.courseDescription = course.courseDescription;
             this.courseUnits = 6;
         }
@@ -503,7 +524,7 @@ namespace RockEnroll
             this.waitListed = false;
         }
 
-        public ClassInstance(Course course, Terms term, int lecture,  int tutorial = 0, int lab = 0) : base(course)
+        public ClassInstance(Course course, Terms term, int lecture, int tutorial = 0, int lab = 0) : base(course)
         {
             this.lectureNum = lecture;
             this.tutorialNum = tutorial;
@@ -539,7 +560,7 @@ namespace RockEnroll
             }
         }
         private string endTime;
-        public string EndTime{ get { return endTime; } set { endTime = value; } }
+        public string EndTime { get { return endTime; } set { endTime = value; } }
 
         //Monday = 16, Tuesday = 8, Wednesday = 4, Thursday = 2, Friday = 1
         //example: Monday, Wednesday, Friday class, days = 16 + 4 + 1= 21
@@ -553,41 +574,41 @@ namespace RockEnroll
                     Console.WriteLine("WARNING: days value invalid");
                 }
 
-                if ((value ^ 0b1) == value-1)
+                if ((value ^ 0b1) == value - 1)
                 {
                     friday = true;
                 }
 
-                if ((value ^ 0b10) == value-2)
+                if ((value ^ 0b10) == value - 2)
                 {
                     thursday = true;
                 }
 
-                if ((value ^ 0b100) == value-4)
+                if ((value ^ 0b100) == value - 4)
                 {
                     wednesday = true;
                 }
 
-                if ((value ^ 0b1000) == value-8)
+                if ((value ^ 0b1000) == value - 8)
                 {
                     tuesday = true;
                 }
 
-                if ((value ^ 0b10000) == value-16)
+                if ((value ^ 0b10000) == value - 16)
                 {
                     monday = true;
                 }
             }
         }
 
-            public TimeBlock(int days, string startTime, TimeSpan time)
-            {
+        public TimeBlock(int days, string startTime, TimeSpan time)
+        {
             this.days = days;
             this.startTime = startTime;
             this.endTime = TimeSpan.Parse(startTime).Add(time).ToString(@"hh\:mm");
-            }
+        }
 
-        
+
 
         public bool monday { get; set; }
         public bool tuesday { get; set; }
@@ -610,7 +631,7 @@ namespace RockEnroll
         public int currentStudents { get; set; }
 
         public string notes { get; set; }
-      
+
     }
 
     public class Lecture : Assignable
@@ -655,7 +676,7 @@ namespace RockEnroll
     public class Lab : Assignable
     {
 
-        public Lab(Course course, TimeBlock time, string instructor, Campus campus,  string room, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist, string note)
+        public Lab(Course course, TimeBlock time, string instructor, Campus campus, string room, int currentStudents, int maxStudents, int currentWaitlist, int maxWaitlist, string note)
         {
             this.course = course;
             this.time = time;

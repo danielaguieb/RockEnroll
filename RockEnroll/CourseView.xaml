@@ -132,28 +132,28 @@
                                     <MenuItem Click="inCartAction">
                                         <MenuItem.Header>
                                             <DockPanel>
-                                                <Image Height="32" Source="Resources\inCart.png"></Image>
+                                                <Image Height="29" Source="Resources\inCart.png"></Image>
                                             </DockPanel>
                                         </MenuItem.Header>
                                     </MenuItem>
                                     <MenuItem Click="enrollAction" >
                                         <MenuItem.Header>
                                             <DockPanel>
-                                                <Image Height="32" Source="Resources\enroll.png"></Image>
+                                                <Image Height="29" Source="Resources\enroll.png"></Image>
                                             </DockPanel>
                                         </MenuItem.Header>
                                     </MenuItem>
                                     <MenuItem Click="dropAction">
                                         <MenuItem.Header>
                                             <DockPanel>
-                                                <Image Height="32" Source="Resources\drop.png"></Image>
+                                                <Image Height="29" Source="Resources\drop.png"></Image>
                                             </DockPanel>
                                         </MenuItem.Header>
                                     </MenuItem>
                                     <MenuItem Click="swapAction">
                                         <MenuItem.Header>
                                             <DockPanel>
-                                                <Image Height="32" Source="Resources\swap.png"></Image>
+                                                <Image Height="29" Source="Resources\swap.png"></Image>
                                             </DockPanel>
                                         </MenuItem.Header>
                                     </MenuItem>
