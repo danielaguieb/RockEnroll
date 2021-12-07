@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="40" d:DesignWidth="800">
     
-    <Border Name="bordee" CornerRadius="5" BorderBrush="Black" Background="DimGray" BorderThickness="1">
+    <Border Name="bordee" CornerRadius="5" BorderBrush="Black" Background="LightGray" BorderThickness="1">
         <Expander Name="expandee">
             <Expander.Header>
                 <Grid Width="{Binding ElementName=expandee, Path=ActualWidth}" Height="35">
@@ -23,7 +23,6 @@
             </Expander.Header>
             <Expander.Content>
                 <StackPanel Name="reqs">
-                    <TextBlock Text="Test"/>
                 </StackPanel>
             </Expander.Content>
 

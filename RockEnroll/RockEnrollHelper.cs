@@ -140,16 +140,16 @@ namespace RockEnroll
             allCourses.Add(soci329);
 
             Course soci331 = new Course(331, "Classical Sociological Theory", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "The development of sociological theory from the nineteenth century to the Second World War.");
-            soci315.lecturesList.Add(new Lecture(soci331, tbLec3_1, "Mark Curr", Campus.UniversityOfCalgary, "Social Science Rm 109", 100, 200, 0, 30, ""));
-            soci315.lecturesList.Add(new Lecture(soci331, tbLec3_2, "JaneDoe", Campus.UniversityOfCalgary, "Social Science Rm 109", 24, 200, 0, 30, ""));
-            soci315.tutorialsList.Add(new Tutorial(soci331, tbTut2_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
-            soci315.tutorialsList.Add(new Tutorial(soci331, tbTut2_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
-            soci315.tutorialsList.Add(new Tutorial(soci331, tbTut2_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
-            soci315.prerequisites.Add(soci201);
+            soci331.lecturesList.Add(new Lecture(soci331, tbLec3_1, "Mark Curr", Campus.UniversityOfCalgary, "Social Science Rm 109", 100, 200, 0, 30, ""));
+            soci331.lecturesList.Add(new Lecture(soci331, tbLec3_2, "JaneDoe", Campus.UniversityOfCalgary, "Social Science Rm 109", 24, 200, 0, 30, ""));
+            soci331.tutorialsList.Add(new Tutorial(soci331, tbTut2_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci331.tutorialsList.Add(new Tutorial(soci331, tbTut2_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci331.tutorialsList.Add(new Tutorial(soci331, tbTut2_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci331.prerequisites.Add(soci201);
             soci201.successors.Add(soci331);
             allCourses.Add(soci331);
 
-            Course soci333 = new Course(331, "Contemporary Sociological Theory", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "The development of sociological theory from the Second World War to the present.");
+            Course soci333 = new Course(333, "Contemporary Sociological Theory", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "The development of sociological theory from the Second World War to the present.");
             soci333.lecturesList.Add(new Lecture(soci333, tbLec1_1, "Mark Curr", Campus.UniversityOfCalgary, "Social Science Rm 109", 100, 200, 0, 30, ""));
             soci333.lecturesList.Add(new Lecture(soci333, tbLec1_2, "JaneDoe", Campus.UniversityOfCalgary, "Social Science Rm 109", 24, 200, 0, 30, ""));
             soci333.tutorialsList.Add(new Tutorial(soci333, tbTut1_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
