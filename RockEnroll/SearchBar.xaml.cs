@@ -43,6 +43,11 @@ namespace RockEnroll
             searchBarResultsContainer.UpdateContents(Text);
             this.CaretBrush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
 
+            if (Text != placeHolderText)
+            {
+                searchBarResultsContainer.SetLocation(this.PointToScreen(new Point(0, 0)));
+            }
+
         }
 
         public void SearchBarLostFocus(object sender, RoutedEventArgs args)
