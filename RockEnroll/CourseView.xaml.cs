@@ -465,7 +465,8 @@ namespace RockEnroll
 
         private void showtimesClick(object sender, MouseButtonEventArgs e)
         {
-            tobeImplemented();
+            RockEnrollHelper.schedulePath = "Resources/showalltimes.png";
+            RockEnrollHelper._coursePage.updateScheduleImage();
 
         }
 

@@ -29,6 +29,9 @@ namespace RockEnroll
         public static List<Course> spring22Courses = new List<Course>();
         public static List<Course> summer22Courses = new List<Course>();
 
+        public static string timelinePath = "Resources/emptytimeline.png";
+        public static string schedulePath = "Resources/empty.png";
+
         // all courses list here; create courses first before adding them, to modify prereqs
         public static List<Course> allCourses = new List<Course>();
         public static void InitializeCourses()
@@ -71,9 +74,9 @@ namespace RockEnroll
             Course soci321 = new Course(321, "Sociology of Health and Illness", Faculty.Arts, Department.SOCI, Course.departmentConsent.OR, 3, "Introduction to social factors influencing health, illness, and medicine. Topics covered may include the organization of medical institutions and occupations, the socialization of medical professionals, the social construction of illness, social determinants of health, and comparative health care systems and policy.");
             soci321.lecturesList.Add(new Lecture(soci321, tbLec1_1, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 50, 200, 0, 30, ""));
             soci321.lecturesList.Add(new Lecture(soci321, tbLec1_2, "Jane Doe", Campus.UniversityOfCalgary, "Social Science Rm 18", 120, 200, 0, 30, ""));
-            soci321.tutorialsList.Add(new Tutorial(soci321, tbTut2_1, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
-            soci321.tutorialsList.Add(new Tutorial(soci321, tbTut2_2, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
-            soci321.tutorialsList.Add(new Tutorial(soci321, tbTut2_3, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
+            soci321.tutorialsList.Add(new Tutorial(soci321, tbTut1_1, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
+            soci321.tutorialsList.Add(new Tutorial(soci321, tbTut1_2, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
+            soci321.tutorialsList.Add(new Tutorial(soci321, tbTut1_3, "", Campus.UniversityOfCalgary, "Social Science Rm 06", 5, 30, 0, 0, ""));
             soci321.prerequisites.Add(soci201);
             soci201.successors.Add(soci321);
             allCourses.Add(soci321);
@@ -325,6 +328,13 @@ namespace RockEnroll
                 if (conflict)
                 {
                     conflicts.Add((c, lec1, tut1, lab1));
+                    schedulePath = "Resources/conflict.png"; 
+                    _coursePage.updateScheduleImage();
+                }
+                else
+                {
+                    schedulePath = "Resources/soci231-soci313.png";
+                    _coursePage.updateScheduleImage();
                 }
             }
 
@@ -387,17 +397,47 @@ namespace RockEnroll
 
             ClassInstance c = new ClassInstance(course, CurrentTerm, lecNum, tutNum, labNum);
             student.currentSchedule.Add(c);
-            _coursePage.AddClass(c);
+            switch (student.currentSchedule.Count())
+            {
+                case 0:
+                    timelinePath = "Resources/emptytimeline.png";
+                    schedulePath = "Resources/empty.png";
+                        break;
+                case 1:
+                    timelinePath = "Resources/soci321-timeline.png";
+                    schedulePath = "Resources/soci321.png";
+                    break;
+                case 2:
+                    timelinePath = "Resources/timeline.png";
+                    schedulePath = "Resources/soci321-soci313.png";
+                    break;
+            }
+            _coursePage.AddClass(c, view);
         }
 
-        public static void AddCourse(ClassInstance c)
+        public static void AddCourse(ClassInstance c, bool view = false)
         {
             if (student.currentSchedule.Contains(c))
             {
                 return;
             }
             student.currentSchedule.Add(c);
-            _coursePage.AddClass(c);
+            switch (student.currentSchedule.Count())
+            {
+                case 0:
+                    timelinePath = "Resources/emptytimeline.png";
+                    schedulePath = "Resources/empty.png";
+                    break;
+                case 1:
+                    timelinePath = "Resources/soci321-timeline.png";
+                    schedulePath = "Resources/soci321.png";
+                    break;
+                case 2:
+                    timelinePath = "Resources/timeline.png";
+                    schedulePath = "Resources/soci321-soci313.png";
+                    break;
+            }
+            _coursePage.AddClass(c, view);
         }
 
         public static void updateCoursePage()
@@ -406,7 +446,7 @@ namespace RockEnroll
             for (int i = 0; i < student.currentSchedule.Count(); i++)
             {
                 ClassInstance c = (ClassInstance)RockEnrollHelper.student.currentSchedule[i];
-                _coursePage.AddClass(c);
+                _coursePage.AddClass(c, false);
             }
         }
 

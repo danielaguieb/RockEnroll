@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.Windows.Resources;
 using System.Windows.Shapes;
+using Color = System.Windows.Media.Color;
 
 namespace RockEnroll
 {
@@ -27,34 +30,31 @@ namespace RockEnroll
             
         }
 
-        /*
-        public int findAvailableTime(Course course)
+        public void updateScheduleImage()
         {
-            for (int i = 0; i < course.lecturesList.Count(); i++) {
-                bool conflict = false;
-                for(int j = 0; j < student.currentSchedule.Count(); i++)
-                {
-                    int z = student.currentSchedule[j].lectureNum;
-                    if (course.lecturesList[i].time.Equals(student.currentSchedule[j].lecturesList[z].time))
-                    {
-                        conflict = true;
-                        break;
-                    }
-                }
-                if (!conflict)
-                {
-                    return i;
-                }
-            }
-            return 1;
+            changeImage(this.schedule, RockEnrollHelper.schedulePath);
         }
-        */
-        public void AddClass(ClassInstance c)
+
+        public void updateTimelineImage()
         {
-            CourseView view = new CourseView(ref c, true);
+            changeImage(this.timeline, RockEnrollHelper.timelinePath);
+        }
+
+        public static void changeImage(Image img, String resoureName)
+        {
+            Uri resourceUri = new Uri(resoureName, UriKind.Relative);
+            StreamResourceInfo streamInfo = Application.GetResourceStream(resourceUri);
+            BitmapFrame bitmap = BitmapFrame.Create(streamInfo.Stream);
+            img.Source = bitmap;
+        }
+        public void AddClass(ClassInstance c, bool v)
+        {
+            CourseView view = new CourseView(ref c, v);
             courseListViewer.RowDefinitions.Add(new RowDefinition());
             this.courseListViewer.Children.Add(view);
             Grid.SetRow(view, courseListViewer.RowDefinitions.Count - 1);
+            changeImage(this.schedule, RockEnrollHelper.schedulePath);
+            changeImage(this.timeline, RockEnrollHelper.timelinePath);
             displayConflict(view);
 
         }

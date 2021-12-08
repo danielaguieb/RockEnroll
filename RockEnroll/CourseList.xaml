@@ -11,7 +11,7 @@
     <Grid >
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width ="4*"/>
+                <ColumnDefinition Width ="3.5*"/>
                 <ColumnDefinition Width ="3*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -20,5 +20,13 @@
             <ScrollViewer Name="scrollViewer" Grid.Column="0" VerticalScrollBarVisibility="Hidden" Height="800">
                 <Grid Name ="courseListViewer" VerticalAlignment="Top"/>
             </ScrollViewer>
+            <Grid Grid.Column="1" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Image Name="timeline" Grid.Row="0" Source="Resources/emptytimeline.png" Stretch="Uniform"  Margin="20,0,5,50"/>
+            <Image Name="schedule" Grid.Row="1" Source="Resources/empty.png" Stretch="Uniform" Margin="20,0,5,100" />
+        </Grid>
         </Grid>
 </UserControl>

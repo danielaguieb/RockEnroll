@@ -29,7 +29,7 @@ namespace RockEnroll
         {
             //First expander
             ReqExpander q = insertreqhere.Children[0] as ReqExpander;
-            q.reqname.Text = "Core Requirments";
+            q.reqname.Text = "Core Requirements";
             ClassInstance c = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 311 && x.department == Department.SOCI), Terms.FALL2021, 1);
             CourseView n = new CourseView(ref c, true);
             q.reqs.Children.Add(n);
