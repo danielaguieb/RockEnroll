@@ -26,7 +26,7 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <Image Name="timeline" Grid.Row="0" Source="Resources/emptytimeline.png" Stretch="Uniform"  Margin="20,0,5,50"/>
-            <Image Name="schedule" Grid.Row="1" Source="Resources/empty.png" Stretch="Uniform" Margin="20,0,5,100" />
+            <Image Name="schedule" Grid.Row="1" Source="Resources/empty.png" Stretch="Uniform" Margin="20,0,5,100" MouseLeftButtonDown="changeCourse" />
         </Grid>
-        </Grid>
+    </Grid>
 </UserControl>

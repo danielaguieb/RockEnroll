@@ -330,11 +330,13 @@ namespace RockEnroll
                     conflicts.Add((c, lec1, tut1, lab1));
                     schedulePath = "Resources/conflict.png"; 
                     _coursePage.updateScheduleImage();
+                    _reqPage.updateScheduleImage();
                 }
                 else
                 {
-                    schedulePath = "Resources/soci231-soci313.png";
+                    schedulePath = "Resources/all.png";
                     _coursePage.updateScheduleImage();
+                    _reqPage.updateScheduleImage();
                 }
             }
 
@@ -415,10 +417,12 @@ namespace RockEnroll
                     break;
                 case 2:
                     timelinePath = "Resources/timeline.png";
-                    schedulePath = "Resources/soci321-soci313.png";
+                    schedulePath = "Resources/all.png";
                     break;
             }
             _coursePage.AddClass(c, view);
+            _reqPage.updateScheduleImage();
+            _reqPage.updateTimelineImage();
         }
 
         public static void AddCourse(ClassInstance c, bool view = false)
@@ -427,6 +431,22 @@ namespace RockEnroll
             {
                 return;
             }
+
+            int lecNum = 0;
+            int tutNum = 0;
+            int labNum = 0;
+            if (!view)
+            {
+                //find which lecture and tutorial time fit
+                lecNum = FindAvailableSection(c.lecturesList);
+                c.lectureNum = lecNum;
+                tutNum = FindAvailableSection(c.tutorialsList);
+                c.tutorialNum = tutNum;
+                labNum = FindAvailableSection(c.labsList);
+                c.labNum = labNum;
+            }
+
+
             student.currentSchedule.Add(c);
             switch (student.currentSchedule.Count())
             {
@@ -440,10 +460,12 @@ namespace RockEnroll
                     break;
                 case 2:
                     timelinePath = "Resources/timeline.png";
-                    schedulePath = "Resources/soci321-soci313.png";
+                    schedulePath = "Resources/all.png";
                     break;
             }
             _coursePage.AddClass(c, view);
+            _reqPage.updateScheduleImage();
+            _reqPage.updateTimelineImage();
         }
 
         public static void updateCoursePage()
@@ -459,6 +481,25 @@ namespace RockEnroll
         public static void RemoveCourse(ClassInstance c)
         {
             student.currentSchedule.Remove(c);
+            switch (student.currentSchedule.Count())
+            {
+                case 0:
+                    timelinePath = "Resources/emptytimeline.png";
+                    schedulePath = "Resources/empty.png";
+                    break;
+                case 1:
+                    timelinePath = "Resources/soci321-timeline.png";
+                    schedulePath = "Resources/soci321.png";
+                    break;
+                case 2:
+                    timelinePath = "Resources/timeline.png";
+                    schedulePath = "Resources/all.png";
+                    break;
+            }
+            RockEnrollHelper._coursePage.updateScheduleImage();
+            RockEnrollHelper._coursePage.updateTimelineImage();
+            _reqPage.updateScheduleImage();
+            _reqPage.updateTimelineImage();
         }
 
         public static void SwapSection(ClassInstance c, int lecNum, int tutNum, int labNum)

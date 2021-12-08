@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.Windows.Resources;
 using System.Windows.Shapes;
 
 namespace RockEnroll
@@ -25,18 +26,52 @@ namespace RockEnroll
             InitializeComponent();
         }
 
+        public void updateScheduleImage()
+        {
+            changeImage(this.schedule, RockEnrollHelper.schedulePath);
+        }
+
+        public void updateTimelineImage()
+        {
+            changeImage(this.timeline, RockEnrollHelper.timelinePath);
+        }
+
+        public static void changeImage(Image img, String resoureName)
+        {
+            Uri resourceUri = new Uri(resoureName, UriKind.Relative);
+            StreamResourceInfo streamInfo = Application.GetResourceStream(resourceUri);
+            BitmapFrame bitmap = BitmapFrame.Create(streamInfo.Stream);
+            img.Source = bitmap;
+        }
+
         public void InitializeReqList()
         {
+            BrushConverter bc = new BrushConverter();
             //First expander
             ReqExpander q = insertreqhere.Children[0] as ReqExpander;
             q.reqname.Text = "Core Requirements";
+            q.unitscomplete.Text = "Completed: 3.0 out of 18.0 units";
+            q.unitscomplete.ToolTip = new ToolTip() { Content = "Units are a measurement system used to indicate the weight of a course.Most courses are 3.0 units" };
             ClassInstance c = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 311 && x.department == Department.SOCI), Terms.FALL2021, 1);
             CourseView n = new CourseView(ref c, true);
             q.reqs.Children.Add(n);
 
+
             c = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 331 && x.department == Department.SOCI), Terms.FALL2021, 0);
             n = new CourseView(ref c, true);
             q.reqs.Children.Add(n);
+
+            c = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 313 && x.department == Department.SOCI), Terms.FALL2021, 0);
+            n = new CourseView(ref c, true);
+            q.reqs.Children.Add(n);
+
+            c = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 321 && x.department == Department.SOCI), Terms.FALL2021, 0);
+            n = new CourseView(ref c, true);
+            recommended.Children.Add(n);
+
+            c = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 313 && x.department == Department.SOCI), Terms.FALL2021, 0);
+            n = new CourseView(ref c, true);
+            recommended.Children.Add(n);
 
             c = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 315 && x.department == Department.SOCI), Terms.FALL2021, 0);
             n = new CourseView(ref c, true);
@@ -46,27 +81,33 @@ namespace RockEnroll
             n = new CourseView(ref c, true);
             q.reqs.Children.Add(n);
 
-            c = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 313 && x.department == Department.SOCI), Terms.FALL2021, 0);
-            n = new CourseView(ref c, true);
-            q.reqs.Children.Add(n);
-
             c = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 201 && x.department == Department.SOCI), Terms.FALL2021, 0);
             n = new CourseView(ref c, true);
             q.reqs.Children.Add(n);
 
+
             q = insertreqhere.Children[1] as ReqExpander;
             q.reqname.Text = "Advanced-Level Sociology";
+            q.unitscomplete.Text = "Completed: 0.0 out of 12.0 units";
+            q.unitscomplete.ToolTip = new ToolTip() { Content = "Units are a measurement system used to indicate the weight of a course.Most courses are 3.0 units" };
+
 
             q = insertreqhere.Children[2] as ReqExpander;
             q.reqname.Text = "Sociology Options";
+            q.unitscomplete.Text = "Completed: 0.0 out of 12.0 units";
+            q.unitscomplete.ToolTip = new ToolTip() { Content = "Units are a measurement system used to indicate the weight of a course.Most courses are 3.0 units" };
 
             q = insertreqhere.Children[3] as ReqExpander;
             q.reqname.Text = "Options";
+            q.unitscomplete.Text = "Completed: 0.0 out of 72.0 units";
+            q.unitscomplete.ToolTip = new ToolTip() { Content = "Units are a measurement system used to indicate the weight of a course.Most courses are 3.0 units" };
 
             q = insertreqhere.Children[4] as ReqExpander;
             q.reqname.Text = "Faculty of Science Options";
-            q.bordee.Background = Brushes.LightGreen;
+            q.expandee.Background = (Brush)bc.ConvertFrom("#FFF0FFF0");
             q.check.Opacity = 100;
+            q.unitscomplete.Text = "Completed: 6.0 out of 6.0 units";
+            q.unitscomplete.ToolTip = new ToolTip() { Content = "Units are a measurement system used to indicate the weight of a course.Most courses are 3.0 units" };
 
             //Second
 
@@ -88,12 +129,14 @@ namespace RockEnroll
 
             Button but1 = new Button();
             but1.Content = "Explore options";
+            but1.Margin = new Thickness(5);
             but1.Click += but1_Click ;
             q.reqs.Children.Add(but1);
 
             q = insertreqhere.Children[3] as ReqExpander;
 
             Button but2 = new Button();
+            but2.Margin = new Thickness(5);
             but2.Content = "Explore options";
             but2.Click += but2_Click;
             q.reqs.Children.Add(but2);
@@ -101,6 +144,7 @@ namespace RockEnroll
             q = insertreqhere.Children[4] as ReqExpander;
 
             Button but3 = new Button();
+            but3.Margin = new Thickness(5);
             but3.Content = "Explore options";
             but3.Click += but3_Click;
             q.reqs.Children.Add(but3);

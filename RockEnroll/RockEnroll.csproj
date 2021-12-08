@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\all.png" />
     <None Remove="Resources\bell.png" />
     <None Remove="Resources\bell2.png" />
     <None Remove="Resources\caution.png" />
@@ -23,9 +24,9 @@
     <None Remove="Resources\plus.png" />
     <None Remove="Resources\search.png" />
     <None Remove="Resources\showalltimes.png" />
-    <None Remove="Resources\soci321-soci313.png" />
     <None Remove="Resources\soci321-timeline.png" />
     <None Remove="Resources\soci321.png" />
+    <None Remove="Resources\swaptut.png" />
     <None Remove="Resources\timeline.png" />
     <None Remove="Resources\trash-can.png" />
 	<None Remove="Resources\inCart.png" />
@@ -37,6 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\all.png" />
     <Resource Include="Resources\bell.png" />
     <Resource Include="Resources\bell2.png" />
     <Resource Include="Resources\caution.png" />
@@ -54,8 +56,8 @@
     <Resource Include="Resources\search.png" />
     <Resource Include="Resources\showalltimes.png" />
     <Resource Include="Resources\soci321.png" />
-    <Resource Include="Resources\soci321-soci313.png" />
     <Resource Include="Resources\soci321-timeline.png" />
+    <Resource Include="Resources\swaptut.png" />
     <Resource Include="Resources\timeline.png" />
     <Resource Include="Resources\trash-can.png" />
 	<Resource Include="Resources\inCart.png" />

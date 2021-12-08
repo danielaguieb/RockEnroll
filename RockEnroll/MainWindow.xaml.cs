@@ -28,6 +28,7 @@ namespace RockEnroll
         public MainWindow()
         {
             RockEnrollHelper.InitializeCourses();
+            RockEnrollHelper._reqPage.InitializeReqList();
             InitializeComponent();
             Switcher.pageSwitcher = this;
         }
@@ -40,6 +41,7 @@ namespace RockEnroll
         private void CourseTabClick(object sender, RoutedEventArgs e)
         {
             mainPanel.Children.Clear();
+            RockEnrollHelper.updateCoursePage();
             mainPanel.Children.Add(RockEnrollHelper._coursePage);
             enrollButton.Content = "Enrollment Checkout";
         }
@@ -47,7 +49,7 @@ namespace RockEnroll
         private void RequirementsTabClick(object sender, RoutedEventArgs e)
         {
             //RockEnrollHelper._advsearch.Owner = this;
-            RockEnrollHelper._reqPage.InitializeReqList();
+            
             mainPanel.Children.Clear();
             mainPanel.Children.Add(RockEnrollHelper._reqPage);
             enrollButton.Content = "Enrollment Checkout";

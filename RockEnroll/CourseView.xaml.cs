@@ -35,30 +35,20 @@ namespace RockEnroll
 
         private UserControl parent;
 
+        private bool view;
             
             public CourseView(ref ClassInstance c, bool view = false)
         {
             InitializeComponent();
             this.classInstance = c;
+            this.view = view;
             this.courseNameText.Content = c.department.ToString() + "\n" + c.courseID.ToString();
             this.courseTitleText.Text = c.courseTitle;
             this.campusText.Content = c.lecturesList[c.lectureNum].campus.ToString();
             bool foundCourseToAction = false;
             this.setStatus(classInstance, ref foundCourseToAction);
-            /*
-            if (classInstance.enrolled)
-            {
-                this.actionText.Content = "Enrolled";
-                // -- Checkbox is checked so when it is unchecked (by the user) it indicates a drop action
-                this.CourseCheckBox.IsChecked = true;
-            }*/
+
             saveActionText = this.actionText.Content.ToString();
-            AddLectureSections(c.lecturesList);
-            AddLectureDescription();
-            AddTutorialSections(c.tutorialsList);
-            AddTutorialDescription();
-            AddLabSections(c.labsList);
-            AddLabDescription();
             if(c.prerequisites.Count() != 0)
             {
                 string missingreq = "";
@@ -78,6 +68,8 @@ namespace RockEnroll
                     }
                 }
 
+                
+
                 this.mprereqText.Content = missingreq;
             }
             addRequisite(c.prerequisites, 0);
@@ -91,6 +83,15 @@ namespace RockEnroll
             if (view)
             {
                 this.setActionMode(ACTION_ADD);
+                this.courseGrid.Children.Remove(CourseCheckBox);
+                
+                this.sectionsGrid.Children.Clear();
+                this.titleGrid.Children.Remove(actionText);
+                this.sectionsGrid.Children.Add(actionText);
+                sectionsGrid.HorizontalAlignment = HorizontalAlignment.Center;
+                Grid.SetRow(actionText, 0);
+                actionText.HorizontalAlignment = HorizontalAlignment.Center;
+
                 if (RockEnrollHelper.student.coursesTaken.Contains(c.lecturesList[0].course))
                 {
                     changeButtonImage(actionButton, "Resources\\completed.png");
@@ -112,8 +113,8 @@ namespace RockEnroll
                 {
                     changeButtonImage(actionButton, "Resources\\warning.png");
                     this.actionText.Content = "Prerequisites Missing";
-                    this.actionText.Background = Brushes.Yellow;
-                    this.actionText.Foreground = Brushes.Black;
+                    this.actionText.Background = Brushes.DarkOrange;
+                    this.actionText.Foreground = Brushes.White;
                     this.courseNameText.Background = (Brush)bc.ConvertFrom("#FFFFFACD");
                     this.actionButton.IsHitTestVisible = false;
                 }
@@ -122,6 +123,15 @@ namespace RockEnroll
                     this.actionText.Content = "";
                     changeButtonImage(actionButton, "Resources\\plus.png");
                 }
+            }
+            else
+            {
+                AddLectureSections(c.lecturesList);
+                AddLectureDescription();
+                AddTutorialSections(c.tutorialsList);
+                AddTutorialDescription();
+                AddLabSections(c.labsList);
+                AddLabDescription();
             }
 
         }
@@ -179,6 +189,7 @@ namespace RockEnroll
 
         public int setStatus(ClassInstance c, ref bool foundCourseToAction)
         {
+
             if (c.enrolled)
             {
                 changeButtonImage(actionButton, "Resources\\enroll.png");
@@ -193,21 +204,31 @@ namespace RockEnroll
                 {
                     changeButtonImage(actionButton, "Resources\\enroll.png");
                     this.actionText.Content = "Enrolled";
+                    this.actionText.Background = Brushes.Blue;
+                    this.actionText.Foreground = Brushes.White;
                 }
                 else if (c.dropped)
                 {
                     changeButtonImage(actionButton, "Resources\\drop.png");
                     this.actionText.Content = "Dropped";
+                    this.actionText.Background = Brushes.Red;
+                    this.actionText.Foreground = Brushes.White;
                 }
                 else if (c.waitListed)
                 {
                     changeButtonImage(actionButton, "Resources\\inCart.png");
                     this.actionText.Content = "Waitlisted";
+                    this.actionText.Background = Brushes.Blue;
+                    this.actionText.Foreground = Brushes.White;
                 }
-            }
-            else
+            }else
             {
-                changeButtonImage(actionButton, "Resources\\inCart.png");
+                if (view == null)
+                {
+                    changeButtonImage(actionButton, "Resources\\inCart.png");
+                    this.actionText.Background = Brushes.Blue;
+                    this.actionText.Foreground = Brushes.White;
+                }
                 return 1;
             }
             return 0;
@@ -285,7 +306,10 @@ namespace RockEnroll
         public void swapRequested(ClassInstance c)
         {
             //TODO - Check if the new class to swap to has space
-            
+            if (!(this.parent != null && this.parent is EnrollmentView))
+            {
+                return;
+            }
             changeButtonImage(actionButton, "Resources\\swap.png");
             this.actionText.Content = "Swapping";
 
@@ -310,6 +334,22 @@ namespace RockEnroll
             switch (this.getActionMode())
             {
                 case ACTION_DELETE:
+                    if (classInstance.enrolled)
+                    {
+                            this.actionText.Content = "Dropping";
+                            this.actionText.Background = Brushes.Red;
+                            this.actionText.Foreground = Brushes.White;
+                            break;
+                    }
+                    if (view)
+                    {
+                        RockEnrollHelper.RemoveCourse(classInstance);
+                        this.actionMode = ACTION_ADD;
+                        this.actionText.Background = Brushes.White;
+                        this.actionText.Foreground = Brushes.White;
+                        changeButtonImage(actionButton, "Resources\\plus.png");
+                        break;
+                    }
                     (this.Parent as Panel).Children.Remove(this);
                     RockEnrollHelper.RemoveCourse(classInstance);
                     break;
