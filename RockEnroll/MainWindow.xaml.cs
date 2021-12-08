@@ -28,9 +28,6 @@ namespace RockEnroll
         public MainWindow()
         {
             RockEnrollHelper.InitializeCourses();
-            RockEnrollHelper.AddCourse(RockEnrollHelper.allCourses[0]);
-            RockEnrollHelper.AddCourse(RockEnrollHelper.allCourses[1]);
-            RockEnrollHelper.AddCourse(RockEnrollHelper.allCourses[2]);
             RockEnrollHelper._reqPage.InitializeReqList();
             InitializeComponent();
             Switcher.pageSwitcher = this;
