@@ -14,11 +14,16 @@
                 <Setter Property="Visibility" Value="Collapsed" />
             </Style>
         </ListView.Resources>
+        <ListView.ItemContainerStyle>
+            <Style TargetType="ListViewItem">
+                <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown"/>
+            </Style>
+        </ListView.ItemContainerStyle>
         <ListView.ItemTemplate>
 
             <DataTemplate>
 
-                <Grid PreviewMouseDown="SelectCourse">
+                <Grid>
 
                     <Grid.ColumnDefinitions>
 
