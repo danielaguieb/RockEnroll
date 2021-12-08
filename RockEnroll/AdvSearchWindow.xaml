@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RockEnroll"
         mc:Ignorable="d"
         WindowStartupLocation="CenterOwner"
-        Height="450" Width="800" WindowStyle="None">
+        Height="500" Width="1300" WindowStyle="None">
     <Window.Resources>
         <Style x:Key ="RoundButtonStyle" TargetType= "{x:Type Button}">
             <Setter Property="Background" Value="#aebcd6ff"/>
@@ -124,13 +124,16 @@
         </StackPanel>
         <GridSplitter Width="2" Background="#FF2B2B2B"/>
 
-        <StackPanel Name="putSearchHere" Width="488">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+        <StackPanel Name="putSearchHere" Width="1000">
+            <Grid Width="920">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
                 <TextBlock Text="Results" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                <Rectangle Width="337"/>
-                <Button Style="{StaticResource RoundButtonStyle}" Width="90" HorizontalAlignment="Right" Margin="10" Click="Back_Button_Click">Back</Button>
-            </StackPanel>
-
+                <Button Grid.Column="1" Style="{StaticResource RoundButtonStyle}" Width="90" HorizontalAlignment="Right" Margin="10" Click="Back_Button_Click">Back</Button>
+            </Grid>
+            
         </StackPanel>
 
     </StackPanel>

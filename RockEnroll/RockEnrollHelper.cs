@@ -109,6 +109,16 @@ namespace RockEnroll
             soci311.successors.Add(soci315);
             allCourses.Add(soci315);
 
+            Course soci371 = new Course(371, "Sociology of Families", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "Multivariate statistics for survey data; and measurement issues in quantitative research. Topics include reliability, multivariate tabular analysis, multiple regression, dummy variable regression, statistical interaction and path analysis. In labs statistical software to test measurement and causal models will be used.");
+            soci371.lecturesList.Add(new Lecture(soci371, tbLec2_1, "Mark Curr", Campus.UniversityOfCalgary, "Social Science Rm 109", 59, 200, 0, 30, ""));
+            soci371.lecturesList.Add(new Lecture(soci371, tbLec2_2, "JaneDoe", Campus.UniversityOfCalgary, "Social Science Rm 109", 22, 200, 0, 30, ""));
+            soci371.tutorialsList.Add(new Tutorial(soci371, tbTut1_1, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci371.tutorialsList.Add(new Tutorial(soci371, tbTut1_2, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci371.tutorialsList.Add(new Tutorial(soci371, tbTut1_3, "", Campus.UniversityOfCalgary, "Science Theatres Rm 139", 5, 30, 0, 0, ""));
+            soci371.prerequisites.Add(soci311);
+            soci311.successors.Add(soci371);
+            allCourses.Add(soci371);
+
             Course soci325 = new Course(325, "Introduction to Deviance and Social Control", Faculty.Arts, Department.SOCI, Course.departmentConsent.NONE, 3, "The presentation and analysis of theories of criminality and of non-criminal deviance, methods to uncover the incidence of deviance and criminality, a survey of forms of deviant and criminal behaviours, and the social and institutional responses to them.");
             soci325.lecturesList.Add(new Lecture(soci325, tbLec2_1, "Mark Curr", Campus.UniversityOfCalgary, "Social Science Rm 109", 59, 200, 0, 30, ""));
             soci325.lecturesList.Add(new Lecture(soci325, tbLec2_2, "JaneDoe", Campus.UniversityOfCalgary, "Social Science Rm 109", 22, 200, 0, 30, ""));

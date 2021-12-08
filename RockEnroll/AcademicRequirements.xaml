@@ -48,7 +48,7 @@
         </Style>
 
     </UserControl.Resources>
-    <Grid x:Name="bindme" Width="1000">
+    <Grid x:Name="bindme" Width="1000" HorizontalAlignment="Left">
         
             <StackPanel>
                 <Expander Header="Program Information" FontSize="18" IsExpanded="True">
@@ -113,7 +113,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40"/>
                         </Grid.RowDefinitions>
-                        <Button Style="{StaticResource ResourceKey=RoundButtonStyle}" Grid.Column="0" Content="Major" Margin="5,5,5,5"/>
+                    <Button Style="{StaticResource ResourceKey=RoundButtonStyle}" Grid.Column="0" Content="Major" Margin="5,5,5,5" Background="#4396bf"/>
                         <Button Style="{StaticResource ResourceKey=RoundButtonStyle}" Grid.Column="1" Content="Concentration" Margin="5,5,5,5"/>
                         <Button Style="{StaticResource ResourceKey=RoundButtonStyle}" Grid.Column="2" Content="Minor" Margin="5,5,5,5"/>
                     </Grid>

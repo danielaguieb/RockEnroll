@@ -27,31 +27,32 @@ namespace RockEnroll
 
         public void InitializeReqList()
         {
+            //First expander
             ReqExpander q = insertreqhere.Children[0] as ReqExpander;
             q.reqname.Text = "Core Requirments";
             ClassInstance c = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 311 && x.department == Department.SOCI), Terms.FALL2021, 1);
             CourseView n = new CourseView(ref c, true);
             q.reqs.Children.Add(n);
 
-            ClassInstance c1 = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 331 && x.department == Department.SOCI), Terms.FALL2021, 0);
-            CourseView n1 = new CourseView(ref c1, true);
-            q.reqs.Children.Add(n1);
+            c = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 331 && x.department == Department.SOCI), Terms.FALL2021, 0);
+            n = new CourseView(ref c, true);
+            q.reqs.Children.Add(n);
 
-            ClassInstance c2 = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 315 && x.department == Department.SOCI), Terms.FALL2021, 0);
-            CourseView n2 = new CourseView(ref c2, true);
-            q.reqs.Children.Add(n2);
+            c = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 315 && x.department == Department.SOCI), Terms.FALL2021, 0);
+            n = new CourseView(ref c, true);
+            q.reqs.Children.Add(n);
 
-            ClassInstance c3 = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 333 && x.department == Department.SOCI), Terms.FALL2021, 0);
-            CourseView n3 = new CourseView(ref c3, true);
-            q.reqs.Children.Add(n3);
+            c = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 333 && x.department == Department.SOCI), Terms.FALL2021, 0);
+            n = new CourseView(ref c, true);
+            q.reqs.Children.Add(n);
 
-            ClassInstance c4 = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 313 && x.department == Department.SOCI), Terms.FALL2021, 0);
-            CourseView n4 = new CourseView(ref c4, true);
-            q.reqs.Children.Add(n4);
+            c = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 313 && x.department == Department.SOCI), Terms.FALL2021, 0);
+            n = new CourseView(ref c, true);
+            q.reqs.Children.Add(n);
 
-            ClassInstance c5 = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 201 && x.department == Department.SOCI), Terms.FALL2021, 0);
-            CourseView n5 = new CourseView(ref c5, true);
-            q.reqs.Children.Add(n5);
+            c = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 201 && x.department == Department.SOCI), Terms.FALL2021, 0);
+            n = new CourseView(ref c, true);
+            q.reqs.Children.Add(n);
 
             q = insertreqhere.Children[1] as ReqExpander;
             q.reqname.Text = "Advanced-Level Sociology";
@@ -66,6 +67,51 @@ namespace RockEnroll
             q.reqname.Text = "Faculty of Science Options";
             q.bordee.Background = Brushes.LightGreen;
             q.check.Opacity = 100;
+
+            //Second
+
+            q = insertreqhere.Children[2] as ReqExpander;
+
+            c = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 321 && x.department == Department.SOCI), Terms.FALL2021, 0);
+            n = new CourseView(ref c, true);
+            q.reqs.Children.Add(n);
+
+            c = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 325 && x.department == Department.SOCI), Terms.FALL2021, 0);
+            n = new CourseView(ref c, true);
+            q.reqs.Children.Add(n);
+
+            c = new ClassInstance(RockEnrollHelper.allCourses.Find(x => x.courseID == 371 && x.department == Department.SOCI), Terms.FALL2021, 0);
+            n = new CourseView(ref c, true);
+            q.reqs.Children.Add(n);
+
+            q = insertreqhere.Children[1] as ReqExpander;
+
+            foreach (Course i in RockEnrollHelper.allCourses)
+            {
+                if ((i.department != Department.SOCI) || (i.courseID < 400)) continue;
+                c = new ClassInstance(i, Terms.FALL2021, 0);
+                n = new CourseView(ref c, true);
+                q.reqs.Children.Add(n);
+            }
+
+            q = insertreqhere.Children[3] as ReqExpander;
+            foreach (Course i in RockEnrollHelper.allCourses)
+            {
+                if (i.department == Department.SOCI) continue;
+                c = new ClassInstance(i, Terms.FALL2021, 0);
+                n = new CourseView(ref c, true);
+                q.reqs.Children.Add(n);
+            }
+
+            q = insertreqhere.Children[4] as ReqExpander;
+            foreach (Course i in RockEnrollHelper.allCourses)
+            {
+                if (i.faculty != Faculty.Science) continue;
+                c = new ClassInstance(i, Terms.FALL2021, 0);
+                n = new CourseView(ref c, true);
+                q.reqs.Children.Add(n);
+            }
+
         }
 
     

@@ -5,7 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RockEnroll"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <ListView Name="resultList">
-    </ListView>
+             d:DesignHeight="450" d:DesignWidth="920">
+    <ScrollViewer Height="450" Width="920">
+        <StackPanel Name="resultList" Width="910" HorizontalAlignment="Left">
+        </StackPanel>
+    </ScrollViewer>
+    
 </UserControl>

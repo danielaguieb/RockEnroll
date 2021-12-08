@@ -29,23 +29,39 @@ namespace RockEnroll
             //Load out filter form
             foreach (string name in Enum.GetNames(typeof(Campus)))
             {
-                if (name == "NONE") continue;
+                if (name == "NONE")
+                {
+                    campus.Items.Add("");
+                    continue;
+                }
                 campus.Items.Add(name);
             }
             foreach (string name in Enum.GetNames(typeof(Faculty)))
             {
-                if (name == "NONE") continue;
+                if (name == "NONE")
+                {
+                    faculty.Items.Add("");
+                    continue;
+                }
                 faculty.Items.Add(name);
             }
             foreach (string name in Enum.GetNames(typeof(Terms)))
             {
-                if (name == "NONE") continue;
+                if (name == "NONE")
+                {
+                    session.Items.Add("");
+                    continue;
+                }
                 session.Items.Add(name);
             }
 
             foreach (int subjectint in Enum.GetValues(typeof(Department)))
             {
-                if (subjectint == 0) continue;
+                if (subjectint == 0)
+                {
+                    subjectbox.Items.Add("");
+                    continue;
+                }
                 subjectbox.Items.Add(Enum.GetName((Department)subjectint));
             }
 
