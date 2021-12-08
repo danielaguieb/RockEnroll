@@ -142,7 +142,8 @@ namespace RockEnroll
         {
             this.Left = point.X;
             this.Top = point.Y + searchBar.Height + 5;
-            this.Width = 515;
+            //this.Width = 515;
+            this.Width = searchBar.ActualWidth;
         }
     }
 }
