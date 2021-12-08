@@ -127,12 +127,12 @@ namespace RockEnroll
 
                 if (subjectname != Department.NONE)
                 {
-                    if (i.department == this.subjectname) continue;
+                    if (i.department != this.subjectname) continue;
                 }
 
                 if (faculty != Faculty.NONE)
                 {
-                    if (i.faculty == this.faculty) continue;
+                    if (i.faculty != this.faculty) continue;
                 }
 
                 if (courseCompare != Compares.NONE)

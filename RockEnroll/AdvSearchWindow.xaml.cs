@@ -21,7 +21,7 @@ namespace RockEnroll
     public partial class AdvSearchWindow : Window
     {
         SearchResultPanel searchresultpanel = new();
-        Search searchInstance = new("");
+        public Search searchInstance = new("");
         public AdvSearchWindow()
         {
             InitializeComponent();
@@ -75,6 +75,7 @@ namespace RockEnroll
         private void Back_Button_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
+            if (this.Owner == null) return;
             this.Owner.Activate();
         }
 
@@ -89,11 +90,34 @@ namespace RockEnroll
             searchresultpanel.updateResults(searchInstance);
         }
 
+        public void pubapply()
+        {
+            searchInstance.Proccess();
+            searchresultpanel.updateResults(searchInstance);
+        }
+
         private void Reset_Filters_Button_Click(object sender, RoutedEventArgs e)
         {
             AdvSearchWindow newwindow = new();
-            newwindow.Owner = this.Owner;
-            this.Owner.Activate();
+            RockEnrollHelper._advsearch = newwindow;
+            if (this.Owner != null)
+            {
+                this.Owner.Activate();
+                newwindow.Owner = this.Owner;
+            }
+            newwindow.Show();
+            this.Close();
+        }
+
+        public void pubreset()
+        {
+            AdvSearchWindow newwindow = new();
+            RockEnrollHelper._advsearch = newwindow;
+            if (this.Owner != null)
+            {
+                this.Owner.Activate();
+                newwindow.Owner = this.Owner;
+            }
             newwindow.Show();
             this.Close();
         }

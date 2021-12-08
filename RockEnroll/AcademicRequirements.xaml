@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RockEnroll"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" 
+             d:DesignHeight="450" d:DesignWidth="1100" 
              Name="parent">
     <UserControl.Resources>
         <Style x:Key ="RoundButtonStyle" TargetType= "{x:Type Button}">
@@ -48,7 +48,7 @@
         </Style>
 
     </UserControl.Resources>
-    <Grid x:Name="bindme" Width="1000" HorizontalAlignment="Left">
+    <Grid x:Name="bindme" Width="1105" HorizontalAlignment="Left">
         
             <StackPanel>
                 <Expander Header="Program Information" FontSize="18" IsExpanded="True">
@@ -128,7 +128,7 @@
                             <TextBlock Margin="5,5,5,5" Grid.Row="1" VerticalAlignment="Stretch">- 30.0 units completed out of the maximum of 48 units at the 200 level</TextBlock>
                         </Grid>
                     </Grid>
-                <ScrollViewer HorizontalAlignment="Left" Margin="5,5,5,5" Height="475">
+                <ScrollViewer HorizontalAlignment="Left" Height="475" Width="1100">
                     <StackPanel Name="insertreqhere">
                         <local:ReqExpander />
                         <local:ReqExpander />

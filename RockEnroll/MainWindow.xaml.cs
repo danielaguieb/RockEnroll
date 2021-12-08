@@ -46,6 +46,7 @@ namespace RockEnroll
 
         private void RequirementsTabClick(object sender, RoutedEventArgs e)
         {
+            //RockEnrollHelper._advsearch.Owner = this;
             RockEnrollHelper._reqPage.InitializeReqList();
             mainPanel.Children.Clear();
             mainPanel.Children.Add(RockEnrollHelper._reqPage);

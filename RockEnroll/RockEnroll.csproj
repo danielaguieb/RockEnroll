@@ -9,12 +9,14 @@
   <ItemGroup>
     <None Remove="Resources\bell.png" />
     <None Remove="Resources\bell2.png" />
+    <None Remove="Resources\caution.png" />
     <None Remove="Resources\checkmark.png" />
     <None Remove="Resources\completed.png" />
     <None Remove="Resources\conflict.png" />
     <None Remove="Resources\empty.png" />
     <None Remove="Resources\emptytimeline.png" />
     <None Remove="Resources\error.png" />
+    <None Remove="Resources\greenPlus.png" />
     <None Remove="Resources\in-progress.png" />
     <None Remove="Resources\pin.png" />
     <None Remove="Resources\pin2.png" />
@@ -37,12 +39,14 @@
   <ItemGroup>
     <Resource Include="Resources\bell.png" />
     <Resource Include="Resources\bell2.png" />
+    <Resource Include="Resources\caution.png" />
     <Resource Include="Resources\checkmark.png" />
     <Resource Include="Resources\completed.png" />
     <Resource Include="Resources\conflict.png" />
     <Resource Include="Resources\empty.png" />
     <Resource Include="Resources\emptytimeline.png" />
     <Resource Include="Resources\error.png" />
+    <Resource Include="Resources\greenPlus.png" />
     <Resource Include="Resources\in-progress.png" />
     <Resource Include="Resources\pin.png" />
     <Resource Include="Resources\pin2.png" />
