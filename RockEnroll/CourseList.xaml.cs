@@ -47,7 +47,7 @@ namespace RockEnroll
             BitmapFrame bitmap = BitmapFrame.Create(streamInfo.Stream);
             img.Source = bitmap;
         }
-        public void AddClass(ClassInstance c, bool v)
+        public void AddClass(ClassInstance c, bool v = false)
         {
             CourseView view = new CourseView(ref c, v);
             courseListViewer.RowDefinitions.Add(new RowDefinition());
