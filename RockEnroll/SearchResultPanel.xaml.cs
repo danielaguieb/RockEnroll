@@ -20,6 +20,8 @@ namespace RockEnroll
     /// </summary>
     public partial class SearchResultPanel : UserControl
     {
+        CourseView n;
+        ClassInstance c;
         public SearchResultPanel()
         {
             InitializeComponent();
@@ -27,19 +29,20 @@ namespace RockEnroll
 
         public void updateResults(Search search)
         {
-            resultList.Items.Clear();
+            resultList.Children.Clear();
             foreach (KeyValuePair<Department,List<Course>> i in search.results)
             {
                 Expander x = new();
                 x.Header = Enum.GetName(i.Key);
-                resultList.Items.Add(x);
+                resultList.Children.Add(x);
                 StackPanel y = new();
                 x.Content = y;
                 foreach (Course j in i.Value)
                 {
-                    TextBlock z = new();
-                    z.Text = j.department + j.courseID + ": " + j.courseTitle;
-                    y.Children.Add(z);
+                    c = new ClassInstance(j, Terms.FALL2021, 0);
+                    n = new CourseView(ref c, true);
+                    n.Width = 850;
+                    y.Children.Add(n);
                 }
             }
             //

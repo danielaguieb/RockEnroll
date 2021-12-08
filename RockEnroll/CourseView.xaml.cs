@@ -85,6 +85,7 @@ namespace RockEnroll
             addRequisite(c.prerequisites, 0);
             addRequisite(c.antirequisites, 1);
             addRequisite(c.successors, 2);
+            this.unitsText.Text = "Course Units: " + c.courseUnits.ToString() + " units";
             this.courseDesc.Text = "Description: " + c.courseDescription;
             BrushConverter bc = new BrushConverter();
             this.courseNameText.Background = (Brush)bc.ConvertFrom("#aebcd6ff");
@@ -114,8 +115,8 @@ namespace RockEnroll
                     changeButtonImage(actionButton, "Resources\\warning.png");
                     this.actionText.Content = "Prerequisites Missing";
                     this.actionText.Background = Brushes.Yellow;
-                    this.actionText.Foreground = Brushes.White;
-                    this.courseExpander.Background = (Brush)bc.ConvertFrom("#FFFFFACD");
+                    this.actionText.Foreground = Brushes.Black;
+                    this.courseNameText.Background = (Brush)bc.ConvertFrom("#FFFFFACD");
                     this.actionButton.IsHitTestVisible = false;
                 }
                 else
