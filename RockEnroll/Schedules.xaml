@@ -10,13 +10,13 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="300"/>
+            <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Image Name="timeline" Grid.Row="0" Source="Resources/emptytimeline.png" ></Image>
-        <Image Name="schedule" Grid.Row="1" Source="Resources/empty.png" Stretch="Uniform" />
+        <Image Name="timeline" Grid.Row="0" Source="Resources/emptytimeline.png" Stretch="Fill"  Margin="600,0,600,0"></Image>
+        <Image Name="schedule" Grid.Row="1" Source="Resources/empty.png" Stretch="Uniform" Margin="500,0,500,0" />
         <Grid Grid.Row="2" Margin="20,0,20,0" HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -62,7 +62,7 @@
                     <ImageBrush ImageSource="Resources\trash-can.png" Stretch="Uniform"/>
                 </Button.Background>
             </Button>
-            <Button Content="Set Enrollment Cart" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="Black" Click="Button_Click"/>
+            <Button Content="Set Enrollment Cart" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Center" Width="386" BorderBrush="Black" Click="Button_Click"/>
 
         </Grid>
         
