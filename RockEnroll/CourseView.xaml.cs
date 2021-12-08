@@ -336,7 +336,7 @@ namespace RockEnroll
                 case ACTION_DELETE:
                     string messageText = this.classInstance.department.ToString() + " " + this.classInstance.courseID.ToString();
                     MessageBoxResult d;
-                    d = MessageBox.Show( "Do you want to remove the following course from the cart? \r\n" + messageText, " ", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                    d = MessageBox.Show( "Do you want to remove the following course from your schedule? \r\n" + messageText, " ", MessageBoxButton.OKCancel, MessageBoxImage.Information);
                     if ((d == MessageBoxResult.OK))
                     {
                         if (classInstance.enrolled)
