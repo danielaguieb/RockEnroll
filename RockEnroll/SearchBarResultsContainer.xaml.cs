@@ -88,6 +88,14 @@ namespace RockEnroll
                 }
             }
 
+            if (courseList.Count() == 0)
+            {
+                this.Height = 0;
+            } else
+            {
+                this.Height = 450;
+            }
+
             listView.Items.Refresh();
 
         }
