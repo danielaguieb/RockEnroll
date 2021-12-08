@@ -90,10 +90,11 @@ namespace RockEnroll
 
             if (courseList.Count() == 0)
             {
-                this.Height = 0;
+                this.Visibility = Visibility.Hidden;
+
             } else
             {
-                this.Height = 450;
+                this.Visibility = Visibility.Visible;
             }
 
             listView.Items.Refresh();
