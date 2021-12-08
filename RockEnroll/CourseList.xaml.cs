@@ -117,12 +117,12 @@ namespace RockEnroll
 
         private void changeCourse(object sender, MouseButtonEventArgs e)
         {
-            RockEnrollHelper.schedulePath = "Resources/swaptut.png";
-            updateScheduleImage();
             ClassInstance c = RockEnrollHelper.student.currentSchedule.Find(x => x.courseID == 321 && x.department == Department.SOCI);
             if (c != null) {
                 RockEnrollHelper.SwapSection(c, 0, 2, 0);
             }
+            RockEnrollHelper.schedulePath = "Resources/swaptut.png";
+            updateScheduleImage();
         }
     }
 }
