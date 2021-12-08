@@ -43,5 +43,44 @@ namespace RockEnroll
             BitmapFrame bitmap = BitmapFrame.Create(streamInfo.Stream);
             img.Source = bitmap;
         }
+        public void wipMessage(object sender, RoutedEventArgs e)
+        {
+            String messageTitle = "Unimplemented";
+            String messageText = "Under development";
+            MessageBoxResult d;
+            d = MessageBox.Show(messageText, messageTitle, MessageBoxButton.OKCancel);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            String messageTitle = "Unimplemented";
+            String messageText = "Under development";
+            MessageBoxResult d;
+            d = MessageBox.Show(messageText, messageTitle, MessageBoxButton.OKCancel);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            String messageTitle = "Unimplemented";
+            String messageText = "Under development";
+            MessageBoxResult d;
+            d = MessageBox.Show(messageText, messageTitle, MessageBoxButton.OKCancel);
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            String messageTitle = "Unimplemented";
+            String messageText = "Under development";
+            MessageBoxResult d;
+            d = MessageBox.Show(messageText, messageTitle, MessageBoxButton.OKCancel);
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            String messageTitle = "Unimplemented";
+            String messageText = "Under development";
+            MessageBoxResult d;
+            d = MessageBox.Show(messageText, messageTitle, MessageBoxButton.OKCancel);
+        }
     }
 }
