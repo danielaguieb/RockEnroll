@@ -62,7 +62,7 @@
             <Image Name="schedule" Grid.Row="1" Source="Resources/empty.png" Stretch="Uniform" Margin="20,0,5,100" />
         </Grid>
         <ScrollViewer Height="1100" VerticalScrollBarVisibility="Hidden">
-            <Grid x:Name="bindme" HorizontalAlignment="Stretch" Grid.Column="0" MinWidth="800" VerticalAlignment="Top">
+            <Grid x:Name="bindme" HorizontalAlignment="Stretch" Grid.Column="0" MinWidth="700" VerticalAlignment="Top">
         <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
