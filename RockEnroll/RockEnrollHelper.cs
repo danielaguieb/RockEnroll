@@ -376,6 +376,12 @@ namespace RockEnroll
             }
 
             ClassInstance c = new ClassInstance(course, CurrentTerm, lecNum, tutNum, labNum);
+
+            foreach (ClassInstance cl in student.currentSchedule)
+            {
+                if (cl.courseTitle == c.courseTitle) return;
+            }
+
             student.currentSchedule.Add(c);
             _coursePage.AddClass(c);
         }
@@ -444,6 +450,20 @@ namespace RockEnroll
 
         }
 
+        public bool CurrentlyTaking(Course course, Terms term)
+        {
+
+            foreach (ClassInstance classInstance in this.currentSchedule)
+            {
+                if (classInstance.courseTitle == course.courseTitle && classInstance.term == term)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
     }
 
     public enum Faculty
@@ -476,6 +496,11 @@ namespace RockEnroll
 
     public class Course
     {
+
+        public override string ToString()
+        {
+            return this.department.ToString() + " " + courseID.ToString() + " : " + courseTitle;
+        }
 
         // use OR for "or consent of department"; AND for "and consent of department"
         public enum departmentConsent
@@ -584,6 +609,7 @@ namespace RockEnroll
             this.dropped = false;
             this.waitListed = false;
         }
+
     }
 
 

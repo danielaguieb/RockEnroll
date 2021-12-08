@@ -81,7 +81,7 @@
             <RadioButton x:Name="reqTabButton" Style ="{StaticResource RoundToggleButtonStyle}" Content="Academic Requirements" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"   Click="RequirementsTabClick" Grid.Column="1" Margin="5,5,5,5" Height="30"/>
             <RadioButton x:Name="scheduleTabButton"  Style ="{StaticResource RoundToggleButtonStyle}" Content="Schedules" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"  Click="ScheduleTabClick" Grid.Column="2" Margin="5,5,5,5" Height="30" Checked="scheduleTabButton_Checked"/>
             <ComboBox x:Name="termSelector" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.Column="3" Margin="5,5,5,5" Height="30"/>
-            <TextBox x:Name="searchBar" Style ="{StaticResource RoundTextBoxStyle}"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Text="Search" TextWrapping="Wrap" Foreground="#FF555252"  Grid.Column="4" Margin="25,5,5,5" Height="30"/>
+            <local:SearchBar x:Name="searchBar" Style ="{StaticResource RoundTextBoxStyle}"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" TextWrapping="Wrap" Foreground="#FF555252"  Grid.Column="4" Margin="25,5,5,5" Height="30" Cursor="IBeam" placeHolderText="Search" Text="Search"/>
             <Button x:Name="advancedSearchButton"  Style ="{StaticResource RoundButtonStyle}" Content="Advanced Search" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="AdvancedSearchClick" Grid.Column="5" Margin="5,5,5,5" Height="30"/>
         </Grid>
         <Grid Grid.Row="2">
