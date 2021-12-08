@@ -137,5 +137,12 @@ namespace RockEnroll
                 SelectCourse();
             }
         }
+
+        public void SetLocation(Point point)
+        {
+            this.Left = point.X;
+            this.Top = point.Y + searchBar.Height + 5;
+            this.Width = 515;
+        }
     }
 }
