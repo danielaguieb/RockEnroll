@@ -185,14 +185,14 @@
                         </Grid>
                         <Grid Name="courseInfoGrid" Grid.Row="2">
                             <Grid.RowDefinitions>
-                                <RowDefinition/>
+                                <RowDefinition />
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row ="3" Name="courseDesc" TextWrapping="Wrap" MaxWidth="{Binding ElementName=crsView,Path=ActualWidth}" Margin="5,0,0,0"/>
-                            <TextBlock Grid.Row ="4" Name="unitsText" TextWrapping="Wrap" MaxWidth="{Binding ElementName=crsView,Path=ActualWidth}" Margin="5,0,0,10"/>
+                            <TextBlock Grid.Row ="3" Name="courseDesc" TextWrapping="Wrap" MaxWidth="{Binding ElementName=crsView,Path=ActualWidth}" Margin="5"/>
+                            <TextBlock Grid.Row ="4" Name="unitsText" TextWrapping="Wrap" MaxWidth="{Binding ElementName=crsView,Path=ActualWidth}" Margin="5"/>
 
                         </Grid>
 

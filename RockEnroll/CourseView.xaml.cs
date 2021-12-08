@@ -94,7 +94,7 @@ namespace RockEnroll
 
                 if (RockEnrollHelper.student.coursesTaken.Contains(c.lecturesList[0].course))
                 {
-                    changeButtonImage(actionButton, "Resources\\completed.png");
+                    changeButtonImage(actionButton, "Resources\\checkmark.png");
                     this.actionButton.IsHitTestVisible = false;
                     this.actionText.Content = "Completed";
                     this.actionText.Background = Brushes.Green;
@@ -111,7 +111,7 @@ namespace RockEnroll
                 }
                 else if(this.missingPrereq.Count() != 0)
                 {
-                    changeButtonImage(actionButton, "Resources\\warning.png");
+                    changeButtonImage(actionButton, "Resources\\caution.png");
                     this.actionText.Content = "Prerequisites Missing";
                     this.actionText.Background = Brushes.DarkOrange;
                     this.actionText.Foreground = Brushes.White;
@@ -121,7 +121,7 @@ namespace RockEnroll
                 else
                 {
                     this.actionText.Content = "";
-                    changeButtonImage(actionButton, "Resources\\plus.png");
+                    changeButtonImage(actionButton, "Resources\\greenplus.png");
                 }
             }
             else
@@ -151,7 +151,7 @@ namespace RockEnroll
                         reqText += "Antirequisites: ";
                         break;
                     case 2:
-                        reqText += "Prerequisite for: ";
+                        reqText += "Successor Courses: ";
                         break;
                 }
                 for (int i = 0; i < req.Count(); i++)
@@ -347,7 +347,7 @@ namespace RockEnroll
                         this.actionMode = ACTION_ADD;
                         this.actionText.Background = Brushes.White;
                         this.actionText.Foreground = Brushes.White;
-                        changeButtonImage(actionButton, "Resources\\plus.png");
+                        changeButtonImage(actionButton, "Resources\\greenplus.png");
                         break;
                     }
                     (this.Parent as Panel).Children.Remove(this);
