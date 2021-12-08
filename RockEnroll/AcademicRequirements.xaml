@@ -61,14 +61,15 @@
             <Image Name="timeline" Grid.Row="0" Source="Resources/emptytimeline.png" Stretch="Uniform"  Margin="20,0,5,50"/>
             <Image Name="schedule" Grid.Row="1" Source="Resources/empty.png" Stretch="Uniform" Margin="20,0,5,100" />
         </Grid>
-        <Grid x:Name="bindme" HorizontalAlignment="Left" Grid.Column="0" MinWidth="780" VerticalAlignment="Top">
+        <ScrollViewer Height="1100">
+            <Grid x:Name="bindme" HorizontalAlignment="Stretch" Grid.Column="0" MinWidth="800" VerticalAlignment="Top">
         <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1" CornerRadius="3" Margin="5,5,5,15">
-                <Expander FontSize="18" IsExpanded="True" FlowDirection="LeftToRight">
+                    <Expander FontSize="18" IsExpanded="True" FlowDirection="LeftToRight" HorizontalAlignment="Stretch">
                     <Expander.Header>
                         <TextBlock Text="Recommended Courses" HorizontalAlignment="Left" />
                     </Expander.Header>
@@ -79,7 +80,7 @@
             </Border>
             <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1" CornerRadius="3" Margin="5,5,5,15">
             <StackPanel  >
-                <Expander FontSize="18" FlowDirection="LeftToRight">
+                <Expander FontSize="18" FlowDirection="LeftToRight" HorizontalAlignment="Stretch">
                     <Expander.Header>
                         <TextBlock Text="Program Information" HorizontalAlignment="Left" />
                     </Expander.Header>
@@ -136,73 +137,74 @@
 
             </StackPanel>
         </Border>
-        <Border Grid.Row="2" Grid.Column="0" BorderBrush="Black" BorderThickness="1" CornerRadius="3" Margin="5">
-            <Expander FontSize="18" FlowDirection="LeftToRight">
-                <Expander.Header>
-                    <TextBlock Text="Academic Requirements" HorizontalAlignment="Left" />
-                </Expander.Header>
-                <StackPanel CanVerticallyScroll="False">
-                    <Grid Width="500" HorizontalAlignment="Left">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="40"/>
-                        </Grid.RowDefinitions>
-                            <Button Style="{StaticResource ResourceKey=RoundButtonStyle}" Grid.Column="0" Content="Major" FontWeight="Bold" Margin="5,5,5,5" Background="#4396bf"/>
-                            <Button Style="{StaticResource ResourceKey=RoundButtonStyle}" Grid.Column="1" Content="Concentration" FontWeight="Bold" Margin="5,5,5,5"/>
-                            <Button Style="{StaticResource ResourceKey=RoundButtonStyle}" Grid.Column="2" Content="Minor" FontWeight="Bold" Margin="5,5,5,5"/>
-                    </Grid>
-                    <Grid>
-                        <Border BorderBrush="Black" BorderThickness="1" CornerRadius="3" Margin="5"/>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                                <TextBlock Margin="10" Grid.Row="0" TextWrapping="Wrap" FontWeight="Bold">Important Notes:</TextBlock>
-                                <TextBlock Margin="10,5,5,5" Grid.Row="1" TextWrapping="Wrap">
-                                    <TextBlock.Inlines>
-                                        <Run FontWeight="Bold" Text="- 3.0 units"/>
-                                        <Run Text="completed out of the"/>
-                                        <Run FontWeight="Bold" Text="minimum of 42 units"/>
-                                        <Run Text="and"/>
-                                        <Run FontWeight="Bold" Text="maximum of 60 units"/>
-                                        <Run Text="in Courses Constituting the Field of Sociology"/>
-                                    </TextBlock.Inlines>
+                <Border Grid.Row="2" Grid.Column="0" BorderBrush="Black" BorderThickness="1" CornerRadius="3" Margin="5">
+                    <Expander FontSize="18" FlowDirection="LeftToRight" HorizontalAlignment="Stretch">
+                        <Expander.Header>
+                            <TextBlock Text="Academic Requirements" HorizontalAlignment="Left" />
+                        </Expander.Header>
+                        <StackPanel CanVerticallyScroll="False">
+                            <Grid Width="500" HorizontalAlignment="Left">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40"/>
+                                </Grid.RowDefinitions>
+                                <Button Style="{StaticResource ResourceKey=RoundButtonStyle}" Grid.Column="0" Content="Major" FontWeight="Bold" Margin="5,5,5,5" Background="#4396bf"/>
+                                <Button Style="{StaticResource ResourceKey=RoundButtonStyle}" Grid.Column="1" Content="Concentration" FontWeight="Bold" Margin="5,5,5,5"/>
+                                <Button Style="{StaticResource ResourceKey=RoundButtonStyle}" Grid.Column="2" Content="Minor" FontWeight="Bold" Margin="5,5,5,5"/>
+                            </Grid>
+                            <Grid>
+                                <Border BorderBrush="Black" BorderThickness="1" CornerRadius="3" Margin="5"/>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Margin="10" Grid.Row="0" TextWrapping="Wrap" FontWeight="Bold">Important Notes:</TextBlock>
+                                    <TextBlock Margin="10,5,5,5" Grid.Row="1" TextWrapping="Wrap">
+                                        <TextBlock.Inlines>
+                                            <Run FontWeight="Bold" Text="- 3.0 units"/>
+                                            <Run Text="completed out of the"/>
+                                            <Run FontWeight="Bold" Text="minimum of 42 units"/>
+                                            <Run Text="and"/>
+                                            <Run FontWeight="Bold" Text="maximum of 60 units"/>
+                                            <Run Text="in Courses Constituting the Field of Sociology"/>
+                                        </TextBlock.Inlines>
                                     </TextBlock>
-                                <TextBlock Margin="10,5,5,5" Grid.Row="2" VerticalAlignment="Stretch" TextWrapping="Wrap">
-                                    <TextBlock.Inlines>
-                                        <Run FontWeight="Bold" Text="- 9.0 units "/>
-                                        <Run Text="completed out of the"/>
-                                        <Run FontWeight="Bold" Text="maximum of 48 units"/>
-                                        <Run Text="for courses at the 200 level"/>
-                                    </TextBlock.Inlines>
-                                </TextBlock>
-                        </Grid>
-                    </Grid>
-                    <ScrollViewer HorizontalAlignment="Left" Height="250" VerticalScrollBarVisibility="Auto">
-                        <StackPanel Name="insertreqhere">
-                            <local:ReqExpander VerticalContentAlignment="Top" />
-                            <local:ReqExpander />
-                            <local:ReqExpander />
-                            <local:ReqExpander />
-                            <local:ReqExpander />
+                                    <TextBlock Margin="10,5,5,5" Grid.Row="2" VerticalAlignment="Stretch" TextWrapping="Wrap">
+                                        <TextBlock.Inlines>
+                                            <Run FontWeight="Bold" Text="- 9.0 units "/>
+                                            <Run Text="completed out of the"/>
+                                            <Run FontWeight="Bold" Text="maximum of 48 units"/>
+                                            <Run Text="for courses at the 200 level"/>
+                                        </TextBlock.Inlines>
+                                    </TextBlock>
+                                </Grid>
+                            </Grid>
+                            <ScrollViewer HorizontalAlignment="Left" Height="250" VerticalScrollBarVisibility="Auto">
+                                <StackPanel Name="insertreqhere">
+                                    <local:ReqExpander VerticalContentAlignment="Top" />
+                                    <local:ReqExpander />
+                                    <local:ReqExpander />
+                                    <local:ReqExpander />
+                                    <local:ReqExpander />
+
+                                </StackPanel>
+                            </ScrollViewer>
+
 
                         </StackPanel>
-                    </ScrollViewer>
+                    </Expander>
+                </Border>
 
 
-                </StackPanel>
-            </Expander>
-        </Border>
+            </Grid>
+        </ScrollViewer>
 
-    
-    </Grid>
-        
     </Grid>
 
 
