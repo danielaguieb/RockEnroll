@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using System.Windows.Resources;
 using System.Windows.Shapes;
 
 namespace RockEnroll
@@ -25,9 +26,61 @@ namespace RockEnroll
             InitializeComponent();
         }
 
-        private void AdvancedSearchClick(object sender, RoutedEventArgs e)
+        public void updateScheduleImage()
         {
+            changeImage(this.schedule, RockEnrollHelper.schedulePath);
+        }
 
+        public void updateTimelineImage()
+        {
+            changeImage(this.timeline, RockEnrollHelper.timelinePath);
+        }
+
+        public static void changeImage(Image img, String resoureName)
+        {
+            Uri resourceUri = new Uri(resoureName, UriKind.Relative);
+            StreamResourceInfo streamInfo = Application.GetResourceStream(resourceUri);
+            BitmapFrame bitmap = BitmapFrame.Create(streamInfo.Stream);
+            img.Source = bitmap;
+        }
+        public void wipMessage(object sender, RoutedEventArgs e)
+        {
+            String messageTitle = "Unimplemented";
+            String messageText = "Under development";
+            MessageBoxResult d;
+            d = MessageBox.Show(messageText, messageTitle, MessageBoxButton.OKCancel);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            String messageTitle = "Unimplemented";
+            String messageText = "Under development";
+            MessageBoxResult d;
+            d = MessageBox.Show(messageText, messageTitle, MessageBoxButton.OKCancel);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            String messageTitle = "Unimplemented";
+            String messageText = "Under development";
+            MessageBoxResult d;
+            d = MessageBox.Show(messageText, messageTitle, MessageBoxButton.OKCancel);
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            String messageTitle = "Unimplemented";
+            String messageText = "Under development";
+            MessageBoxResult d;
+            d = MessageBox.Show(messageText, messageTitle, MessageBoxButton.OKCancel);
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            String messageTitle = "Unimplemented";
+            String messageText = "Under development";
+            MessageBoxResult d;
+            d = MessageBox.Show(messageText, messageTitle, MessageBoxButton.OKCancel);
         }
     }
 }

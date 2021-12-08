@@ -6,9 +6,66 @@
              xmlns:local="clr-namespace:RockEnroll"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="104,49,0,0" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="224,205,0,0" VerticalAlignment="Top"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image Name="timeline" Grid.Row="0" Source="Resources/emptytimeline.png" Stretch="Fill"  Margin="600,0,600,0"></Image>
+        <Image Name="schedule" Grid.Row="1" Source="Resources/empty.png" Stretch="Uniform" Margin="500,0,500,0" />
+        <Grid Grid.Row="2" Margin="20,0,20,0" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition />
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Center" Text="Saved Schedules" TextWrapping="Wrap" VerticalAlignment="Center" Height="15" Width="88"/>
+            <Button Content="" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="41" Width="41" RenderTransformOrigin="0.5,0.48" Margin="10,0,10,0" Click="Button_Click_3">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-180"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Button.BorderBrush>
+                    <ImageBrush/>
+                </Button.BorderBrush>
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources\arrow.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <TextBox Text="1" TextWrapping="Wrap" Grid.Column="2" Margin="0,12,1,11"/>
+            <TextBlock Text="of 3" TextWrapping="Wrap" Grid.Column="3" Margin="4,12,5,12"/>
+            <Button Content="" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="41" Width="41" Click="Button_Click_2">
+                <Button.BorderBrush>
+                    <ImageBrush/>
+                </Button.BorderBrush>
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources\arrow.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button Content="" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="38" Margin="10,0,10,0" Click="Button_Click_1">
+                <Button.BorderBrush>
+                    <ImageBrush/>
+                </Button.BorderBrush>
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources\trash-can.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <Button Content="Set Enrollment Cart" Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Center" Width="386" BorderBrush="Black" Click="Button_Click"/>
+
+        </Grid>
+        
     </Grid>
 
 </UserControl>
