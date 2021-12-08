@@ -331,6 +331,7 @@ namespace RockEnroll
                     schedulePath = "Resources/conflict.png"; 
                     _coursePage.updateScheduleImage();
                     _reqPage.updateScheduleImage();
+                    _schedulePage.updateScheduleImage();
                 }
                 else
                 {
@@ -423,6 +424,8 @@ namespace RockEnroll
             _coursePage.AddClass(c, view);
             _reqPage.updateScheduleImage();
             _reqPage.updateTimelineImage();
+            _schedulePage.updateScheduleImage();
+            _schedulePage.updateTimelineImage();
         }
 
         public static void AddCourse(ClassInstance c, bool view = false)
@@ -466,6 +469,8 @@ namespace RockEnroll
             _coursePage.AddClass(c, view);
             _reqPage.updateScheduleImage();
             _reqPage.updateTimelineImage();
+            _schedulePage.updateScheduleImage();
+            _schedulePage.updateTimelineImage();
         }
 
         public static void updateCoursePage()
@@ -500,6 +505,8 @@ namespace RockEnroll
             RockEnrollHelper._coursePage.updateTimelineImage();
             _reqPage.updateScheduleImage();
             _reqPage.updateTimelineImage();
+            _schedulePage.updateScheduleImage();
+            _schedulePage.updateTimelineImage();
         }
 
         public static void SwapSection(ClassInstance c, int lecNum, int tutNum, int labNum)
