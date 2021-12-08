@@ -21,7 +21,7 @@ namespace RockEnroll
         }
         public static CourseList _coursePage = new CourseList();
         public static AcademicRequirements _reqPage = new AcademicRequirements();
-        public static Schedules _schedulePage = new Schedules();
+        public static SchedulePage _schedulePage = new SchedulePage();
         public static AdvSearchWindow _advsearch;
 
         public static List<Course> fall21Courses = new List<Course>();
@@ -365,7 +365,7 @@ namespace RockEnroll
 
         public static void PopulateSchedule()
         {
-            List<ClassInstance> mondayLectures = new List<ClassInstance>();
+            List<(ClassInstance, int)> mondayBlocks = new List<(ClassInstance, int)>();
             for (int i = 0; i < student.currentSchedule.Count; i++)
             {
                 int lecNum = student.currentSchedule[i].lectureNum;
@@ -376,14 +376,31 @@ namespace RockEnroll
 
                 if (lecTime.monday)
                 {
-                    mondayLectures.Add(student.currentSchedule[i]);
+                    mondayBlocks.Add(student.currentSchedule[i]);
                 }
 
             }
 
-            // The default comparer doesn't work here
-            mondayLectures.Sort();
+            mondayBlocks.Sort(new ClassInstanceSort());
 
+        }
+
+        public class ClassInstanceSort : Comparer<ClassInstance>
+        {
+            public override int Compare(ClassInstance x, ClassInstance y)
+            {
+
+                // Only accounts for lecture times. Does not account for tutorial time.
+                String[] xTimeParts = x.lecturesList[x.lectureNum].time.StartTime.Split(":");
+                String[] yTimeParts = y.lecturesList[y.lectureNum].time.StartTime.Split(":");
+                String xTime = xTimeParts[0] + xTimeParts[1];
+                String yTime = yTimeParts[0] + yTimeParts[1];
+
+                int xInt = int.Parse(xTime);
+                int yInt = int.Parse(yTime);
+
+                return xInt - yInt;
+            }
         }
 
         public static void AddCourse(Course course, bool view = false)

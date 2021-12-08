@@ -23,7 +23,7 @@
     <Compile Update="CourseList.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Schedules.xaml.cs">
+    <Compile Update="SchedulePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="SectionComboBox.xaml.cs">
@@ -58,7 +58,7 @@
     <Page Update="SearchResultsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Schedules.xaml">
+    <Page Update="SchedulePage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SectionComboBox.xaml">

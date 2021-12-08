@@ -16,14 +16,14 @@ using System.Windows.Shapes;
 namespace RockEnroll
 {
     /// <summary>
-    /// Interaction logic for Schedules.xaml
+    /// Interaction logic for SchedulePage.xaml
     /// </summary>
-    public partial class Schedules : UserControl
+    public partial class SchedulePage : UserControl
     {
 
 
 
-        public Schedules()
+        public SchedulePage()
         {
             InitializeComponent();
         }

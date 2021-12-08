@@ -57,6 +57,7 @@ namespace RockEnroll
             Grid.SetRow(view, courseListViewer.RowDefinitions.Count - 1);
             displayConflict(view);
 
+            ScheduleView scView = new ScheduleView(ref c);
         }
 
         public void updateSections()
