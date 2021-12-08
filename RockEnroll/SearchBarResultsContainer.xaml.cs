@@ -111,7 +111,7 @@ namespace RockEnroll
             }
         }
 
-        public void SelectCourse(object sender, EventArgs e)
+        public void SelectCourse()
         {
             if (listView.SelectedItems.Count > 0)
             {
@@ -124,6 +124,18 @@ namespace RockEnroll
 
             this.UpdateContents(searchBar.Text);
 
+        }
+
+        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+            ListViewItem listViewItem = sender as ListViewItem;
+            if (listViewItem != null)
+            {
+                listViewItem.IsSelected = true;
+                listView.SelectedItem = listViewItem;
+                SelectCourse();
+            }
         }
     }
 }
