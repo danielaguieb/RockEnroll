@@ -69,14 +69,12 @@ namespace RockEnroll
                         if (i == 0)
                         {
                             missingreq = "Missing Prerequisites: ";
+                        }else if (i != c.prerequisites.Count() - 1)
+                        {
+                            missingreq += ", ";
                         }
                         missingPrereq.Add(c.prerequisites[i]);
-                        missingreq += c.prerequisites[i].department.ToString() + c.prerequisites[i].courseID.ToString();
-                    }
-
-                    if(i != c.prerequisites.Count() - 1)
-                    {
-                        missingreq += ", ";
+                        missingreq += c.prerequisites[i].department.ToString() + " " + c.prerequisites[i].courseID.ToString();
                     }
                 }
 
@@ -105,7 +103,7 @@ namespace RockEnroll
                 }
                 else if (RockEnrollHelper.student.currentSchedule.Contains(c.lecturesList[0].course))
                 {
-                    changeButtonImage(actionButton, "Resources\\in-progress.png");
+                    this.setActionMode(ACTION_DELETE);
                     this.actionButton.IsHitTestVisible = false;
 
                     this.courseNameText.Background = (Brush)bc.ConvertFrom("#FFDCDCDC");
@@ -322,6 +320,11 @@ namespace RockEnroll
                     break;
                 case ACTION_ADD:
                     RockEnrollHelper.AddCourse(classInstance);
+                    changeButtonImage(actionButton, "Resources\\trash-can.png");
+                    this.actionText.Content = "In Cart";
+                    this.actionText.Background = Brushes.Blue;
+                    this.actionText.Foreground = Brushes.White;
+                    this.actionMode = ACTION_DELETE;
                     break;
                 default:
                     break;
