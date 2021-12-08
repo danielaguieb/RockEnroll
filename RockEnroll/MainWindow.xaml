@@ -80,7 +80,13 @@
             <RadioButton x:Name="courseTabButton"  Style ="{StaticResource RoundToggleButtonStyle}" Content="CourseList" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"  Click="CourseTabClick" Margin="5,5,5,5" Height="30"/>
             <RadioButton x:Name="reqTabButton" Style ="{StaticResource RoundToggleButtonStyle}" Content="Academic Requirements" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"   Click="RequirementsTabClick" Grid.Column="1" Margin="5,5,5,5" Height="30"/>
             <RadioButton x:Name="scheduleTabButton"  Style ="{StaticResource RoundToggleButtonStyle}" Content="Schedules" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"  Click="ScheduleTabClick" Grid.Column="2" Margin="5,5,5,5" Height="30" Checked="scheduleTabButton_Checked"/>
-            <ComboBox x:Name="termSelector" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.Column="3" Margin="5,5,5,5" Height="30"/>
+            <ComboBox x:Name="termSelector" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Grid.Column="3" Margin="5,5,5,5" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" FontWeight="Bold">
+                <ComboBoxItem Content="Select Term..." IsSelected="True" FontWeight="Bold"></ComboBoxItem>
+                <ComboBoxItem Content="FALL 2021" ></ComboBoxItem>
+                <ComboBoxItem Content="WINTER 2022" ></ComboBoxItem>
+                <ComboBoxItem Content="SPRING 2022" ></ComboBoxItem>
+                <ComboBoxItem Content="SUMMER 2022"></ComboBoxItem>
+            </ComboBox>
             <local:SearchBar x:Name="searchBar" Style ="{StaticResource RoundTextBoxStyle}"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" TextWrapping="Wrap" Foreground="#FF555252"  Grid.Column="4" Margin="25,5,5,5" Height="30" Cursor="IBeam" placeHolderText="Search" Text="Search"/>
             <Button x:Name="advancedSearchButton"  Style ="{StaticResource RoundButtonStyle}" Content="Advanced Search" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Click="AdvancedSearchClick" Grid.Column="5" Margin="5,5,5,5" Height="30"/>
         </Grid>
