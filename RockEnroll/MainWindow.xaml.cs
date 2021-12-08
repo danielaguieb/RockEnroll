@@ -31,6 +31,7 @@ namespace RockEnroll
             RockEnrollHelper.AddCourse(RockEnrollHelper.allCourses[0]);
             RockEnrollHelper.AddCourse(RockEnrollHelper.allCourses[1]);
             RockEnrollHelper.AddCourse(RockEnrollHelper.allCourses[2]);
+            RockEnrollHelper._reqPage.InitializeReqList();
             InitializeComponent();
             Switcher.pageSwitcher = this;
             mainPanel.Children.Add(RockEnrollHelper._reqPage);
@@ -52,7 +53,7 @@ namespace RockEnroll
         private void RequirementsTabClick(object sender, RoutedEventArgs e)
         {
             //RockEnrollHelper._advsearch.Owner = this;
-            RockEnrollHelper._reqPage.InitializeReqList();
+            
             mainPanel.Children.Clear();
             mainPanel.Children.Add(RockEnrollHelper._reqPage);
             enrollButton.Content = "Enrollment Checkout";
