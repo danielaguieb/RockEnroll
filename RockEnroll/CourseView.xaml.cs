@@ -40,6 +40,7 @@ namespace RockEnroll
             public CourseView(ref ClassInstance c, bool view = false)
         {
             InitializeComponent();
+            this.courseGrid.Children.Remove(CourseCheckBox);
             this.classInstance = c;
             this.view = view;
             this.courseNameText.Content = c.department.ToString() + "\n" + c.courseID.ToString();
@@ -83,7 +84,7 @@ namespace RockEnroll
             if (view)
             {
                 this.setActionMode(ACTION_ADD);
-                this.courseGrid.Children.Remove(CourseCheckBox);
+                
                 
                 this.sectionsGrid.Children.Clear();
                 this.titleGrid.Children.Remove(actionText);
@@ -223,7 +224,7 @@ namespace RockEnroll
                 }
             }else
             {
-                if (view == null)
+                if (this.parent != null && this.parent is EnrollmentView)
                 {
                     changeButtonImage(actionButton, "Resources\\inCart.png");
                     this.actionText.Background = Brushes.Blue;
@@ -336,7 +337,7 @@ namespace RockEnroll
                 case ACTION_DELETE:
                     string messageText = this.classInstance.department.ToString() + " " + this.classInstance.courseID.ToString();
                     MessageBoxResult d;
-                    d = MessageBox.Show( "Do you want to remove the following course from the cart? \r\n" + messageText, " ", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                    d = MessageBox.Show( "Do you want to remove the following course from your schedule? \r\n" + messageText, " ", MessageBoxButton.OKCancel, MessageBoxImage.Information);
                     if ((d == MessageBoxResult.OK))
                     {
                         if (classInstance.enrolled)
