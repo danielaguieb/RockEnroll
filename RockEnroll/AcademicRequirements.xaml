@@ -61,7 +61,7 @@
             <Image Name="timeline" Grid.Row="0" Source="Resources/emptytimeline.png" Stretch="Uniform"  Margin="20,0,5,50"/>
             <Image Name="schedule" Grid.Row="1" Source="Resources/empty.png" Stretch="Uniform" Margin="20,0,5,100" />
         </Grid>
-        <ScrollViewer Height="1100" VerticalScrollBarVisibility="Hidden">
+        <ScrollViewer Height="600" VerticalScrollBarVisibility="Hidden">
             <Grid x:Name="bindme" HorizontalAlignment="Stretch" Grid.Column="0" MinWidth="700" VerticalAlignment="Top">
         <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -185,7 +185,7 @@
                                     </TextBlock>
                                 </Grid>
                             </Grid>
-                            <ScrollViewer HorizontalAlignment="Left" Height="250" VerticalScrollBarVisibility="Auto">
+                            
                                 <StackPanel Name="insertreqhere">
                                     <local:ReqExpander VerticalContentAlignment="Top" />
                                     <local:ReqExpander />
@@ -194,7 +194,7 @@
                                     <local:ReqExpander />
 
                                 </StackPanel>
-                            </ScrollViewer>
+                           
 
 
                         </StackPanel>
