@@ -151,7 +151,7 @@ namespace RockEnroll
                         reqText += "Antirequisites: ";
                         break;
                     case 2:
-                        reqText += "Successor Courses: ";
+                        reqText += "Prerequisite for: ";
                         break;
                 }
                 for (int i = 0; i < req.Count(); i++)
@@ -334,24 +334,30 @@ namespace RockEnroll
             switch (this.getActionMode())
             {
                 case ACTION_DELETE:
-                    if (classInstance.enrolled)
+                    string messageText = this.classInstance.department.ToString() + " " + this.classInstance.courseID.ToString();
+                    MessageBoxResult d;
+                    d = MessageBox.Show( "Do you want to remove the following course from the cart? \r\n" + messageText, " ", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                    if ((d == MessageBoxResult.OK))
                     {
+                        if (classInstance.enrolled)
+                        {
                             this.actionText.Content = "Dropping";
                             this.actionText.Background = Brushes.Red;
                             this.actionText.Foreground = Brushes.White;
                             break;
-                    }
-                    if (view)
-                    {
-                        RockEnrollHelper.RemoveCourse(classInstance);
-                        this.actionMode = ACTION_ADD;
-                        this.actionText.Background = Brushes.White;
-                        this.actionText.Foreground = Brushes.White;
-                        changeButtonImage(actionButton, "Resources\\greenplus.png");
-                        break;
-                    }
+                        }
+                        if (view)
+                        {
+                            RockEnrollHelper.RemoveCourse(classInstance);
+                            this.actionMode = ACTION_ADD;
+                            this.actionText.Background = Brushes.White;
+                            this.actionText.Foreground = Brushes.White;
+                            changeButtonImage(actionButton, "Resources\\greenplus.png");
+                            break;
+                        }
                     (this.Parent as Panel).Children.Remove(this);
-                    RockEnrollHelper.RemoveCourse(classInstance);
+                        RockEnrollHelper.RemoveCourse(classInstance);
+                    }
                     break;
                 case ACTION_ENROLL:
                     //showMessage("Attempting to enroll", "Enroll");
