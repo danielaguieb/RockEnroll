@@ -1,0 +1,53 @@
+﻿<Window x:Name="containerMainWindow" x:Class="RockEnroll.SearchBarResultsContainer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RockEnroll"
+        mc:Ignorable="d"
+        Title="SearchBarResultsContainer" Height="450" Width="900" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" Topmost="True" Background="Transparent"
+        WindowStartupLocation="Manual"
+        Left="1125" Top="95">
+    <ListView x:Name="listView" SelectionChanged="listView_SelectionChanged">
+        <ListView.Resources>
+            <Style TargetType="GridViewColumnHeader">
+                <Setter Property="Visibility" Value="Collapsed" />
+            </Style>
+        </ListView.Resources>
+        <ListView.ItemTemplate>
+
+            <DataTemplate>
+
+                <Grid PreviewMouseDown="SelectCourse">
+
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="1*" />
+
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Column="0" Orientation="Vertical">
+
+                        <TextBlock>
+                        <Run Text="{Binding Path=Item1.department}" Foreground="Black" FontWeight="Bold"/>
+                        <Run Text="{Binding Path=Item1.courseID}" Foreground="Black" FontWeight="Bold"/>
+                        </TextBlock>
+                        <TextBlock  Text="{Binding Path=Item1.courseTitle}" Margin="5,0,0,0" />
+
+                    </StackPanel>
+                    <Image Grid.Column="1" Source="{Binding Path=Item2}" Height="25" Margin="5, 0, 0, 0"/>
+
+                </Grid>
+
+
+            </DataTemplate>
+            
+        </ListView.ItemTemplate>
+    </ListView>
+
+</Window>
