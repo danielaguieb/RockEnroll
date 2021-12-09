@@ -128,10 +128,11 @@ namespace RockEnroll
                 if(c.ClassInstance.courseID == 321)
                 {
                     RockEnrollHelper.SwapSection(c.ClassInstance, 0, 2, 0);
+                    ((SectionComboBox)c.sectionsGrid.Children[1]).comboBox.SelectedIndex = 2;
                 }
 
             }
-            
+            RockEnrollHelper.updateCoursePage();
             RockEnrollHelper.schedulePath = "Resources/swaptut.png";
             updateScheduleImage();
         }
