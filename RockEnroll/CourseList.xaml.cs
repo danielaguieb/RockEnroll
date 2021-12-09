@@ -117,10 +117,21 @@ namespace RockEnroll
 
         private void changeCourse(object sender, MouseButtonEventArgs e)
         {
-            ClassInstance c = RockEnrollHelper.student.currentSchedule.Find(x => x.courseID == 321 && x.department == Department.SOCI);
-            if (c != null) {
-                RockEnrollHelper.SwapSection(c, 0, 2, 0);
+            /*
+             ClassInstance c = RockEnrollHelper.student.currentSchedule.Find(x => x.courseID == 321 && x.department == Department.SOCI);
+             if (c != null) {
+                 RockEnrollHelper.SwapSection(RockEnrollHelper.student.currentSchedule.Find(x => x.courseID == 321 && x.department == Department.SOCI), 0, 2, 0);
+             }
+            */
+            foreach (CourseView c in courseListViewer.Children)
+            {
+                if(c.ClassInstance.courseID == 321)
+                {
+                    RockEnrollHelper.SwapSection(c.ClassInstance, 0, 2, 0);
+                }
+
             }
+            
             RockEnrollHelper.schedulePath = "Resources/swaptut.png";
             updateScheduleImage();
         }
